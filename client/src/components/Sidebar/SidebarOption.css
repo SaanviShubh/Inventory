@@ -1,0 +1,28 @@
+.sidebarOption {
+  display: flex;
+  padding: 12px;
+  /* border: 1px solid black; */
+  /* margin-top: 7px; */
+  color: rgba(44, 40, 40, 0.877);
+}
+
+.sidebarOption:hover {
+  transition: all 0.1s ease;
+  background: #6796fc18;
+  cursor: pointer;
+  /* border: 0.1px solid rgba(0, 0, 0, 0.315); */
+}
+
+.sidebarOption__icon {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+.sidebarOption__name {
+  /* border: 1px solid black; */
+  flex: 3;
+  padding-left: 15px;
+}

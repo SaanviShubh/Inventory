@@ -41,4 +41,18 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Poppins;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.App {
+  display: flex;
+}
+
+.app__body {
+  width: 80vw;
+  max-width: 85vw;
 }

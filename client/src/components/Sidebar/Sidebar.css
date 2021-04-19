@@ -1,0 +1,21 @@
+.sidebar {
+  width: 20vw;
+  min-width: 180px;
+  height: 100vh;
+  max-height: 100vh;
+  -moz-box-shadow: -3px 0 5px 0 rgb(56, 56, 56);
+  -webkit-box-shadow: -3px 0 5px 0 rgb(56, 56, 56);
+  box-shadow: -3px 0 5px 0 rgb(56, 56, 56);
+  /* border: 2px solid red; */
+}
+
+.sidebar__logo {
+  height: 60px;
+}
+
+.sidebar__options {
+  width: 100%;
+  padding: 10px 0;
+  overflow: hidden;
+  /* border: 2px solid orange; */
+}
