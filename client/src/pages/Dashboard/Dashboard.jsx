@@ -9,7 +9,7 @@ const Dashboard = () => {
         <p id="dashboard__subheader">DASHBOARD/SEARCH</p>
       </div>
       <div className="dashboard__searchbox">
-        <h3>Searchbox</h3>
+        <p id="searchbox">Searchbox</p>
         <div className="search__bar">
           <i class="fas fa-search"></i>
           <input
@@ -17,6 +17,50 @@ const Dashboard = () => {
             type="text"
             placeholder="Enter SKU Number to search"
           />
+        </div>
+      </div>
+
+      {/* CHECK ALTERNATIVE */}
+
+      <div className="items_detail">
+        <div className="detail">
+          <div className="articles_icon">
+            <i id="articles" class="fab fa-shopify fa-2x"></i>
+          </div>
+          <div className="item_detail">
+            <p className="number_of_item">2000</p>
+            <p className="detail_heading">Current Stock</p>
+          </div>
+        </div>
+
+        <div className="detail">
+          <div className="added_icon">
+            <i id="added" class="far fa-plus-square fa-2x"></i>
+          </div>
+          <div className="item_detail">
+            <p className="number_of_item">412</p>
+            <p className="detail_heading">Items Added</p>
+          </div>
+        </div>
+
+        <div className="detail">
+          <div className="dispatched_icon">
+            <i id="dispatched" class="far fa-minus-square fa-2x"></i>
+          </div>
+          <div className="item_detail">
+            <p className="number_of_item">230</p>
+            <p className="detail_heading">Items Dispatched</p>
+          </div>
+        </div>
+
+        <div className="detail">
+          <div className="returned_icon">
+            <i id="returned" class="fas fa-exchange-alt fa-2x"></i>
+          </div>
+          <div className="item_detail">
+            <p className="number_of_item">200</p>
+            <p className="detail_heading">Items Returned</p>
+          </div>
         </div>
       </div>
     </div>

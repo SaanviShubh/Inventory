@@ -1,9 +1,10 @@
 .dashboard {
   padding: 30px;
-  background-color: rgba(213, 226, 253, 0.137);
-  /* background-color: rgba(255, 255, 255, 0.712); */
+  /* background-color: rgba(200, 250, 187, 0.267); */
+  background-color: rgba(187, 206, 250, 0.267);
+  height: calc(100% - 60px);
+  /* background-color: rgb(99%, 99%, 99%); */
   /* border: 1px solid red; */
-  height: 1200px;
 }
 
 #dashboard__header {
@@ -22,11 +23,15 @@
   /* border: 1px solid blue; */
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
   margin-top: 20px;
   border: 2px solid rgba(224, 222, 222, 0.158);
   background-color: white;
-  box-shadow: 0px 6px 10px rgb(221, 221, 221);
+  /* box-shadow: 0px 6px 10px rgb(221, 221, 221); */
+}
+
+#searchbox {
+  font-weight: 600;
 }
 
 .search__bar {
@@ -37,6 +42,7 @@
   padding: 5px 8px;
   color: rgba(126, 125, 125, 0.637);
   border: 2px solid rgba(172, 169, 169, 0.411);
+  margin-top: 10px;
 }
 
 .fas-fa-search {
@@ -50,4 +56,85 @@
   background-color: white;
   outline: none;
   margin-left: 5px;
+}
+
+.items_detail {
+  display: flex;
+}
+
+.detail {
+  background-color: white;
+  width: 15%;
+  height: 180px;
+  /* border: 1px solid goldenrod; */
+  margin-top: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.articles_icon {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(2%, 45%, 93%);
+  border-radius: 8px;
+  /* border: 1px solid palevioletred; */
+}
+
+.added_icon {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(54, 131, 2);
+  border-radius: 8px;
+}
+
+.dispatched_icon {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(145, 90, 207);
+  border-radius: 8px;
+}
+
+.returned_icon {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(233, 41, 41);
+  border-radius: 8px;
+}
+
+#articles,
+#added,
+#dispatched,
+#returned {
+  color: #fff;
+}
+
+.item_detail {
+  /* border: 1px solid black; */
+  padding: 15px 0;
+}
+
+.number_of_item {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.detail_heading {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.644);
 }
