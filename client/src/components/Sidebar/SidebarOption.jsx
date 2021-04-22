@@ -5,7 +5,7 @@ const SidebarOption = ({ Icon, Name }) => {
   return (
     <div className="sidebarOption">
       <div className="sidebarOption__icon">
-        <i class={Icon}></i>
+        <i className={Icon}></i>
       </div>
       <div className="sidebarOption__name">{Name}</div>
     </div>

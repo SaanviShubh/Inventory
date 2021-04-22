@@ -11,7 +11,7 @@ const Dashboard = () => {
       <div className="dashboard__searchbox">
         <p id="searchbox">Searchbox</p>
         <div className="search__bar">
-          <i class="fas fa-search"></i>
+          <i className="fas fa-search"></i>
           <input
             id="search__bar"
             type="text"
@@ -25,7 +25,7 @@ const Dashboard = () => {
       <div className="items_detail">
         <div className="detail">
           <div className="articles_icon">
-            <i id="articles" class="fab fa-shopify fa-2x"></i>
+            <i id="articles" className="fab fa-shopify fa-2x"></i>
           </div>
           <div className="item_detail">
             <p className="number_of_item">2000</p>
@@ -35,7 +35,7 @@ const Dashboard = () => {
 
         <div className="detail">
           <div className="added_icon">
-            <i id="added" class="far fa-plus-square fa-2x"></i>
+            <i id="added" className="far fa-plus-square fa-2x"></i>
           </div>
           <div className="item_detail">
             <p className="number_of_item">412</p>
@@ -45,7 +45,7 @@ const Dashboard = () => {
 
         <div className="detail">
           <div className="dispatched_icon">
-            <i id="dispatched" class="far fa-minus-square fa-2x"></i>
+            <i id="dispatched" className="far fa-minus-square fa-2x"></i>
           </div>
           <div className="item_detail">
             <p className="number_of_item">230</p>
@@ -55,7 +55,7 @@ const Dashboard = () => {
 
         <div className="detail">
           <div className="returned_icon">
-            <i id="returned" class="fas fa-exchange-alt fa-2x"></i>
+            <i id="returned" className="fas fa-exchange-alt fa-2x"></i>
           </div>
           <div className="item_detail">
             <p className="number_of_item">200</p>

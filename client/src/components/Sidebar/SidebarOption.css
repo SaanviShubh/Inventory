@@ -26,3 +26,7 @@
   flex: 3;
   padding-left: 15px;
 }
+
+.notactive {
+  background-color: red;
+}
