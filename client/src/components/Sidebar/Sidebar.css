@@ -10,6 +10,10 @@
   /* border: 2px solid red; */
 }
 
+.sidebar__options a {
+  text-decoration: none;
+}
+
 .sidebar__logo {
   height: 60px;
 }

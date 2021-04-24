@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Dispatch = () => {
-    return (
-        <div>
-            <h1>Dsipatch</h1>
-        </div>
-    )
-}
+  return <div className="dispatchpage"></div>;
+};
 
-export default Dispatch
+export default Dispatch;

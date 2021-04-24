@@ -7,12 +7,14 @@ import Dispatch from "./pages/DispatchPage/Dispatch";
 import Return from "./pages/ReturnPage/Return";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
+import ReportBug from "./components/ReportBug";
+import AboutApp from "./components/AboutApp";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Sidebar />
+        {/* <Sidebar /> */}
         <div className="app__body">
           <Navbar />
           <Switch>
@@ -20,6 +22,7 @@ function App() {
             <Route path="/dispatch" exact={true} component={Dispatch} />
             <Route path="/return" exact={true} component={Return} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/report" component={AboutApp} />
           </Switch>
         </div>
       </div>
