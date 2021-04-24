@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
 import axios from "axios";
+import Calender from "../Calender/Calender";
 
 const Table = ({}) => {
   const [addedItems, setAddedItems] = useState("");
@@ -16,6 +17,29 @@ const Table = ({}) => {
   return (
     <div className="table">
       <p className="table__name">Items Added to the Stock</p>
+
+      <div className="table_search_filter">
+        <div className="search__bar">
+          <i className="fas fa-search"></i>
+          <input
+            id="search__bar"
+            type="text"
+            placeholder="Enter SKU Number to search"
+          />
+        </div>
+
+        <Calender />
+
+        {/* <div className="filter">
+          <label htmlFor="filterbar">Filter :</label>
+          <select name="filterbar" id="filterbar">
+            <option value="all">All</option>
+            <option value="all">All</option>
+            <option value="all">All</option>
+            <option value="all">All</option>
+          </select>
+        </div> */}
+      </div>
 
       <table id="customers">
         <tr>

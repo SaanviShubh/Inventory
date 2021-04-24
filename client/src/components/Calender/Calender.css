@@ -1,0 +1,27 @@
+.calender_filter {
+  display: flex;
+  /* border: 2px solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.calender {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+#from_date {
+  margin: 3px;
+  padding: 3px;
+  outline: none;
+}
+
+#to_date {
+  margin: 3px;
+  padding: 3px;
+  outline: none;
+}

@@ -49,6 +49,6 @@
 }
 
 .app__body {
-  width: 100vw;
-  /* max-width: 85vw; */
+  width: 87vw;
+  max-width: 87vw;
 }

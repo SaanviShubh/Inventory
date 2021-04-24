@@ -1,4 +1,5 @@
 import React from "react";
+import Searchbox from "../../components/Searchbox/Searchbox";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -8,17 +9,8 @@ const Dashboard = () => {
         <p id="dashboard__header">Welcome to Dashboard</p>
         <p id="dashboard__subheader">DASHBOARD/SEARCH</p>
       </div>
-      <div className="dashboard__searchbox">
-        <p id="searchbox">Searchbox</p>
-        <div className="search__bar">
-          <i className="fas fa-search"></i>
-          <input
-            id="search__bar"
-            type="text"
-            placeholder="Enter SKU Number to search"
-          />
-        </div>
-      </div>
+
+      <Searchbox />
 
       {/* CHECK ALTERNATIVE */}
 
