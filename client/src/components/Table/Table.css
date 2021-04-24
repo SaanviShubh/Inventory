@@ -14,11 +14,11 @@
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
-  /* border: 1px solid black; */
 }
 
 .search__bar {
   height: 45px;
+  /* border: 1px solid black; */
 }
 
 #customers {
@@ -43,11 +43,20 @@
 } */
 
 #customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 12px 0;
+  margin-top: 10px;
   text-align: left;
   /* background-color: #86d3f160; */
   background-color: rgba(187, 206, 250, 0.267);
   color: rgba(99, 97, 97, 0.712);
   font-weight: 500;
+}
+
+.loading {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 20px;
 }

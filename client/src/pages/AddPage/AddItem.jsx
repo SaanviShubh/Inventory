@@ -11,13 +11,7 @@ const AddItem = () => {
         <p id="dashboard__header">Add Your Items</p>
         <p id="dashboard__subheader">ADD/LIST</p>
       </div>
-
       <Searchbox />
-
-      <Table />
-      <Table />
-      <Table />
-      <Table />
       <Table />
     </div>
   );

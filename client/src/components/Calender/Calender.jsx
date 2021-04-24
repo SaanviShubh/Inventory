@@ -14,23 +14,27 @@ const Calender = () => {
         <DatePicker
           id="from_date"
           placeholderText="From Here"
-          selected={fromDate}
-          onChange={(date) => setFromDate(date)}
           isClearable
           showYearDropdown
           scrollableMonthYearDropdown
+          dateFormat="dd/MM/yyyy"
+          selected={fromDate}
+          onChange={(date) => setFromDate(date)}
+          autoComplete="off"
         />
         <DatePicker
           id="to_date"
           placeholderText="To Here"
-          selected={toDate}
-          onChange={(date) => setToDate(date)}
           isClearable
           showYearDropdown
+          dateFormat="dd/MM/yyyy"
           scrollableMonthYearDropdown
+          selected={toDate}
+          onChange={(date) => setToDate(date)}
+          autoComplete="off"
         />
       </div>
-      <button>Save</button>
+      <button>Apply</button>
     </div>
   );
 };
