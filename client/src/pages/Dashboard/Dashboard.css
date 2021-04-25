@@ -21,6 +21,8 @@
 
 .items_detail {
   display: flex;
+  /* margin-top: 30px; */
+  padding-top: 30px;
 }
 
 .detail {
@@ -28,7 +30,6 @@
   width: 15%;
   height: 180px;
   /* border: 1px solid goldenrod; */
-  margin-top: 30px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -98,4 +99,33 @@
 .detail_heading {
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.644);
+}
+
+.stock_analytics {
+  display: flex;
+  width: 100%;
+  /* border: 2px solid red; */
+  margin-top: 30px;
+}
+
+.stock_chart {
+  height: 100%;
+  width: 30%;
+  /* flex: 1; */
+  /* border: 2px solid red; */
+  background-color: white;
+  padding: 20px;
+}
+
+.stock_numbers {
+  /* flex: 1; */
+  margin-left: 15px;
+  background-color: #fff;
+  width: calc(70% - 15px);
+  padding: 20px;
+}
+
+.stock_numbers p {
+  padding-bottom: 20px;
+  font-weight: 600;
 }
