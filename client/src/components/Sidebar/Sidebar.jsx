@@ -10,7 +10,7 @@ const Sidebar = () => {
         <h2>Logo</h2>
       </div>
       <div className="sidebar__options">
-        <Link to="/dashboard">
+        <Link to="/">
           <SidebarOption Icon={"fas fa-columns"} Name={"Dashboard"} />
         </Link>
         <Link to="/add">

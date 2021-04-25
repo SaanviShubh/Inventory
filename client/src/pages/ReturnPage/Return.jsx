@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import BarChart from "../../components/Charts/BarChart";
 
 const Return = () => {
-    return (
-        <div>
-        <h1>Return</h1>
+  return (
+    <div>
+      <BarChart />
     </div>
-    )
-}
+  );
+};
 
-export default Return
+export default Return;

@@ -19,7 +19,7 @@ function App() {
             <Route path="/add" exact={true} component={AddItem} />
             <Route path="/dispatch" exact={true} component={Dispatch} />
             <Route path="/return" exact={true} component={Return} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/" component={Dashboard} />
           </Switch>
         </div>
       </div>

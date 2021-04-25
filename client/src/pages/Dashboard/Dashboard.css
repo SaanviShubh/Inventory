@@ -125,7 +125,104 @@
   padding: 20px;
 }
 
+.sn_head_filter {
+  /* border: 2px solid red; */
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .stock_numbers p {
-  padding-bottom: 20px;
   font-weight: 600;
+}
+
+.stock_numbers_details {
+  /* border: 2px solid red; */
+  height: 80%;
+  display: flex;
+  padding: 15px 0;
+}
+
+.analytics {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.added_stock {
+  /* border: 2px solid red; */
+  padding: 0.8rem;
+  text-align: center;
+  background-color: rgb(82%, 94%, 89%);
+  border-right: 4px solid rgb(38%, 60%, 49%);
+  color: rgb(70, 121, 95);
+}
+
+.dispatched_stock {
+  /* border: 2px solid red; */
+  padding: 0.8rem;
+  text-align: center;
+  background-color: rgb(89%, 86%, 96%);
+  border-right: 4px solid rgb(56%, 41%, 67%);
+  color: rgb(119, 85, 143);
+}
+
+.returned_stock {
+  /* border: 2px solid red; */
+  padding: 0.8rem;
+  text-align: center;
+  background-color: rgb(97%, 85%, 84%);
+  border-right: 4px solid rgb(82%, 51%, 49%);
+  color: rgb(184, 77, 72);
+}
+
+.profit_stock {
+  /* border: 2px solid red; */
+  padding: 0.8rem;
+  text-align: center;
+  background-color: rgb(80%, 89%, 98%);
+  border-right: 4px solid rgb(18%, 37%, 67%);
+  color: rgb(18%, 37%, 67%);
+}
+
+.stock_mgt_pages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* padding: 20px; */
+  /* border: 1px solid orange; */
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.stock_mgt_pages button {
+  width: 50%;
+  padding: 8px;
+}
+
+#current_stock_btn {
+  border: 3px solid rgb(228, 228, 29);
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  color: rgb(206, 167, 14);
+}
+
+#current_stock_btn:hover {
+  background-color: rgb(100%, 96%, 80%);
+  /* color: #000; */
+}
+
+#recent_btn {
+  border: 3px solid rgba(134, 134, 132, 0.815);
+  color: rgb(144, 145, 143);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#recent_btn:hover {
+  background-color: rgba(144, 145, 143, 0.329);
+  /* color: #000; */
 }

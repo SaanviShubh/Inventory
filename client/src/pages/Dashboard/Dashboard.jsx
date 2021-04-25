@@ -1,31 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Searchbox from "../../components/Searchbox/Searchbox";
 import "./Dashboard.css";
-import { Doughnut } from "react-chartjs-2";
+import Calender from "../../components/Calender/Calender";
+import DoughnutChart from "../../components/Charts/DoughnutChart";
+import { Bar } from "react-chartjs-2";
 
 const Dashboard = () => {
-  const [chartData, setChartData] = useState({});
-  const chart = () => {
-    setChartData({
-      labels: ["Added", "Dispatched", "Returned"],
-      datasets: [
-        {
-          data: [32, 43, 12],
-          backgroundColor: [
-            "rgb(10%, 68%, 47%)",
-            "rgb(57%, 35%, 81%)",
-            "rgb(91%, 16%, 16%)",
-          ],
-          borderWidth: 1,
-        },
-      ],
-    });
-  };
-
-  useEffect(() => {
-    chart();
-  }, []);
-
   return (
     <div className="dashboard">
       <div className="dashboard__head">
@@ -80,17 +60,37 @@ const Dashboard = () => {
       </div>
       <div className="stock_analytics">
         <div className="stock_chart">
-          <Doughnut
-            data={chartData}
-            options={{
-              responsive: true,
-            }}
-          />
+          <DoughnutChart />
+          {/* <Bar /> */}
         </div>
         <div className="stock_numbers">
-          <p>Stock Analytics</p>
+          <div className="sn_head_filter">
+            <p>Stock Analytics</p>
+            <Calender />
+          </div>
+          <div className="stock_numbers_details">
+            <div className="analytics">
+              <div className="added_stock">
+                <p>Added Items :- 32 </p>
+              </div>
+              <div className="dispatched_stock">
+                <p>Dispatched Items :- 25 </p>
+              </div>
+              <div className="returned_stock">
+                <p>Returned Items :- 5</p>
+              </div>
+              <div className="profit_stock">
+                <p>Profit % :- 30%</p>
+              </div>
+            </div>
+            <div className="stock_mgt_pages">
+              <button id="current_stock_btn">CURRENT STOCK</button>
+              <button id="recent_btn">RECENT TRANSACTIONS</button>
+            </div>
+          </div>
         </div>
       </div>
+      {/* <Bar /> */}
     </div>
   );
 };
