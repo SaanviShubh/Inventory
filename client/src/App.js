@@ -7,6 +7,7 @@ import Dispatch from "./pages/DispatchPage/Dispatch";
 import Return from "./pages/ReturnPage/Return";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/return" exact={true} component={Return} />
             <Route path="/" component={Dashboard} />
           </Switch>
+          <Footer />
         </div>
       </div>
     </Router>

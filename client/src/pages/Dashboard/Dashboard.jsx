@@ -4,6 +4,7 @@ import "./Dashboard.css";
 import Calender from "../../components/Calender/Calender";
 import DoughnutChart from "../../components/Charts/DoughnutChart";
 import { Bar } from "react-chartjs-2";
+import BarChart from "../../components/Charts/BarChart";
 
 const Dashboard = () => {
   return (
@@ -80,7 +81,7 @@ const Dashboard = () => {
                 <p>Returned Items :- 5</p>
               </div>
               <div className="profit_stock">
-                <p>Profit % :- 30%</p>
+                <p>Total Sales :- 30%</p>
               </div>
             </div>
             <div className="stock_mgt_pages">
@@ -90,7 +91,30 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      {/* <Bar /> */}
+      <div className="profit_bar_chart">
+        <div className="profit_details">
+          <div className="revenue_details">
+            <p>Revenue Analytics</p>
+            <Calender />
+            <div className="sale_money">
+              <p>Sold Worth :- 32 </p>
+            </div>
+            <div className="return_money">
+              <p>Returned Worth :- 32 </p>
+            </div>
+            <div className="profit_money">
+              <p>Profit Gained :- 32 </p>
+            </div>
+          </div>
+          <div className="graph_change">
+            <button>SALES BASED</button>
+            <button>REVENUE BASED</button>
+          </div>
+        </div>
+        <div className="profit_chart">
+          <BarChart />
+        </div>
+      </div>
     </div>
   );
 };

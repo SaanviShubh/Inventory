@@ -226,3 +226,73 @@
   background-color: rgba(144, 145, 143, 0.329);
   /* color: #000; */
 }
+
+.profit_bar_chart {
+  width: 100%;
+  display: flex;
+  padding-top: 30px;
+}
+
+.profit_details {
+  flex: 1;
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  background-color: #fff;
+  /* border: 2px solid red; */
+}
+
+.revenue_details {
+  flex: 1;
+  /* border-right: 8px solid rgb(93%, 95%, 100%); */
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* border: 2px solid red; */
+}
+
+.revenue_details p {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.sale_money {
+  width: 90%;
+  margin: 4px;
+  background-color: rgb(89%, 86%, 96%);
+  border-left: 4px solid rgb(56%, 41%, 67%);
+  color: rgb(119, 85, 143);
+}
+
+.return_money {
+  width: 90%;
+  color: rgb(119, 85, 143);
+  margin: 4px;
+  background-color: rgb(97%, 85%, 84%);
+  border-left: 4px solid rgb(82%, 51%, 49%);
+  color: rgb(184, 77, 72);
+}
+
+.profit_money {
+  width: 90%;
+  background-color: rgb(80%, 89%, 98%);
+  border-left: 4px solid rgb(18%, 37%, 67%);
+  color: rgb(18%, 37%, 67%);
+  margin: 4px;
+}
+
+.graph_change {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.profit_chart {
+  width: 50%;
+  padding: 20px;
+  flex: 1;
+  background-color: #fff;
+}

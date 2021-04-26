@@ -16,9 +16,40 @@
   /* align-items: center; */
 }
 
-.search__bar {
+.input_bar {
   height: 45px;
+  background-color: #fff;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  color: rgba(126, 125, 125, 0.637);
+  border: 2px solid rgba(172, 169, 169, 0.411);
+  margin-top: 10px;
   /* border: 1px solid black; */
+}
+
+.fas-fa-search {
+  padding-left: 5px;
+}
+
+.input_bar .fa-plus-square {
+  color: rgb(12%, 40%, 100%);
+  cursor: pointer;
+}
+
+.input_bar .fa-plus-square :hover {
+  color: rgb(31, 102, 255);
+  /* cursor: pointer; */
+}
+
+#input_bar {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  background-color: white;
+  outline: none;
+  margin-left: 5px;
 }
 
 #customers {
