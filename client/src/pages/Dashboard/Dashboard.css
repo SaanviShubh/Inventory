@@ -110,7 +110,9 @@
 
 .stock_chart {
   height: 100%;
+  min-height: 200px;
   width: 30%;
+  min-width: 30%;
   /* flex: 1; */
   /* border: 2px solid red; */
   background-color: white;
@@ -215,14 +217,15 @@
   /* color: #000; */
 }
 
-#recent_btn {
+#recent_transaction_btn {
   border: 3px solid rgba(134, 134, 132, 0.815);
   color: rgb(144, 145, 143);
   border-radius: 4px;
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.712);
 }
 
-#recent_btn:hover {
+#recent_transaction_btn:hover {
   background-color: rgba(144, 145, 143, 0.329);
   /* color: #000; */
 }

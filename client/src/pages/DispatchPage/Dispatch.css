@@ -1,0 +1,6 @@
+.dispatchpage {
+  padding: 30px;
+  /* background-color: rgba(200, 250, 187, 0.267); */
+  background-color: rgba(187, 206, 250, 0.267);
+  height: calc(100% - 60px);
+}

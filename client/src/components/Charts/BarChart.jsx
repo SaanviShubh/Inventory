@@ -55,31 +55,35 @@ const BarChart = () => {
         data={chartData}
         options={{
           responsive: true,
-          title: {
-            display: true,
-            text: "Stock Analytics Chart",
+          plugins: {
+            legend: false,
+            title: {
+              display: true,
+              text: "Stock Analytics Chart",
+            },
           },
           scales: {
-            // xAxes: [
-            //   {
-            //     gridLines: {
-            //       color: "rgba(0, 0, 0, 0)",
-            //     },
-            //   },
-            // ],
-            // yAxes: [
-            //   {
-            //     ticks: {
-            //       beginAtZero: true,
-            //       steps: 10,
-            //       stepValue: 5,
-            //       max: 50,
-            //     },
-            //     gridLines: {
-            //       color: "rgba(0, 0, 0, 0)",
-            //     },
-            //   },
-            // ],
+            xAxes: [
+              {
+                gridLines: {
+                  // color: "rgba(0, 0, 0, 0)",
+                  display: false,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  steps: 10,
+                  stepValue: 5,
+                  max: 50,
+                },
+                gridLines: {
+                  color: "rgba(0, 0, 0, 0)",
+                },
+              },
+            ],
           },
         }}
       />

@@ -1,9 +1,12 @@
 .footer {
+  width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 20px;
   background-color: rgb(93%, 95%, 100%);
   border-top: 1px solid rgba(167, 167, 167, 0.384);
+  bottom: 0;
 }
 
 .footer_left {

@@ -10,7 +10,7 @@ const Searchbox = () => {
         <input
           id="search__bar"
           type="text"
-          placeholder="Enter SKU Number to search"
+          placeholder="Enter Barcode Number to search"
         />
       </div>
     </div>

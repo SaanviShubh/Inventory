@@ -86,7 +86,7 @@ const Dashboard = () => {
             </div>
             <div className="stock_mgt_pages">
               <button id="current_stock_btn">CURRENT STOCK</button>
-              <button id="recent_btn">RECENT TRANSACTIONS</button>
+              <button id="recent_transaction_btn"> TRANSACTIONS</button>
             </div>
           </div>
         </div>
@@ -107,8 +107,8 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="graph_change">
-            <button>SALES BASED</button>
-            <button>REVENUE BASED</button>
+            <button>SALES</button>
+            <button>REVENUE</button>
           </div>
         </div>
         <div className="profit_chart">

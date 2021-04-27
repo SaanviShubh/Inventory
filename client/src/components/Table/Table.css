@@ -38,8 +38,8 @@
   cursor: pointer;
 }
 
-.input_bar .fa-plus-square :hover {
-  color: rgb(31, 102, 255);
+.input_bar .fa-plus-square:hover {
+  color: rgba(21, 21, 255, 0.836);
   /* cursor: pointer; */
 }
 
@@ -62,7 +62,9 @@
 #customers td,
 #customers th {
   border: 1px solid #ddd;
+  font-size: 0.9rem;
   padding: 8px;
+  text-align: center;
 }
 
 /* #customers tr:nth-child(even) {
@@ -76,11 +78,18 @@
 #customers th {
   padding: 12px 0;
   margin-top: 10px;
-  text-align: left;
+  text-align: center;
   /* background-color: #86d3f160; */
   background-color: rgba(187, 206, 250, 0.267);
   color: rgba(99, 97, 97, 0.712);
   font-weight: 500;
+}
+
+.status_alert {
+  background-color: rgb(85%, 24%, 19%);
+  padding: 3px 7px;
+  color: white;
+  font-size: 0.8rem;
 }
 
 .loading {

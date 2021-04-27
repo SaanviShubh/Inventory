@@ -10,6 +10,15 @@ const Table = ({}) => {
   const [addedItems, setAddedItems] = useState("");
   const [isLoading, setloading] = useState(true);
 
+  // JUST FOR TRY
+  const [num, setNumber] = useState(true);
+
+  const calc = () => {
+    if (num) {
+      return <span className="status_alert">ALERT</span>;
+    }
+  };
+
   // toast.configure();
   // const Toast = () => {
   //   toast("Test Notification", { position: toast.POSITION.TOP_RIGHT });
@@ -55,12 +64,13 @@ const Table = ({}) => {
             <input
               id="input_bar"
               type="text"
-              placeholder="Enter Barcode Number"
+              placeholder="Enter SKU Number"
+              autocomplete="off"
             />
             <i class="fas fa-plus-square fa-2x" onClick={Try}></i>
           </div>
 
-          <Calender />
+          {/* <Calender /> */}
         </div>
 
         {isLoading ? (
@@ -75,7 +85,7 @@ const Table = ({}) => {
               <th>Color</th>
               <th>Size</th>
               <th>Quantity</th>
-              <th>Date</th>
+              <th>Status</th>
             </tr>
 
             {[...addedItems].map((newFeedback) => (
@@ -85,6 +95,7 @@ const Table = ({}) => {
                 <td>{newFeedback.fDept}</td>
                 <td>40</td>
                 <td>20</td>
+                <td>{calc()}</td>
               </tr>
             ))}
           </table>
@@ -94,7 +105,51 @@ const Table = ({}) => {
   else
     return (
       <div>
-        <h1> Hey</h1>
+        <div className="table">
+          <p className="table__name">Add Items to the Stock</p>
+          <div className="table_search_filter">
+            <div className="input_bar">
+              <i className="fas fa-search"></i>
+              <input
+                id="input_bar"
+                type="text"
+                autocomplete="off"
+                placeholder="Enter Barcode Number"
+              />
+              <i class="fas fa-plus-square fa-2x" onClick={Try}></i>
+            </div>
+
+            <Calender />
+          </div>
+
+          {isLoading ? (
+            <div className="loading">
+              <FadeLoader height={10} width={5} margin={3} color="green" />
+            </div>
+          ) : (
+            <table id="customers">
+              <tr>
+                <th>Barcode</th>
+                <th>Article Number</th>
+                <th>Color</th>
+                <th>Size</th>
+                <th>Quantity</th>
+                <th>Action</th>
+              </tr>
+
+              {[...addedItems].map((newFeedback) => (
+                <tr>
+                  <td>{newFeedback.fTitle}</td>
+                  <td>1620</td>
+                  <td>{newFeedback.fDept}</td>
+                  <td>40</td>
+                  <td>20</td>
+                  <td>20</td>
+                </tr>
+              ))}
+            </table>
+          )}
+        </div>
       </div>
     );
 };
