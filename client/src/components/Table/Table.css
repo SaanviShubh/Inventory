@@ -92,18 +92,22 @@
   font-size: 0.8rem;
 }
 
-.action {
+.action_sold {
+  color: #fff;
+  padding: 3px 7px;
+  background-color: rgb(10%, 68%, 47%);
+}
+
+.action_dispatch {
   color: #fff;
   padding: 3px 7px;
   background-color: rgb(57%, 35%, 81%);
 }
 
-.dispatch {
-  background-color: rgb(89, 207, 201);
-}
-
-.return {
-  background-color: rgb(131, 23, 23);
+.action_return {
+  color: #fff;
+  padding: 3px 7px;
+  background-color: rgb(85%, 24%, 19%);
 }
 
 .loading {

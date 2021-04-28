@@ -2,7 +2,6 @@ import React from "react";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import { SidebarData, SideBarPathIndex } from "./SidebarData";
-import SidebarOption from "./SidebarOption";
 import "./SidebarOption.css";
 
 const Sidebar = () => {
@@ -32,6 +31,7 @@ const Sidebar = () => {
       {SidebarData.map((item, index) => {
         return (
           <Link
+            className="opt_link"
             key={index}
             to={item.path}
             onClick={() => {

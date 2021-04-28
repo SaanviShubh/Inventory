@@ -15,7 +15,7 @@ const Table = ({}) => {
   const [action, setAction] = useState("return");
 
   const calc = () => {
-    if (num) {
+    if (num < 3) {
       return <span className="status_alert">ALERT</span>;
     }
   };
@@ -89,6 +89,58 @@ const Table = ({}) => {
               <th>Status</th>
             </tr>
 
+            {/* Dummy Data */}
+
+            <tr>
+              <td>1207-BLU-40</td>
+              <td>1207</td>
+              <td>BLU</td>
+              <td>40</td>
+              <td>12</td>
+              <td>{calc()}</td>
+            </tr>
+
+            <tr>
+              <td>1207-BLU-40</td>
+              <td>1207</td>
+              <td>BLU</td>
+              <td>40</td>
+              <td>3</td>
+              <td>{calc()}</td>
+            </tr>
+            <tr>
+              <td>1207-BLU-40</td>
+              <td>1207</td>
+              <td>BLU</td>
+              <td>40</td>
+              <td>26</td>
+              <td>{calc()}</td>
+            </tr>
+            <tr>
+              <td>1207-BLU-40</td>
+              <td>1207</td>
+              <td>BLU</td>
+              <td>40</td>
+              <td>2</td>
+              <td>{calc()}</td>
+            </tr>
+            <tr>
+              <td>1207-BLU-40</td>
+              <td>1207</td>
+              <td>BLU</td>
+              <td>40</td>
+              <td>7</td>
+              <td>{calc()}</td>
+            </tr>
+            <tr>
+              <td>1207-BLU-40</td>
+              <td>1207</td>
+              <td>BLU</td>
+              <td>40</td>
+              <td>12</td>
+              <td>{calc()}</td>
+            </tr>
+
             {[...addedItems].map((newFeedback) => (
               <tr>
                 <td>{newFeedback.fTitle}</td>
@@ -149,10 +201,10 @@ const Table = ({}) => {
                     <span
                       className={
                         action === "sold"
-                          ? "action"
+                          ? "action_sold"
                           : action === "dispatch"
-                          ? "dispatch"
-                          : "return"
+                          ? "action_dispatch"
+                          : "action_return"
                       }
                     >
                       Sold

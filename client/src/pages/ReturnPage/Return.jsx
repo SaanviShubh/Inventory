@@ -8,8 +8,8 @@ const Return = () => {
   return (
     <div className="returnpage">
       <div className="dashboard__head">
-        <p id="dashboard__header">Dipatch Your Items</p>
-        <p id="dashboard__subheader">DISPATCH/SEARCH</p>
+        <p id="dashboard__header">Your Returned Items</p>
+        <p id="dashboard__subheader">RECORD/SEARCH</p>
       </div>
       <Searchbox />
       <Table />

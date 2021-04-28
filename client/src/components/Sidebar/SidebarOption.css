@@ -1,10 +1,12 @@
 .sidebarOption {
   display: flex;
-  padding: 14px;
+  padding: 10px 14px;
   /* border: 1px solid black; */
   /* margin-top: 7px; */
   color: rgba(44, 40, 40, 0.877);
   text-decoration: none;
+  font-size: 0.9rem;
+  margin-top: 2px;
 }
 
 .sidebarOption:hover {
@@ -16,7 +18,10 @@
 
 .sidebarOption.active {
   background-color: rgba(31, 102, 255, 0.884);
-  margin: 0 3px;
+  /* margin: 0 3px; */
+  margin-top: 2px;
+  margin-left: 3px;
+  margin-right: 3px;
   border-radius: 4px;
   color: white;
   text-decoration: none;
@@ -27,19 +32,19 @@
   color: white;
 }
 
-.option_icon {
+#option_icon {
   flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid black;
+  /* border: 2px solid black; */
   text-decoration: none;
 }
 
 .option_name {
   /* border: 1px solid black; */
   flex: 3;
-  padding-left: 15px;
+  padding-left: 10px;
   text-decoration: none;
   outline: none;
 }

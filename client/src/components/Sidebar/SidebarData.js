@@ -22,7 +22,7 @@ export const SidebarData = [
     cName: "sidebarOption",
   },
   {
-    option_name: "Dispatch Item",
+    option_name: "Dispatch ",
     path: "/dispatch",
     icon: "fas fa-minus-square",
     cName: "sidebarOption",
@@ -34,18 +34,18 @@ export const SidebarData = [
   // 	cName: 'sidebar_option'
   // },
   {
-    option_name: "Return Item",
+    option_name: "Return ",
     path: "/return",
     icon: "fas fa-undo-alt",
     cName: "sidebarOption",
   },
 
-  //   {
-  //     option_name: "Change Password",
-  //     path: adminLink + "/change-password",
-  //     icon: "fas fa-key",
-  //     cName: "sidebar_option",
-  //   },
+  {
+    option_name: "Barcoder",
+    path: "/barcode-generator",
+    icon: "fas fa-hashtag fa-lg",
+    cName: "sidebarOption",
+  },
   //   {
   //     option_name: "Report a Bug",
   //     path: adminLink + "/report-bug",

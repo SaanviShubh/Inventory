@@ -11,6 +11,10 @@
   /* border: 2px solid red; */
 }
 
+.opt_link {
+  text-decoration: none;
+}
+
 .sidebar__options a {
   text-decoration: none;
 }
@@ -29,4 +33,10 @@
 .selected {
   background-color: blue;
   color: white;
+}
+
+@media only screen and (max-width: 1100px) {
+  .sidebar {
+    display: none;
+  }
 }
