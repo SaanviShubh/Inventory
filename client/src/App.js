@@ -9,6 +9,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import ItemList from "./pages/AddPage/ItemList";
+import Transaction from "./pages/Transaction/Transaction";
 
 function App() {
   return (
@@ -22,6 +23,11 @@ function App() {
             <Route path="/itemList" exact={true} component={ItemList} />
             <Route path="/dispatch" exact={true} component={Dispatch} />
             <Route path="/return" exact={true} component={Return} />
+            <Route
+              path="/recent_transaction"
+              exact={true}
+              component={Transaction}
+            />
             <Route path="/" component={Dashboard} />
           </Switch>
           <Footer />

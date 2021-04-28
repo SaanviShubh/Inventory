@@ -12,6 +12,7 @@ const Table = ({}) => {
 
   // JUST FOR TRY
   const [num, setNumber] = useState(true);
+  const [action, setAction] = useState("return");
 
   const calc = () => {
     if (num) {
@@ -130,21 +131,33 @@ const Table = ({}) => {
             <table id="customers">
               <tr>
                 <th>Barcode</th>
-                <th>Article Number</th>
-                <th>Color</th>
-                <th>Size</th>
-                <th>Quantity</th>
+                <th>SKU Number</th>
+                <th>Date</th>
+                {/* <th>Size</th> */}
+                {/* <th>Quantity</th> */}
                 <th>Action</th>
               </tr>
 
               {[...addedItems].map((newFeedback) => (
                 <tr>
                   <td>{newFeedback.fTitle}</td>
-                  <td>1620</td>
+                  {/* <td>1620</td> */}
                   <td>{newFeedback.fDept}</td>
                   <td>40</td>
-                  <td>20</td>
-                  <td>20</td>
+                  {/* <td>20</td> */}
+                  <td>
+                    <span
+                      className={
+                        action === "sold"
+                          ? "action"
+                          : action === "dispatch"
+                          ? "dispatch"
+                          : "return"
+                      }
+                    >
+                      Sold
+                    </span>
+                  </td>
                 </tr>
               ))}
             </table>

@@ -1,9 +1,10 @@
 .sidebarOption {
   display: flex;
-  padding: 12px;
+  padding: 14px;
   /* border: 1px solid black; */
   /* margin-top: 7px; */
   color: rgba(44, 40, 40, 0.877);
+  text-decoration: none;
 }
 
 .sidebarOption:hover {
@@ -13,18 +14,34 @@
   /* border: 0.1px solid rgba(0, 0, 0, 0.315); */
 }
 
-.sidebarOption__icon {
+.sidebarOption.active {
+  background-color: rgba(31, 102, 255, 0.884);
+  margin: 0 3px;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+}
+
+.sidebarOption.active:hover {
+  background-color: rgb(12%, 40%, 100%);
+  color: white;
+}
+
+.option_icon {
   flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  /* border: 1px solid black; */
+  border: 1px solid black;
+  text-decoration: none;
 }
 
-.sidebarOption__name {
+.option_name {
   /* border: 1px solid black; */
   flex: 3;
   padding-left: 15px;
+  text-decoration: none;
+  outline: none;
 }
 
 .notactive {

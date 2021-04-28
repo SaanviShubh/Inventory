@@ -92,6 +92,20 @@
   font-size: 0.8rem;
 }
 
+.action {
+  color: #fff;
+  padding: 3px 7px;
+  background-color: rgb(57%, 35%, 81%);
+}
+
+.dispatch {
+  background-color: rgb(89, 207, 201);
+}
+
+.return {
+  background-color: rgb(131, 23, 23);
+}
+
 .loading {
   /* border: 1px solid red; */
   display: flex;

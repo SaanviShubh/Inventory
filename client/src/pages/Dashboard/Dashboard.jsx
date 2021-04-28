@@ -5,6 +5,7 @@ import Calender from "../../components/Calender/Calender";
 import DoughnutChart from "../../components/Charts/DoughnutChart";
 import { Bar } from "react-chartjs-2";
 import BarChart from "../../components/Charts/BarChart";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -58,6 +59,19 @@ const Dashboard = () => {
             <p className="detail_heading">Items Returned</p>
           </div>
         </div>
+        <div className="quant_alert_list">
+          <div className="quant_alert_list_head">
+            <p>Alert Notifiaction</p>
+          </div>
+          <div className="alert_list">
+            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
+            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
+            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
+            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
+            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
+            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
+          </div>
+        </div>
       </div>
       <div className="stock_analytics">
         <div className="stock_chart">
@@ -86,7 +100,9 @@ const Dashboard = () => {
             </div>
             <div className="stock_mgt_pages">
               <button id="current_stock_btn">CURRENT STOCK</button>
-              <button id="recent_transaction_btn"> TRANSACTIONS</button>
+              <Link id="recent_transaction_btn" to="/recent_transaction">
+                TRANSACTIONS
+              </Link>
             </div>
           </div>
         </div>
