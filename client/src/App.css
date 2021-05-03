@@ -56,7 +56,8 @@ body {
 .app__body {
   /* width: 87%;
   max-width: 87%; */
-  width: 86%;
+  /* width: 86%; */
+  width: 100%;
 }
 
 button {
@@ -73,7 +74,7 @@ button:hover {
   background-color: rgba(21, 21, 255, 0.836);
 }
 
-@media only screen and (max-width: 1370px) {
+@media only screen and (max-width: 800px) {
   .app__body {
     width: 100%;
   }

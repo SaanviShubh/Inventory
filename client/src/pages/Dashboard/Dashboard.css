@@ -361,3 +361,56 @@
   flex: 1;
   background-color: #fff;
 }
+
+@media only screen and (max-width: 400px) {
+  /* .app__body {
+    width: 100%;
+    max-width: 100%;
+  } */
+
+  .items_detail {
+    display: flexbox;
+    flex-wrap: wrap;
+  }
+
+  .detail {
+    width: 30%;
+    min-width: 40px;
+    margin-bottom: 10px;
+  }
+
+  .quant_alert_list {
+    width: 50%;
+  }
+
+  .stock_analytics {
+    display: flex;
+    flex-direction: column-reverse;
+    /* border: 2px solid red; */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .stock_numbers {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .stock_chart {
+    width: 60%;
+  }
+
+  .profit_bar_chart {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profit_details {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .profit_chart {
+    width: 100%;
+  }
+}
