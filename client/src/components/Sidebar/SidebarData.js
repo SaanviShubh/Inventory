@@ -11,7 +11,7 @@ export const SideBarPathIndex = {
 export const SidebarData = [
   {
     option_name: "Dashboard",
-    path: "/dashboard",
+    path: "/",
     icon: "fas fa-columns",
     cName: "sidebarOption",
   },

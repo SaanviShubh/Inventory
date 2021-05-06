@@ -16,9 +16,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <Sidebar /> */}
+        <Sidebar />
         <div className="app__body">
-          {/* <Navbar /> */}
+          <Navbar />
           <Switch>
             <Route path="/add" exact={true} component={AddItem} />
             <Route path="/itemList" exact={true} component={ItemList} />
@@ -29,10 +29,10 @@ function App() {
               exact={true}
               component={Transaction}
             />
-            <Route path="/login" exact={true} component={Login} />
+            {/* <Route path="/login" exact={true} component={Login} /> */}
             <Route path="/" component={Dashboard} />s
           </Switch>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </Router>

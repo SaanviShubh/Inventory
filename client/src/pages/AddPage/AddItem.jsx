@@ -7,7 +7,13 @@ import Searchbox from "../../components/Searchbox/Searchbox";
 import Toast from "../../components/Toast/Toast";
 
 const AddItem = () => {
-  const [addItem, setItem] = useState(null);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://127.0.0.1:8000/stockmanagement/viewallprods/")
+  //     .then((res) => {
+  //       console.log(res.data);
+  //     });
+  // }, []);
 
   return (
     <div className="addpage">

@@ -10,12 +10,14 @@ const Table = ({}) => {
   const [addedItems, setAddedItems] = useState("");
   const [isLoading, setloading] = useState(true);
 
+  const [addItem, setAddItem] = useState(null);
+
   // JUST FOR TRY
   const [num, setNumber] = useState(true);
   const [action, setAction] = useState("return");
 
   const calc = () => {
-    if (num < 3) {
+    if (num < 2) {
       return <span className="status_alert">ALERT</span>;
     }
   };
@@ -25,7 +27,7 @@ const Table = ({}) => {
   //   toast("Test Notification", { position: toast.POSITION.TOP_RIGHT });
   // };
 
-  const Try = () => {
+  const SubmitHandler = () => {
     axios
       .post("https://jsonplaceholder.typicode.com/posts")
       .then((res) => {
@@ -37,14 +39,27 @@ const Table = ({}) => {
       });
   };
 
-  useEffect((e) => {
-    axios.get("https://empup.herokuapp.com/api/feedback/BVznoh").then((res) => {
-      // console.log(addedItems);
-      console.log(res.data.data);
-      setAddedItems(res.data.data);
-      setloading(false);
-    });
+  useEffect(() => {
+    console.log("started");
+    axios
+      .get("http://127.0.0.1:8000/stockmanagement/viewallprods/")
+      .then((res) => {
+        console.log(res.data);
+        // setArticleNo(res.data.articleno);
+        // setSkuNo(res.data.modelname);
+        setAddedItems(res.data);
+        setloading(false);
+      });
   }, []);
+
+  // useEffect((e) => {
+  //   axios.get("https://empup.herokuapp.com/api/feedback/BVznoh").then((res) => {
+  //     // console.log(addedItems);
+  //     console.log(res.data.data);
+  //     setAddedItems(res.data.data);
+  //     setloading(false);
+  //   });
+  // }, []);
 
   // if (isLoading)
   //   return (
@@ -67,8 +82,9 @@ const Table = ({}) => {
               type="text"
               placeholder="Enter SKU Number"
               autocomplete="off"
+              onChange={(e) => setAddItem(e.target.value)}
             />
-            <i class="fas fa-plus-square fa-2x" onClick={Try}></i>
+            <i class="fas fa-plus-square fa-2x" onClick={SubmitHandler}></i>
           </div>
 
           {/* <Calender /> */}
@@ -86,11 +102,13 @@ const Table = ({}) => {
               <th>Color</th>
               <th>Size</th>
               <th>Quantity</th>
+              <th>Cost Price</th>
+              <th>Selling Price</th>
               <th>Status</th>
             </tr>
 
             {/* Dummy Data */}
-
+            {/* 
             <tr>
               <td>1207-BLU-40</td>
               <td>1207</td>
@@ -115,8 +133,8 @@ const Table = ({}) => {
               <td>40</td>
               <td>26</td>
               <td>{calc()}</td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/*<tr>
               <td>1207-BLU-40</td>
               <td>1207</td>
               <td>BLU</td>
@@ -139,15 +157,17 @@ const Table = ({}) => {
               <td>40</td>
               <td>12</td>
               <td>{calc()}</td>
-            </tr>
+            </tr> */}
 
-            {[...addedItems].map((newFeedback) => (
+            {[...addedItems].map((ss) => (
               <tr>
-                <td>{newFeedback.fTitle}</td>
-                <td>1620</td>
-                <td>{newFeedback.fDept}</td>
-                <td>40</td>
-                <td>20</td>
+                <td>{ss.articleno}</td>
+                <td>{ss.modelname}</td>
+                <td>{ss.color}</td>
+                <td>{ss.size}</td>
+                <td>{ss.qty}</td>
+                <td>200</td>
+                <td>800</td>
                 <td>{calc()}</td>
               </tr>
             ))}
@@ -169,7 +189,7 @@ const Table = ({}) => {
                 autocomplete="off"
                 placeholder="Enter Barcode Number"
               />
-              <i class="fas fa-plus-square fa-2x" onClick={Try}></i>
+              <i class="fas fa-plus-square fa-2x" onClick={SubmitHandler}></i>
             </div>
 
             <Calender />
