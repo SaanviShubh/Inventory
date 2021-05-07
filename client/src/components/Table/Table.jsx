@@ -4,6 +4,7 @@ import axios from "axios";
 import Calender from "../Calender/Calender";
 import { FadeLoader } from "react-spinners";
 import Input from "../Input/Input";
+require("dotenv").config();
 
 const Table = ({ hit, inputText, inputHit, tableHead }) => {
   const [tableItems, setTableItems] = useState("");
@@ -18,8 +19,7 @@ const Table = ({ hit, inputText, inputHit, tableHead }) => {
   // };
 
   useEffect(() => {
-    console.log("started");
-    axios.get(`http://127.0.0.1:8000/stockmanagement/${hit}`).then((res) => {
+    axios.get(process.env.REACT_APP_URL + `/${hit}`).then((res) => {
       console.log(res.data);
       setTableItems(res.data);
       setloading(false);
@@ -144,7 +144,7 @@ const Table = ({ hit, inputText, inputHit, tableHead }) => {
                   <td>{ss.Barcode}</td>
                   {/* <td>1620</td> */}
                   <td>{ss.modelname}</td>
-                  <td>40</td>
+                  <td>{ss.Date}</td>
                   {/* <td>20</td> */}
                   <td>
                     <span

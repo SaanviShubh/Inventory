@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Searchbox from "../../components/Searchbox/Searchbox";
 import "./Dashboard.css";
+import axios from "axios";
 import Calender from "../../components/Calender/Calender";
 import DoughnutChart from "../../components/Charts/DoughnutChart";
 import { Bar } from "react-chartjs-2";
 import BarChart from "../../components/Charts/BarChart";
 import { Link } from "react-router-dom";
+require("dotenv").config();
 
 const Dashboard = () => {
+  const [alertList, setAlertList] = useState("");
+
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_URL + "/viewallprods/").then((res) => {
+      console.log(res.data);
+      setAlertList(res.data);
+    });
+  }, []);
+
   return (
     <div className="dashboard">
       <div className="dashboard__head">
@@ -64,12 +75,18 @@ const Dashboard = () => {
             <p>Alert Notifiaction</p>
           </div>
           <div className="alert_list">
-            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
-            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
-            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
-            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
-            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
-            <p id="alert_list">2163-BLU-40-CP-SP = 4 </p>
+            {/* {[...alertList].map((qq) => (
+              <p id="alert_list">{qq.articleno} </p>;
+              <p id="alert_list">66 </p>;
+              ))} */}
+
+            {[...alertList].map((qq) => (
+              <div>
+                {qq.qty < 3 ? (
+                  <p id="alert_list">{qq.modelname + " = " + qq.qty} </p>
+                ) : null}
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import "./Searchbox.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+require("dotenv").config();
 
 const Searchbox = ({ searchHit }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -15,7 +16,7 @@ const Searchbox = ({ searchHit }) => {
       const input = searchInput;
 
       axios
-        .post(`http://127.0.0.1:8000/stockmanagement/${searchHit}`, { input })
+        .post(process.env.REACT_APP_URL + `/${searchHit}`, { input })
         .then((res) => {
           console.log(res.data);
           console.log(res.data.color);

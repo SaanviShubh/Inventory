@@ -3,24 +3,22 @@ import "./Input.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+require("dotenv").config();
 
 const Input = ({ text, inputHit }) => {
   const [input, setInput] = useState("");
 
   const SubmitHandler = () => {
     axios
-      .post(`http://127.0.0.1:8000/stockmanagement/${inputHit}`, { input })
+      .post(process.env.REACT_APP_URL + `/${inputHit}`, { input })
       .then((res) => {
         console.log(res);
         setInput("");
         {
-          res.data.error !== ""
-            ? toast.success("Process Completed")
-            : toast.error(res.data.error);
+          res.data.Error
+            ? toast.error(res.data.Error)
+            : toast.success("Process Completed");
         }
-      })
-      .catch((err) => {
-        toast.error("Something Went Wrong!");
       });
   };
 
