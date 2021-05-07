@@ -12,7 +12,12 @@ const Dispatch = () => {
         <p id="dashboard__subheader">DISPATCH/SEARCH</p>
       </div>
       <Searchbox />
-      <Table />
+      <Table
+        tableHead="Dispatch Item from Stock"
+        inputHit="dispatchprod/"
+        inputText="Enter Barcode Number to Dispatch"
+        hit="viewdispatchprods/"
+      />
     </div>
   );
 };

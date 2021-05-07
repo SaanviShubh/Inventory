@@ -12,7 +12,12 @@ const Return = () => {
         <p id="dashboard__subheader">RECORD/SEARCH</p>
       </div>
       <Searchbox />
-      <Table />
+      <Table
+        tableHead="Record Returned Item"
+        inputHit="addreturn/"
+        hit="viewretprod/"
+        inputText="Enter Barcode Number to Dispatch"
+      />
     </div>
   );
 };

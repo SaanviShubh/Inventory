@@ -33,25 +33,6 @@
   padding-left: 5px;
 }
 
-.input_bar .fa-plus-square {
-  color: rgb(12%, 40%, 100%);
-  cursor: pointer;
-}
-
-.input_bar .fa-plus-square:hover {
-  color: rgba(21, 21, 255, 0.836);
-  /* cursor: pointer; */
-}
-
-#input_bar {
-  width: 100%;
-  padding: 5px;
-  border: none;
-  background-color: white;
-  outline: none;
-  margin-left: 5px;
-}
-
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;

@@ -3,53 +3,27 @@ import "./Table.css";
 import axios from "axios";
 import Calender from "../Calender/Calender";
 import { FadeLoader } from "react-spinners";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Input from "../Input/Input";
 
-const Table = ({}) => {
-  const [addedItems, setAddedItems] = useState("");
+const Table = ({ hit, inputText, inputHit, tableHead }) => {
+  const [tableItems, setTableItems] = useState("");
   const [isLoading, setloading] = useState(true);
 
-  const [addItem, setAddItem] = useState(null);
-
   // JUST FOR TRY
-  const [num, setNumber] = useState(true);
   const [action, setAction] = useState("return");
-
-  const calc = () => {
-    if (num < 2) {
-      return <span className="status_alert">ALERT</span>;
-    }
-  };
 
   // toast.configure();
   // const Toast = () => {
   //   toast("Test Notification", { position: toast.POSITION.TOP_RIGHT });
   // };
 
-  const SubmitHandler = () => {
-    axios
-      .post("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => {
-        toast.success("Item Added Successfully");
-      })
-      .catch((err) => {
-        // alert("There is some Unexpected Error!!!");
-        toast.error("Error");
-      });
-  };
-
   useEffect(() => {
     console.log("started");
-    axios
-      .get("http://127.0.0.1:8000/stockmanagement/viewallprods/")
-      .then((res) => {
-        console.log(res.data);
-        // setArticleNo(res.data.articleno);
-        // setSkuNo(res.data.modelname);
-        setAddedItems(res.data);
-        setloading(false);
-      });
+    axios.get(`http://127.0.0.1:8000/stockmanagement/${hit}`).then((res) => {
+      console.log(res.data);
+      setTableItems(res.data);
+      setloading(false);
+    });
   }, []);
 
   // useEffect((e) => {
@@ -73,26 +47,13 @@ const Table = ({}) => {
   if (tableUrl === "http://localhost:3000/add")
     return (
       <div className="table">
-        <p className="table__name">Add Items to the Stock</p>
-        <div className="table_search_filter">
-          <div className="input_bar">
-            <i className="fas fa-search"></i>
-            <input
-              id="input_bar"
-              type="text"
-              placeholder="Enter SKU Number"
-              autocomplete="off"
-              onChange={(e) => setAddItem(e.target.value)}
-            />
-            <i class="fas fa-plus-square fa-2x" onClick={SubmitHandler}></i>
-          </div>
+        <p className="table__name">{tableHead}</p>
 
-          {/* <Calender /> */}
-        </div>
+        <Input text={inputText} inputHit={inputHit} />
 
         {isLoading ? (
           <div className="loading">
-            <FadeLoader height={10} width={5} margin={3} color="green" />
+            <FadeLoader height={10} width={5} margin={3} color="#1877F2" />
           </div>
         ) : (
           <table id="customers">
@@ -109,32 +70,7 @@ const Table = ({}) => {
 
             {/* Dummy Data */}
             {/* 
-            <tr>
-              <td>1207-BLU-40</td>
-              <td>1207</td>
-              <td>BLU</td>
-              <td>40</td>
-              <td>12</td>
-              <td>{calc()}</td>
-            </tr>
-
-            <tr>
-              <td>1207-BLU-40</td>
-              <td>1207</td>
-              <td>BLU</td>
-              <td>40</td>
-              <td>3</td>
-              <td>{calc()}</td>
-            </tr>
-            <tr>
-              <td>1207-BLU-40</td>
-              <td>1207</td>
-              <td>BLU</td>
-              <td>40</td>
-              <td>26</td>
-              <td>{calc()}</td>
-            </tr> */}
-            {/*<tr>
+                        {/*<tr>
               <td>1207-BLU-40</td>
               <td>1207</td>
               <td>BLU</td>
@@ -159,7 +95,7 @@ const Table = ({}) => {
               <td>{calc()}</td>
             </tr> */}
 
-            {[...addedItems].map((ss) => (
+            {[...tableItems].map((ss) => (
               <tr>
                 <td>{ss.articleno}</td>
                 <td>{ss.modelname}</td>
@@ -168,7 +104,13 @@ const Table = ({}) => {
                 <td>{ss.qty}</td>
                 <td>200</td>
                 <td>800</td>
-                <td>{calc()}</td>
+                <td>
+                  {ss.qty < 3 ? (
+                    <span className="status_alert">ALERT</span>
+                  ) : (
+                    <p>In Stock</p>
+                  )}
+                </td>
               </tr>
             ))}
           </table>
@@ -179,25 +121,12 @@ const Table = ({}) => {
     return (
       <div>
         <div className="table">
-          <p className="table__name">Add Items to the Stock</p>
-          <div className="table_search_filter">
-            <div className="input_bar">
-              <i className="fas fa-search"></i>
-              <input
-                id="input_bar"
-                type="text"
-                autocomplete="off"
-                placeholder="Enter Barcode Number"
-              />
-              <i class="fas fa-plus-square fa-2x" onClick={SubmitHandler}></i>
-            </div>
-
-            <Calender />
-          </div>
+          <p className="table__name">{tableHead}</p>
+          <Input text={inputText} inputHit={inputHit} />
 
           {isLoading ? (
             <div className="loading">
-              <FadeLoader height={10} width={5} margin={3} color="green" />
+              <FadeLoader height={10} width={5} margin={3} color="#1877F2" />
             </div>
           ) : (
             <table id="customers">
@@ -210,11 +139,11 @@ const Table = ({}) => {
                 <th>Action</th>
               </tr>
 
-              {[...addedItems].map((newFeedback) => (
+              {[...tableItems].map((ss) => (
                 <tr>
-                  <td>{newFeedback.fTitle}</td>
+                  <td>{ss.Barcode}</td>
                   {/* <td>1620</td> */}
-                  <td>{newFeedback.fDept}</td>
+                  <td>{ss.modelname}</td>
                   <td>40</td>
                   {/* <td>20</td> */}
                   <td>
