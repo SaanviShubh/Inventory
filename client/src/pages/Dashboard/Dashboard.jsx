@@ -10,11 +10,39 @@ import { Link } from "react-router-dom";
 require("dotenv").config();
 
 const Dashboard = () => {
+  const [itemsArray, setItemsArray] = useState([]);
+  const [added, setAdded] = useState(null);
+  const [dispatched, setDispatched] = useState(null);
+  const [returned, setReturned] = useState("");
   const [alertList, setAlertList] = useState("");
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_URL + "/viewallprods/").then((res) => {
+    axios.get(process.env.REACT_APP_URL + "/viewtransactions/").then((res) => {
       console.log(res.data);
+      setItemsArray(res.data);
+      console.log(itemsArray);
+
+      var count = 0;
+      {
+        res.data.map((qq) => {
+          if (qq.action === "Product added to stock") {
+            console.log("alsdnakjn");
+            setAdded(1);
+          } else if (qq.action === "Product Dispatched") {
+            console.log("alsdnakjn");
+            setDispatched(1);
+          }
+        });
+      }
+      console.log(added);
+      console.log(dispatched);
+      console.log(count);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_URL + "/viewallprods/").then((res) => {
+      // console.log(res.data);
       setAlertList(res.data);
     });
   }, []);
@@ -26,7 +54,7 @@ const Dashboard = () => {
         <p id="dashboard__subheader">DASHBOARD/SEARCH</p>
       </div>
 
-      <Searchbox />
+      <Searchbox searchData={itemsArray} />
 
       {/* CHECK ALTERNATIVE */}
 
@@ -75,11 +103,6 @@ const Dashboard = () => {
             <p>Alert Notifiaction</p>
           </div>
           <div className="alert_list">
-            {/* {[...alertList].map((qq) => (
-              <p id="alert_list">{qq.articleno} </p>;
-              <p id="alert_list">66 </p>;
-              ))} */}
-
             {[...alertList].map((qq) => (
               <div>
                 {qq.qty < 3 ? (
@@ -103,10 +126,10 @@ const Dashboard = () => {
           <div className="stock_numbers_details">
             <div className="analytics">
               <div className="added_stock">
-                <p>Added Items :- 32 </p>
+                <p>Added Items :- {added} </p>
               </div>
               <div className="dispatched_stock">
-                <p>Dispatched Items :- 25 </p>
+                <p>Dispatched Items :- {dispatched} </p>
               </div>
               <div className="returned_stock">
                 <p>Returned Items :- 5</p>

@@ -2,6 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import { SidebarData, SideBarPathIndex } from "./SidebarData";
+import SaanviShubhLogo from "../../assets/SaanviShubhLogo.png";
 import "./SidebarOption.css";
 
 const Sidebar = () => {
@@ -12,7 +13,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__logo">
-        <h2>Logo</h2>
+        <img className="ss_logo" src={SaanviShubhLogo} alt="logo" />
       </div>
       {/* <div className="sidebar__options">
         <Link to="/">

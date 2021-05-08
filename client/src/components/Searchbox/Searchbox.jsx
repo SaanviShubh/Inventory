@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Searchbox.css";
 import axios from "axios";
+import "../Table/Table.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 require("dotenv").config();
 
-const Searchbox = ({ searchHit }) => {
+const Searchbox = ({ searchData }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
@@ -13,20 +14,8 @@ const Searchbox = ({ searchHit }) => {
     if (searchInput === "") {
       toast.error("Empty Searchbox");
     } else {
-      const input = searchInput;
-
-      axios
-        .post(process.env.REACT_APP_URL + `/${searchHit}`, { input })
-        .then((res) => {
-          console.log(res.data);
-          console.log(res.data.color);
-          // setItemColor(res.data.color);
-          {
-            res.data.Error
-              ? toast.error(res.data.Error)
-              : setSearchResult(res.data);
-          }
-        });
+      setSearchResult(searchData);
+      console.log(searchResult);
     }
   };
 
@@ -52,16 +41,32 @@ const Searchbox = ({ searchHit }) => {
         <i class="fas fa-times" onClick={EraseSearch}></i>
       </div>
       <div className="search_result">
-        {[...searchResult].map((qq) => (
-          <div class="search_result_table">
-            <div class="search_result_table_cell">{qq.model_name}</div>
-            <div class="search_result_table_cell">{qq.Article_no}</div>
-            <div class="search_result_table_cell">{qq.color}</div>
-            <div class="search_result_table_cell">{qq.size}</div>
-            <div class="search_result_table_cell">{qq.cost_price}</div>
-            <div class="search_result_table_cell">{qq.selling_price}</div>
-          </div>
-        ))}
+        {[...searchResult]
+          .filter((ss) => ss.barcode === searchInput)
+          .map((filtered) => (
+            <div className="search_result_table">
+              <div class="search_result_table_cell">{filtered.barcode}</div>
+              <div class="search_result_table_cell">{filtered.modelname}</div>
+              <div class="search_result_table_cell">{filtered.date}</div>
+              <div class="search_result_table_cell">
+                <span
+                  className={
+                    filtered.action === "Product added to stock"
+                      ? "action_sold"
+                      : filtered.action === "Product Dispatched"
+                      ? "action_dispatch"
+                      : "action_return"
+                  }
+                >
+                  {filtered.action === "Product added to stock"
+                    ? "Added"
+                    : filtered.action === "Product Dispatched"
+                    ? "Dispatched"
+                    : "Returned"}
+                </span>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

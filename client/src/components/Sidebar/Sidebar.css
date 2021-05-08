@@ -21,6 +21,23 @@
 
 .sidebar__logo {
   height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* border: 2px solid red; */
+  overflow: hidden;
+}
+
+.sidebar__logo:hover {
+  border: 1.5px solid #fff;
+  /* background-color: rgba(209, 209, 252, 0.308); */
+  cursor: pointer;
+}
+
+.ss_logo {
+  width: 40%;
+  height: 100%;
+  cursor: pointer;
 }
 
 .sidebar__options {

@@ -1,5 +1,5 @@
 export const SideBarPathIndex = {
-  "/dashboard": 0,
+  "/": 0,
   "/add": 1,
   "/dispatch": 2,
   "/return": 3,

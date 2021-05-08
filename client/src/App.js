@@ -15,26 +15,27 @@ import Login from "./pages/LoginPage/Login";
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Sidebar />
-        <div className="app__body">
-          <Navbar />
-          <Switch>
+      <Switch>
+        <Route path="/login" exact={true} component={Login} />
+        <Route
+          path="/recent_transaction"
+          exact={true}
+          component={Transaction}
+        />
+
+        <div className="App">
+          <Sidebar />
+          <div className="app__body">
+            <Navbar />
             <Route path="/add" exact={true} component={AddItem} />
             <Route path="/itemList" exact={true} component={ItemList} />
             <Route path="/dispatch" exact={true} component={Dispatch} />
             <Route path="/return" exact={true} component={Return} />
-            <Route
-              path="/recent_transaction"
-              exact={true}
-              component={Transaction}
-            />
-            {/* <Route path="/login" exact={true} component={Login} /> */}
-            <Route path="/" component={Dashboard} />s
-          </Switch>
-          <Footer />
+            <Route path="/" exact={true} component={Dashboard} />
+            <Footer />
+          </div>
         </div>
-      </div>
+      </Switch>
     </Router>
   );
 }

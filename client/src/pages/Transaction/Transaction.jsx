@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
 import SearchBox from "../../components/Searchbox/Searchbox";
 import Table from "../../components/Table/Table";
 import "./Transaction.css";
@@ -11,7 +12,7 @@ const Transaction = () => {
         <p id="dashboard__subheader">LIST/SEARCH</p>
       </div>
       <SearchBox />
-      <Table />
+      <Table hit="viewtransactions/" tableHead="Recent Transactions List" />
     </div>
   );
 };

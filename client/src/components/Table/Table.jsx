@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
 import axios from "axios";
-import Calender from "../Calender/Calender";
+import Calender from "../../components/Calender/Calender";
 import { FadeLoader } from "react-spinners";
-import Input from "../Input/Input";
+import Input from "../../components/Input/Input";
 require("dotenv").config();
 
 const Table = ({ hit, inputText, inputHit, tableHead }) => {
@@ -117,7 +117,7 @@ const Table = ({ hit, inputText, inputHit, tableHead }) => {
         )}
       </div>
     );
-  else
+  else if (tableUrl === "http://localhost:3000/recent_transaction")
     return (
       <div>
         <div className="table">
@@ -141,24 +141,57 @@ const Table = ({ hit, inputText, inputHit, tableHead }) => {
 
               {[...tableItems].map((ss) => (
                 <tr>
-                  <td>{ss.Barcode}</td>
-                  {/* <td>1620</td> */}
+                  <td>{ss.barcode}</td>
                   <td>{ss.modelname}</td>
-                  <td>{ss.Date}</td>
-                  {/* <td>20</td> */}
+                  <td>{ss.date}</td>
                   <td>
                     <span
                       className={
-                        action === "sold"
+                        ss.action === "Product added to stock"
                           ? "action_sold"
-                          : action === "dispatch"
+                          : action === "Product Dispatched"
                           ? "action_dispatch"
                           : "action_return"
                       }
                     >
-                      Sold
+                      {ss.action === "Product added to stock"
+                        ? "Added"
+                        : action === "Product Dispatched"
+                        ? "Dispatched"
+                        : "Returned"}
                     </span>
                   </td>
+                </tr>
+              ))}
+            </table>
+          )}
+        </div>
+      </div>
+    );
+  else
+    return (
+      <div>
+        <div className="table">
+          <p className="table__name">{tableHead}</p>
+          <Input text={inputText} inputHit={inputHit} />
+
+          {isLoading ? (
+            <div className="loading">
+              <FadeLoader height={10} width={5} margin={3} color="#1877F2" />
+            </div>
+          ) : (
+            <table id="customers">
+              <tr>
+                <th>Barcode</th>
+                <th>SKU Number</th>
+                <th>Date</th>
+              </tr>
+
+              {[...tableItems].map((ss) => (
+                <tr>
+                  <td>{ss.Barcode}</td>
+                  <td>{ss.modelname}</td>
+                  <td>{ss.Date}</td>
                 </tr>
               ))}
             </table>
