@@ -12,8 +12,11 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="sidebar__logo">
-        <img className="ss_logo" src={SaanviShubhLogo} alt="logo" />
+      <div className="sidebar_profile">
+        <div className="profile_icon">
+          <i class="fas fa-user-circle fa-2x"></i>
+        </div>
+        <p>Sandeep Singharia </p>
       </div>
       {/* <div className="sidebar__options">
         <Link to="/">

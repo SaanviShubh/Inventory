@@ -19,26 +19,49 @@
   text-decoration: none;
 }
 
-.sidebar__logo {
+.sidebar_profile {
   height: 60px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   /* border: 2px solid red; */
   overflow: hidden;
-}
-
-.sidebar__logo:hover {
-  border: 1.5px solid #fff;
-  /* background-color: rgba(209, 209, 252, 0.308); */
+  margin-bottom: 15px;
+  padding: 10px 15px 10px 10px;
   cursor: pointer;
+  border-bottom: 1px solid rgba(199, 199, 199, 0.521);
 }
 
-.ss_logo {
-  width: 40%;
+.sidebar_profile:hover {
+  background-color: rgba(186, 206, 245, 0.432);
+  color: black;
+}
+
+.profile_icon {
+  width: 30%;
   height: 100%;
-  cursor: pointer;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 8px;
 }
+
+.fa-user-circle {
+  /* border: 1px solid blue; */
+  color: rgb(12%, 40%, 100%);
+}
+
+.sidebar_profile p {
+  font-size: 0.8rem;
+  color: rgb(68, 68, 68);
+}
+
+/* .sidebar_profile:hover {
+  border: 1.5px solid #fff;
+  cursor: pointer;
+} */
 
 .sidebar__options {
   width: 100%;

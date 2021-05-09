@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./Table.css";
 import axios from "axios";
 import Calender from "../../components/Calender/Calender";
@@ -6,7 +6,7 @@ import { FadeLoader } from "react-spinners";
 import Input from "../../components/Input/Input";
 require("dotenv").config();
 
-const Table = ({ hit, inputText, inputHit, tableHead }) => {
+const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
   const [tableItems, setTableItems] = useState("");
   const [isLoading, setloading] = useState(true);
 
@@ -23,17 +23,9 @@ const Table = ({ hit, inputText, inputHit, tableHead }) => {
       console.log(res.data);
       setTableItems(res.data);
       setloading(false);
+      callbackVal(res.data);
     });
   }, []);
-
-  // useEffect((e) => {
-  //   axios.get("https://empup.herokuapp.com/api/feedback/BVznoh").then((res) => {
-  //     // console.log(addedItems);
-  //     console.log(res.data.data);
-  //     setAddedItems(res.data.data);
-  //     setloading(false);
-  //   });
-  // }, []);
 
   // if (isLoading)
   //   return (

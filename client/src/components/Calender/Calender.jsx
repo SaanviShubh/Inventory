@@ -3,9 +3,31 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Calender.css";
 
-const Calender = () => {
+const Calender = ({ filterData }) => {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
+  const [array, setArray] = useState([]);
+
+  var data = [
+    { date: "Sat May 08 2021 00:00:00 GMT+0530" },
+    { date: "Sun May 09 2021 00:00:00 GMT+0530" },
+  ];
+
+  const filterHandler = () => {
+    console.log(filterData);
+    var startDate = new Date(fromDate);
+    var endDate = new Date(toDate);
+    // var date = new Date(filterData);
+    console.log(startDate);
+
+    {
+      var filteredData = data.filter((ss) => {
+        console.log(ss.date);
+        return ss.date >= startDate && ss.date <= endDate;
+      });
+      console.log(filteredData);
+    }
+  };
 
   return (
     <div className="calender_filter">
@@ -17,7 +39,7 @@ const Calender = () => {
           isClearable
           showYearDropdown
           scrollableMonthYearDropdown
-          dateFormat="dd/MM/yyyy"
+          dateFormat="MM/dd/yyy"
           selected={fromDate}
           onChange={(date) => setFromDate(date)}
           autoComplete="off"
@@ -27,14 +49,14 @@ const Calender = () => {
           placeholderText="To Here"
           isClearable
           showYearDropdown
-          dateFormat="dd/MM/yyyy"
+          dateFormat="MM/dd/yyy"
           scrollableMonthYearDropdown
           selected={toDate}
           onChange={(date) => setToDate(date)}
           autoComplete="off"
         />
       </div>
-      <button>Apply</button>
+      <button onClick={filterHandler}>Apply</button>
     </div>
   );
 };

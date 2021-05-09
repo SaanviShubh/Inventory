@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Searchbox from "../../components/Searchbox/Searchbox";
 import "./Dashboard.css";
 import axios from "axios";
@@ -13,8 +13,13 @@ const Dashboard = () => {
   const [itemsArray, setItemsArray] = useState([]);
   const [added, setAdded] = useState(null);
   const [dispatched, setDispatched] = useState(null);
-  const [returned, setReturned] = useState("");
+  const [returned, setReturned] = useState(null);
   const [alertList, setAlertList] = useState("");
+
+  const [toDate, setToDate] = useState(null);
+  const [fromDate, setFromDate] = useState(null);
+
+  const callbackVal = () => {};
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_URL + "/viewtransactions/").then((res) => {
@@ -54,7 +59,7 @@ const Dashboard = () => {
         <p id="dashboard__subheader">DASHBOARD/SEARCH</p>
       </div>
 
-      <Searchbox searchData={itemsArray} />
+      <Searchbox searchData={itemsArray} callbackVal />
 
       {/* CHECK ALTERNATIVE */}
 
@@ -121,7 +126,7 @@ const Dashboard = () => {
         <div className="stock_numbers">
           <div className="sn_head_filter">
             <p>Stock Analytics</p>
-            <Calender />
+            <Calender filterData={itemsArray} />
           </div>
           <div className="stock_numbers_details">
             <div className="analytics">

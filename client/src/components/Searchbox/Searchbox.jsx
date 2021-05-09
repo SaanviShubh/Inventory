@@ -33,6 +33,7 @@ const Searchbox = ({ searchData }) => {
           type="text"
           placeholder="Enter Barcode Number to search"
           value={searchInput}
+          autoComplete="off"
           onChange={(e) => {
             setSearchInput(e.target.value);
           }}
@@ -42,13 +43,13 @@ const Searchbox = ({ searchData }) => {
       </div>
       <div className="search_result">
         {[...searchResult]
-          .filter((ss) => ss.barcode === searchInput)
+          .filter((ss) => ss.Barcode === searchInput)
           .map((filtered) => (
             <div className="search_result_table">
-              <div class="search_result_table_cell">{filtered.barcode}</div>
+              <div class="search_result_table_cell">{filtered.Barcode}</div>
               <div class="search_result_table_cell">{filtered.modelname}</div>
-              <div class="search_result_table_cell">{filtered.date}</div>
-              <div class="search_result_table_cell">
+              <div class="search_result_table_cell">{filtered.Date}</div>
+              {/* <div class="search_result_table_cell">
                 <span
                   className={
                     filtered.action === "Product added to stock"
@@ -64,7 +65,7 @@ const Searchbox = ({ searchData }) => {
                     ? "Dispatched"
                     : "Returned"}
                 </span>
-              </div>
+              </div> */}
             </div>
           ))}
       </div>

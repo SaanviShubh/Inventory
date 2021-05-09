@@ -1,6 +1,11 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AddItem from "./pages/AddPage/AddItem";
 import Dispatch from "./pages/DispatchPage/Dispatch";
@@ -31,7 +36,8 @@ function App() {
             <Route path="/itemList" exact={true} component={ItemList} />
             <Route path="/dispatch" exact={true} component={Dispatch} />
             <Route path="/return" exact={true} component={Return} />
-            <Route path="/" exact={true} component={Dashboard} />
+            <Route path="/" exact={true} component={Dashboard}></Route>
+            <Redirect to="/" />
             <Footer />
           </div>
         </div>
