@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./Table.css";
 import axios from "axios";
-import Calender from "../../components/Calender/Calender";
 import { FadeLoader } from "react-spinners";
 import Input from "../../components/Input/Input";
 require("dotenv").config();
@@ -9,14 +8,19 @@ require("dotenv").config();
 const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
   const [tableItems, setTableItems] = useState("");
   const [isLoading, setloading] = useState(true);
-
-  // JUST FOR TRY
   const [action, setAction] = useState("return");
+  const [reload, setReload] = useState(false);
 
   // toast.configure();
   // const Toast = () => {
   //   toast("Test Notification", { position: toast.POSITION.TOP_RIGHT });
   // };
+
+  const tableReload = useCallback((ss) => {
+    if (ss) {
+      setReload(true);
+    }
+  }, []);
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_URL + `/${hit}`).then((res) => {
@@ -25,14 +29,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
       setloading(false);
       callbackVal(res.data);
     });
-  }, []);
-
-  // if (isLoading)
-  //   return (
-  //     <div className="loading">
-  //       <FadeLoader height={10} width={5} margin={3} color="blue" />
-  //     </div>
-  //   );
+  }, [reload]);
 
   const tableUrl = window.location.href;
 
@@ -41,7 +38,11 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
       <div className="table">
         <p className="table__name">{tableHead}</p>
 
-        <Input text={inputText} inputHit={inputHit} />
+        <Input
+          text={inputText}
+          inputHit={inputHit}
+          tableCallback={tableReload}
+        />
 
         {isLoading ? (
           <div className="loading">
@@ -87,7 +88,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
               <td>{calc()}</td>
             </tr> */}
 
-            {[...tableItems].map((ss) => (
+            {[...tableItems].reverse().map((ss) => (
               <tr>
                 <td>{ss.articleno}</td>
                 <td>{ss.modelname}</td>
@@ -114,7 +115,11 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
       <div>
         <div className="table">
           <p className="table__name">{tableHead}</p>
-          <Input text={inputText} inputHit={inputHit} />
+          <Input
+            text={inputText}
+            inputHit={inputHit}
+            tableCallback={tableReload}
+          />
 
           {isLoading ? (
             <div className="loading">
@@ -131,7 +136,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
                 <th>Action</th>
               </tr>
 
-              {[...tableItems].map((ss) => (
+              {[...tableItems].reverse().map((ss) => (
                 <tr>
                   <td>{ss.barcode}</td>
                   <td>{ss.modelname}</td>
@@ -165,7 +170,12 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
       <div>
         <div className="table">
           <p className="table__name">{tableHead}</p>
-          <Input text={inputText} inputHit={inputHit} />
+
+          <Input
+            text={inputText}
+            inputHit={inputHit}
+            tableCallback={tableReload}
+          />
 
           {isLoading ? (
             <div className="loading">
@@ -179,7 +189,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
                 <th>Date</th>
               </tr>
 
-              {[...tableItems].map((ss) => (
+              {[...tableItems].reverse().map((ss) => (
                 <tr>
                   <td>{ss.Barcode}</td>
                   <td>{ss.modelname}</td>

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 require("dotenv").config();
 
-const Input = ({ text, inputHit }) => {
+const Input = ({ text, inputHit, tableCallback }) => {
   const [input, setInput] = useState("");
 
   const SubmitHandler = () => {
@@ -19,6 +19,7 @@ const Input = ({ text, inputHit }) => {
             ? toast.error(res.data.Error)
             : toast.success("Process Completed");
         }
+        tableCallback(res.data);
       });
   };
 

@@ -39,7 +39,7 @@ function App() {
             <Route path="/return" exact={true} component={Return} />
             <Route path="/barcode-generator" exact={true} component={Barcode} />
             <Route path="/" exact={true} component={Dashboard}></Route>
-            <Redirect to="/" />
+            {/* <Redirect to="/" /> */}
             <Footer />
           </div>
         </div>

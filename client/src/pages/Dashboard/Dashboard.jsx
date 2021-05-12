@@ -14,34 +14,41 @@ const Dashboard = () => {
   const [added, setAdded] = useState(null);
   const [dispatched, setDispatched] = useState(null);
   const [returned, setReturned] = useState(null);
+  const [totalSalesperc, setTotalSalesPerc] = useState(null);
+
+  const [soldWorth, setSoldWorth] = useState(null);
+  const [returnedWorth, setReturnedWorth] = useState(null);
+  const [profitWorth, setProfitWorth] = useState(null);
+
   const [alertList, setAlertList] = useState("");
 
-  const [toDate, setToDate] = useState(null);
-  const [fromDate, setFromDate] = useState(null);
+  const [graphData, setGraphData] = useState("");
 
-  const callbackVal = () => {};
+  const myCallback = useCallback((ss) => {
+    // setGraphData(ss.data);
+    console.log(ss);
+    setAdded(ss.addno);
+    setDispatched(ss.dispatchno);
+    setReturned(ss.returnno);
+    var ts = ((ss.dispatchno - ss.returnno) / ss.addno) * 100;
+    setTotalSalesPerc(ts);
+
+    setSoldWorth(ss.dispatched_sellprice);
+    setReturnedWorth(ss.returned_sellprice);
+
+    setProfitWorth(ss.dispatched_sellprice - ss.returned_sellprice);
+
+    {
+      [...graphData].map((qq) => {
+        console.log(qq.action);
+      });
+    }
+  });
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_URL + "/viewtransactions/").then((res) => {
       console.log(res.data);
       setItemsArray(res.data);
-      console.log(itemsArray);
-
-      var count = 0;
-      {
-        res.data.map((qq) => {
-          if (qq.action === "Product added to stock") {
-            console.log("alsdnakjn");
-            setAdded(1);
-          } else if (qq.action === "Product Dispatched") {
-            console.log("alsdnakjn");
-            setDispatched(1);
-          }
-        });
-      }
-      console.log(added);
-      console.log(dispatched);
-      console.log(count);
     });
   }, []);
 
@@ -59,7 +66,7 @@ const Dashboard = () => {
         <p id="dashboard__subheader">DASHBOARD/SEARCH</p>
       </div>
 
-      <Searchbox searchData={itemsArray} callbackVal />
+      <Searchbox searchData={itemsArray} />
 
       {/* CHECK ALTERNATIVE */}
 
@@ -105,7 +112,7 @@ const Dashboard = () => {
         </div>
         <div className="quant_alert_list">
           <div className="quant_alert_list_head">
-            <p>Alert Notifiaction</p>
+            <p>Alert Notification</p>
           </div>
           <div className="alert_list">
             {[...alertList].map((qq) => (
@@ -120,13 +127,17 @@ const Dashboard = () => {
       </div>
       <div className="stock_analytics">
         <div className="stock_chart">
-          <DoughnutChart />
+          <DoughnutChart
+            added={added}
+            dispatched={dispatched}
+            returned={returned}
+          />
           {/* <Bar /> */}
         </div>
         <div className="stock_numbers">
           <div className="sn_head_filter">
             <p>Stock Analytics</p>
-            <Calender filterData={itemsArray} />
+            <Calender filterData={itemsArray} filterCallback={myCallback} />
           </div>
           <div className="stock_numbers_details">
             <div className="analytics">
@@ -137,10 +148,10 @@ const Dashboard = () => {
                 <p>Dispatched Items :- {dispatched} </p>
               </div>
               <div className="returned_stock">
-                <p>Returned Items :- 5</p>
+                <p>Returned Items :- {returned}</p>
               </div>
               <div className="profit_stock">
-                <p>Total Sales :- 30%</p>
+                <p>Total Sales :- {totalSalesperc}%</p>
               </div>
             </div>
             <div className="stock_mgt_pages">
@@ -156,21 +167,21 @@ const Dashboard = () => {
         <div className="profit_details">
           <div className="revenue_details">
             <p>Revenue Analytics</p>
-            <Calender />
+            {/* <Calender /> */}
             <div className="sale_money">
-              <p>Sold Worth :- 32 </p>
+              <p>Sold Worth :- ₹ {soldWorth} </p>
             </div>
             <div className="return_money">
-              <p>Returned Worth :- 32 </p>
+              <p>Returned Worth :- ₹ {returnedWorth} </p>
             </div>
             <div className="profit_money">
-              <p>Profit Gained :- 32 </p>
+              <p>Profit Gained :- ₹ {profitWorth}</p>
             </div>
           </div>
-          <div className="graph_change">
+          {/* <div className="graph_change">
             <button>SALES</button>
             <button>REVENUE</button>
-          </div>
+          </div> */}
         </div>
         <div className="profit_chart">
           <BarChart />

@@ -65,11 +65,17 @@
   width: 100%;
   table-layout: fixed;
 }
-.search_result_table_cell {
+.search_result_table_cell,
+.search_result_table_head {
   display: table-cell;
   width: 16%;
   border: 1px solid #ddd;
   font-size: 0.9rem;
   padding: 8px;
   text-align: center;
+}
+
+.search_result_table_head {
+  background-color: rgb(93%, 95%, 100%);
+  color: rgb(165, 165, 165);
 }
