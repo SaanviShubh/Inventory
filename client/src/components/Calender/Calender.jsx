@@ -28,6 +28,7 @@ const Calender = ({ filterData, filterCallback }) => {
     var edate = new Date(toDate.toString().replace("IST", ""));
     // console.log(start_date);
     day = edate.getDate();
+    console.log(start_date);
     month = edate.getMonth() + 1;
     year = edate.getFullYear();
     // console.log(day + "/" + month + "/" + year);

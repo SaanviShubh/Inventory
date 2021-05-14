@@ -2,3 +2,72 @@
   padding: 30px;
   background-color: rgb(93%, 95%, 100%);
 }
+
+.barcode_inputs {
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.barcode_inputs_head {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.barcode_inputs_head p {
+  font-weight: 600;
+}
+
+.barcode_fields_row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* border: 2px solid red; */
+  padding-bottom: 20px;
+}
+
+.barcode_input_field {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.barcode_input_field label {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.barcode_input_field input {
+  width: 60%;
+  padding: 4px 10px;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+.recently_added_barcodes {
+  padding: 10px 0;
+}
+
+.recently_added_barcodes_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recently_added_barcodes_header p {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.829);
+}
+
+.recent_barcodes_row {
+  border: 1px solid rgba(131, 131, 131, 0.425);
+  padding: 8px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.barcode_num,
+.barcode_date {
+  font-size: 0.8rem;
+}

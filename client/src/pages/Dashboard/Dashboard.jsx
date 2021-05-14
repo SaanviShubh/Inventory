@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 require("dotenv").config();
 
 const Dashboard = () => {
+  var [date, setDate] = useState(new Date());
+
   const [itemsArray, setItemsArray] = useState([]);
   const [added, setAdded] = useState(null);
   const [dispatched, setDispatched] = useState(null);
@@ -59,6 +61,13 @@ const Dashboard = () => {
     });
   }, []);
 
+  useEffect(() => {
+    var timer = setInterval(() => setDate(new Date()), 1000);
+    return function cleanup() {
+      clearInterval(timer);
+    };
+  });
+
   return (
     <div className="dashboard">
       <div className="dashboard__head">
@@ -77,7 +86,7 @@ const Dashboard = () => {
           </div>
           <div className="item_detail">
             <p className="number_of_item">2000</p>
-            <p className="detail_heading">Current Stock</p>
+            <p className="detail_heading"></p>
           </div>
         </div>
 
