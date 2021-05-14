@@ -7,6 +7,7 @@ import DoughnutChart from "../../components/Charts/DoughnutChart";
 import { Bar } from "react-chartjs-2";
 import BarChart from "../../components/Charts/BarChart";
 import { Link } from "react-router-dom";
+import Table from "../../components/Table/Table";
 require("dotenv").config();
 
 const Dashboard = () => {
@@ -45,6 +46,10 @@ const Dashboard = () => {
     //     console.log(qq.action);
     //   });
     // }
+  });
+
+  const myCallbackTwo = useCallback((ss) => {
+    // setGraphData(ss.data);
   });
 
   useEffect(() => {
@@ -196,6 +201,11 @@ const Dashboard = () => {
           <BarChart />
         </div>
       </div>
+      <Table
+        hit="viewtransactions/"
+        tableHead="Recent Transactions List"
+        callbackVal={myCallbackTwo}
+      />
     </div>
   );
 };

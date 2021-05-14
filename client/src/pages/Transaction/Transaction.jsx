@@ -5,6 +5,8 @@ import Table from "../../components/Table/Table";
 import "./Transaction.css";
 
 const Transaction = () => {
+  const myCallback = () => {};
+
   return (
     <div>
       <Navbar />
@@ -14,7 +16,11 @@ const Transaction = () => {
           <p id="dashboard__subheader">LIST/SEARCH</p>
         </div>
         <SearchBox />
-        <Table hit="viewtransactions/" tableHead="Recent Transactions List" />
+        <Table
+          hit="viewtransactions/"
+          tableHead="Recent Transactions List"
+          callbackVal={myCallback}
+        />
       </div>
     </div>
   );
