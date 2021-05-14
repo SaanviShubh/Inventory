@@ -18,9 +18,9 @@ const Dashboard = () => {
   const [returned, setReturned] = useState(null);
   const [totalSalesperc, setTotalSalesPerc] = useState(null);
 
-  const [soldWorth, setSoldWorth] = useState(null);
-  const [returnedWorth, setReturnedWorth] = useState(null);
-  const [profitWorth, setProfitWorth] = useState(null);
+  const [soldWorth, setSoldWorth] = useState(0);
+  const [returnedWorth, setReturnedWorth] = useState(0);
+  const [profitWorth, setProfitWorth] = useState(0);
 
   const [alertList, setAlertList] = useState("");
 
@@ -40,11 +40,11 @@ const Dashboard = () => {
 
     setProfitWorth(ss.dispatched_sellprice - ss.returned_sellprice);
 
-    {
-      [...graphData].map((qq) => {
-        console.log(qq.action);
-      });
-    }
+    // {
+    //   [...graphData].map((qq) => {
+    //     console.log(qq.action);
+    //   });
+    // }
   });
 
   useEffect(() => {
@@ -61,12 +61,12 @@ const Dashboard = () => {
     });
   }, []);
 
-  useEffect(() => {
-    var timer = setInterval(() => setDate(new Date()), 1000);
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  });
+  // useEffect(() => {
+  //   var timer = setInterval(() => setDate(new Date()), 1000);
+  //   return function cleanup() {
+  //     clearInterval(timer);
+  //   };
+  // }, []);
 
   return (
     <div className="dashboard">
