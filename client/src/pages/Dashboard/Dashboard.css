@@ -7,6 +7,8 @@
   /* border: 1px solid red; */
 }
 
+/* Page Header  */
+
 #dashboard__header {
   font-size: 1.2rem;
   font-weight: 600;
@@ -18,6 +20,8 @@
   font-size: 0.8rem;
   margin-left: 2px;
 }
+
+/* Month Details Boxes */
 
 .items_detail {
   display: flex;
@@ -37,64 +41,6 @@
   align-items: flex-start;
   border-radius: 4px;
   margin-right: 20px;
-}
-
-.quant_alert_list {
-  height: 180px;
-  max-height: 180px;
-  background-color: #fff;
-  width: calc(40% - 80px);
-  padding: 4px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  /* border: 2px solid rgba(248, 198, 195, 0.74); */
-  border-radius: 4px;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-.quant_alert_list_head {
-  display: flex;
-  /* border: 2px solid red; */
-  color: rgb(184, 77, 72);
-  border-left: 4px solid rgb(184, 77, 72);
-  background-color: rgb(97%, 85%, 84%);
-}
-
-.quant_alert_list_head p {
-  padding: 5px 7px;
-}
-
-/* .alert_list {
-  height: 180px;
-} */
-
-#alert_list {
-  font-size: 0.8rem;
-  margin-top: 5px;
-  border: 1px solid rgba(187, 187, 187, 0.432);
-  background-color: rgba(216, 216, 216, 0.418);
-  padding: 5px 7px;
-  color: rgb(90, 90, 90);
-  border-left: 4px solid rgb(131, 131, 131);
 }
 
 .articles_icon {
@@ -160,11 +106,107 @@
   color: rgba(0, 0, 0, 0.644);
 }
 
+/* Alert Box  */
+
+.quant_alert_list {
+  height: 180px;
+  max-height: 180px;
+  background-color: #fff;
+  width: calc(40% - 80px);
+  padding: 4px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* border: 2px solid rgba(248, 198, 195, 0.74); */
+  border-radius: 4px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.quant_alert_list_head {
+  display: flex;
+  /* border: 2px solid red; */
+  color: rgb(184, 77, 72);
+  border-left: 4px solid rgb(184, 77, 72);
+  background-color: rgb(97%, 85%, 84%);
+}
+
+.quant_alert_list_head p {
+  padding: 5px 7px;
+}
+
+/* .alert_list {
+  height: 180px;
+} */
+
+#alert_list {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  border: 1px solid rgba(187, 187, 187, 0.432);
+  background-color: rgba(216, 216, 216, 0.418);
+  padding: 5px 7px;
+  color: rgb(90, 90, 90);
+  border-left: 4px solid rgb(131, 131, 131);
+}
+
+/* Filter Bar   */
+
+.filter_pagebtn {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  background-color: white;
+  padding: 15px 10px;
+}
+
+.page_btns {
+  display: flex;
+  /* border: 1px solid blue; */
+  font-size: 0.8rem;
+  color: grey;
+  align-items: center;
+}
+
+.page_btns p {
+  padding: 3px 5px;
+  /* text-decoration: underline; */
+  cursor: pointer;
+  border: 2px solid rgba(165, 164, 164, 0.521);
+  border-radius: 2px;
+  margin: 0 5px;
+}
+
+.page_btns p:hover {
+  color: black;
+  font: 600;
+  border: 2px solid rgb(12%, 40%, 100%);
+}
+
+/* Stock Analytics  */
+
 .stock_analytics {
   display: flex;
   width: 100%;
   /* border: 2px solid red; */
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .stock_chart {
@@ -248,67 +290,17 @@
   color: rgb(18%, 37%, 67%);
 }
 
-.stock_mgt_pages {
+.revenue_side {
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* padding: 20px; */
-  /* border: 1px solid orange; */
-  justify-content: space-evenly;
   align-items: center;
-}
-
-.stock_mgt_pages button {
-  width: 50%;
-  padding: 8px;
-}
-
-#current_stock_btn {
-  border: 3px solid rgb(228, 228, 29);
-  background-color: #fff;
-  cursor: pointer;
-  border-radius: 4px;
-  color: rgb(206, 167, 14);
-}
-
-#current_stock_btn:hover {
-  background-color: rgb(100%, 96%, 80%);
-  /* color: #000; */
-}
-
-#recent_transaction_btn {
-  border: 3px solid rgba(134, 134, 132, 0.815);
-  color: rgb(144, 145, 143);
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 5px 15px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  background-color: rgba(255, 255, 255, 0.712);
-}
-
-#recent_transaction_btn:hover {
-  background-color: rgba(144, 145, 143, 0.329);
-  /* color: #000; */
-}
-
-.profit_bar_chart {
-  width: 100%;
-  display: flex;
-  padding-top: 30px;
-}
-
-.profit_details {
-  flex: 1;
-  width: 50%;
-  padding: 20px;
-  display: flex;
-  background-color: #fff;
-  /* border: 2px solid red; */
 }
 
 .revenue_details {
   flex: 1;
+  width: 100%;
+  padding-left: 20px;
   /* border-right: 8px solid rgb(93%, 95%, 100%); */
   border-radius: 4px;
   display: flex;
@@ -347,19 +339,19 @@
   margin: 4px;
 }
 
-.graph_change {
+.barchart_wrapper {
+  background-color: white;
+  margin-top: 20px;
+  padding: 30px;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
-  padding: 10px;
+  justify-content: center;
+  /* border: 2px solid red; */
 }
 
-.profit_chart {
-  width: 50%;
-  padding: 20px;
-  flex: 1;
-  background-color: #fff;
+.barchart {
+  width: 70%;
+  padding: 10px;
+  /* border: 2px solid red; */
 }
 
 @media only screen and (max-width: 400px) {
@@ -369,7 +361,7 @@
   } */
 
   .items_detail {
-    display: flexbox;
+    display: flex;
     flex-wrap: wrap;
   }
 

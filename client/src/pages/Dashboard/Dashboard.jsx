@@ -11,28 +11,27 @@ import Table from "../../components/Table/Table";
 require("dotenv").config();
 
 const Dashboard = () => {
-  var [date, setDate] = useState(new Date());
-
+  // Stock Analytics
   const [itemsArray, setItemsArray] = useState([]);
   const [added, setAdded] = useState(null);
   const [dispatched, setDispatched] = useState(null);
   const [returned, setReturned] = useState(null);
   const [totalSalesperc, setTotalSalesPerc] = useState(null);
-
+  //Revenue Anayalytics
   const [soldWorth, setSoldWorth] = useState(0);
   const [returnedWorth, setReturnedWorth] = useState(0);
   const [profitWorth, setProfitWorth] = useState(0);
-
+  //Quantity Alert
   const [alertList, setAlertList] = useState("");
 
-  const [graphData, setGraphData] = useState("");
-
+  //Callback Function for Calender to recieve Filtered Data
   const myCallback = useCallback((ss) => {
     // setGraphData(ss.data);
     console.log(ss);
     setAdded(ss.addno);
     setDispatched(ss.dispatchno);
     setReturned(ss.returnno);
+
     var ts = ((ss.dispatchno - ss.returnno) / ss.addno) * 100;
     setTotalSalesPerc(ts);
 
@@ -40,18 +39,13 @@ const Dashboard = () => {
     setReturnedWorth(ss.returned_sellprice);
 
     setProfitWorth(ss.dispatched_sellprice - ss.returned_sellprice);
-
-    // {
-    //   [...graphData].map((qq) => {
-    //     console.log(qq.action);
-    //   });
-    // }
   });
 
   const myCallbackTwo = useCallback((ss) => {
     // setGraphData(ss.data);
   });
 
+  //For SearchBox, Table, Calender
   useEffect(() => {
     axios.get(process.env.REACT_APP_URL + "/viewtransactions/").then((res) => {
       console.log(res.data);
@@ -59,19 +53,13 @@ const Dashboard = () => {
     });
   }, []);
 
+  //Setting Alert List
   useEffect(() => {
     axios.get(process.env.REACT_APP_URL + "/viewallprods/").then((res) => {
       // console.log(res.data);
       setAlertList(res.data);
     });
   }, []);
-
-  // useEffect(() => {
-  //   var timer = setInterval(() => setDate(new Date()), 1000);
-  //   return function cleanup() {
-  //     clearInterval(timer);
-  //   };
-  // }, []);
 
   return (
     <div className="dashboard">
@@ -82,7 +70,7 @@ const Dashboard = () => {
 
       <Searchbox searchData={itemsArray} />
 
-      {/* CHECK ALTERNATIVE */}
+      {/* CHECK ALTERNATIVE (CSS)*/}
 
       <div className="items_detail">
         <div className="detail">
@@ -139,6 +127,15 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <div className="filter_pagebtn">
+        <Calender filterData={itemsArray} filterCallback={myCallback} />
+        <div className="page_btns">
+          <p>CURRENT STOCK</p>
+          <p>TRANSACTIONS</p>
+        </div>
+      </div>
+
       <div className="stock_analytics">
         <div className="stock_chart">
           <DoughnutChart
@@ -146,12 +143,11 @@ const Dashboard = () => {
             dispatched={dispatched}
             returned={returned}
           />
-          {/* <Bar /> */}
         </div>
+
         <div className="stock_numbers">
           <div className="sn_head_filter">
             <p>Stock Analytics</p>
-            <Calender filterData={itemsArray} filterCallback={myCallback} />
           </div>
           <div className="stock_numbers_details">
             <div className="analytics">
@@ -168,37 +164,26 @@ const Dashboard = () => {
                 <p>Total Sales :- {totalSalesperc}%</p>
               </div>
             </div>
-            <div className="stock_mgt_pages">
-              <button id="current_stock_btn">CURRENT STOCK</button>
-              <Link id="recent_transaction_btn" to="/recent_transaction">
-                TRANSACTIONS
-              </Link>
+            <div className="revenue_side">
+              <div className="revenue_details">
+                <div className="sale_money">
+                  <p>Sold Worth :- ₹ {soldWorth} </p>
+                </div>
+                <div className="return_money">
+                  <p>Returned Worth :- ₹ {returnedWorth} </p>
+                </div>
+                <div className="profit_money">
+                  <p>Profit Gained :- ₹ {profitWorth}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="profit_bar_chart">
-        <div className="profit_details">
-          <div className="revenue_details">
-            <p>Revenue Analytics</p>
-            {/* <Calender /> */}
-            <div className="sale_money">
-              <p>Sold Worth :- ₹ {soldWorth} </p>
-            </div>
-            <div className="return_money">
-              <p>Returned Worth :- ₹ {returnedWorth} </p>
-            </div>
-            <div className="profit_money">
-              <p>Profit Gained :- ₹ {profitWorth}</p>
-            </div>
-          </div>
-          {/* <div className="graph_change">
-            <button>SALES</button>
-            <button>REVENUE</button>
-          </div> */}
-        </div>
-        <div className="profit_chart">
-          <BarChart />
+
+      <div className="barchart_wrapper">
+        <div className="barchart">
+          <BarChart graphData={itemsArray} />
         </div>
       </div>
       <Table

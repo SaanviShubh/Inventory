@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./Calender.css";
 require("dotenv").config();
 
-const Calender = ({ filterData, filterCallback }) => {
+const Calender = ({ filterCallback }) => {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
 
@@ -13,26 +13,23 @@ const Calender = ({ filterData, filterCallback }) => {
   const [dispatched, setDispatched] = useState(null);
   const [returned, setReturned] = useState(null);
 
-  // var start_date = new Date(fromDate);
-  // var end_date = new Date(toDate);
-
   const filterHandler = () => {
+    //Converting FROM Date
     var sdate = new Date(fromDate.toString().replace("IST", ""));
-    // console.log(start_date);
     let day = sdate.getDate();
     let month = sdate.getMonth() + 1;
     let year = sdate.getFullYear();
-    // console.log(day + "/" + month + "/" + year);
     var start_date = day + "/" + month + "/" + year;
+    // console.log(day + "/" + month + "/" + year);
 
+    //Converting TO Date
     var edate = new Date(toDate.toString().replace("IST", ""));
-    // console.log(start_date);
     day = edate.getDate();
     console.log(start_date);
     month = edate.getMonth() + 1;
     year = edate.getFullYear();
-    // console.log(day + "/" + month + "/" + year);
     var end_date = day + "/" + month + "/" + year;
+    // console.log(day + "/" + month + "/" + year);
 
     axios
       .post(process.env.REACT_APP_URL + "/filtering_using_dates/", {
@@ -59,28 +56,28 @@ const Calender = ({ filterData, filterCallback }) => {
         var rsp = 0;
 
         for (let i = 0; i < res.data.length; i++) {
-          console.log("hi");
+          // console.log("hi");
 
           if (res.data[i].action === string1) {
             ++acount;
             acp += res.data[i].cost_price;
             asp += res.data[i].sell_price;
-            console.log("added + 1");
+            // console.log("added + 1");
           } else if (res.data[i].action === string2) {
             ++dcount;
             dcp += res.data[i].cost_price;
             dsp += res.data[i].sell_price;
-            console.log("dispatch + 1");
+            // console.log("dispatch + 1");
           } else if (res.data[i].action === string3) {
             ++rcount;
             rcp += res.data[i].cost_price;
             rsp += res.data[i].sell_price;
-            console.log("ret + 1");
+            // console.log("ret + 1");
           }
         }
-        console.log(added);
-        console.log(dispatched);
-        console.log(returned);
+        // console.log(added);
+        // console.log(dispatched);
+        // console.log(returned);
 
         var toDash = {
           addno: acount,
@@ -103,7 +100,7 @@ const Calender = ({ filterData, filterCallback }) => {
       <p>Filter: </p>
       <div className="calender">
         <DatePicker
-          id="from_date"
+          id="date_input"
           placeholderText="From Here"
           isClearable
           showYearDropdown
@@ -114,7 +111,7 @@ const Calender = ({ filterData, filterCallback }) => {
           autoComplete="off"
         />
         <DatePicker
-          id="to_date"
+          id="date_input"
           placeholderText="To Here"
           isClearable
           showYearDropdown

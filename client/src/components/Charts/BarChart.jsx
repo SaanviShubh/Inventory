@@ -2,97 +2,193 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
 
-const BarChart = () => {
+const BarChart = ({ graphData }) => {
   const [chartData, setChartData] = useState({});
 
-  const [jan, setJan] = useState(null);
-  const [feb, setFeb] = useState(null);
-  const [march, setMarch] = useState(null);
-  const [april, setApril] = useState(null);
-  const [may, setMay] = useState(null);
-  const [june, setJune] = useState(null);
-  const [july, setJuly] = useState(null);
-  const [aug, setAug] = useState(null);
-  const [sept, setSept] = useState(null);
-  const [oct, setOct] = useState(null);
-  const [nov, setNov] = useState(null);
-  const [dec, setDec] = useState(null);
+  const [janDispatched, setJanDispatched] = useState(null);
+  const [febDispatched, setFebDispatched] = useState(null);
+  const [marchDispatched, setMarchDispatched] = useState(null);
+  const [aprilDispatched, setAprilDispatched] = useState(null);
+  const [mayDispatched, setMayDispatched] = useState(null);
+  const [juneDispatched, setJuneDispatched] = useState(null);
+  const [julyDispatched, setJulyDispatched] = useState(null);
+  const [augDispatched, setAugDispatched] = useState(null);
+  const [septDispatched, setSeptDispatched] = useState(null);
+  const [octDispatched, setOctDispatched] = useState(null);
+  const [novDispatched, setNovDispatched] = useState(null);
+  const [decDispatched, setDecDispatched] = useState(null);
 
-  var Jan = 0,
-    Feb = 0,
-    March = 0,
-    April = 0,
-    May = 0,
-    June = 0,
-    July = 0,
-    Aug = 0,
-    Sept = 0,
-    Oct = 0,
-    Nov = 0,
-    Dec = 0;
+  const [janRet, setJanRet] = useState(null);
+  const [febRet, setFebRet] = useState(null);
+  const [marchRet, setMarchRet] = useState(null);
+  const [aprilRet, setAprilRet] = useState(null);
+  const [mayRet, setMayRet] = useState(null);
+  const [juneRet, setJuneRet] = useState(null);
+  const [julyRet, setJulyRet] = useState(null);
+  const [augRet, setAugRet] = useState(null);
+  const [septRet, setSeptRet] = useState(null);
+  const [octRet, setOctRet] = useState(null);
+  const [novRet, setNovRet] = useState(null);
+  const [decRet, setDecRet] = useState(null);
+
+  // var Jan = 0,
+  // (Feb = 0),
+  //   (March = 0),
+  //   (April = 0),
+  //   (May = 0),
+  //   (June = 0),
+  //   (July = 0),
+  //   (Aug = 0),
+  //   (Sept = 0),
+  //   (Oct = 0),
+  //   (Nov = 0),
+  //   (Dec = 0);
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_URL + "/viewtransactions/").then((res) => {
-      console.log(res.data);
+    console.log(graphData);
 
-      // var edate = new Date(toDate.toString().replace("IST", ""));
-      // console.log(start_date);
-      // day = edate.getDate();
+    for (let i = 0; i < graphData.length; i++) {
+      var edate = new Date(graphData[i].Date.toString().replace("IST", ""));
+      console.log(edate);
+      var month = edate.getDate();
+      console.log(month);
 
-      // year = edate.getFullYear();
-
-      for (let i = 0; i < res.data.length; i++) {
-        var edate = new Date(res.data[i].Date.toString().replace("IST", ""));
-        console.log(edate);
-        var month = edate.getDate();
-        console.log(month);
-
+      if (graphData[i].action === "Product Dispatched") {
         switch (month) {
           case 1:
-            Jan += 1;
+            var Jan = 0;
+            Jan = Jan + 1;
+            setJanDispatched(Jan);
             console.log(Jan);
             break;
           case 2:
-            Feb += 1;
+            var Feb = 0;
+            Feb = Feb + 1;
+            setFebDispatched(Feb);
             break;
           case 3:
-            March += 1;
+            var March = 0;
+            March = March + 1;
+            setMarchDispatched(March);
             break;
           case 4:
-            April += 1;
+            var April = 0;
+            April = April + 1;
+            setAprilDispatched(April);
             break;
           case 5:
-            May += 1;
-            setMay(May);
+            var May = 0;
+            May = May + 1;
+            setMayDispatched(May);
             console.log(May);
             break;
           case 6:
-            June += 1;
+            var June = 0;
+            June = June + 1;
+            setJuneDispatched(June);
             console.log(June);
             break;
           case 7:
-            July += 1;
+            var July = 0;
+            July = July + 1;
+            setJulyDispatched(July);
             break;
           case 8:
-            Aug += 1;
+            var Aug = 0;
+            Aug = Aug + 1;
+            setAugDispatched(Aug);
             break;
           case 9:
-            Sept += 1;
+            var Sept = 0;
+            Sept = Sept + 1;
+            setSeptDispatched(Sept);
             break;
           case 10:
-            Oct += 1;
+            var Oct = 0;
+            Oct = Oct + 1;
+            setOctDispatched(Oct);
             break;
           case 11:
-            Nov += 1;
+            var Nov = 0;
+            Nov = Nov + 1;
+            setNovDispatched(Nov);
             break;
           case 12:
-            Dec += 1;
+            var Dec = 0;
+            Dec = Dec + 1;
+            setDecDispatched(Dec);
+            break;
+        }
+      } else if (graphData[i].action === "Product returned") {
+        switch (month) {
+          case 1:
+            var Jan = 0;
+            Jan = Jan + 1;
+            setJanRet(Jan);
+            console.log(Jan);
+            break;
+          case 2:
+            var Feb = 0;
+            Feb = Feb + 1;
+            setFebRet(Feb);
+            break;
+          case 3:
+            var March = 0;
+            March = March + 1;
+            setMarchRet(March);
+            break;
+          case 4:
+            var April = 0;
+            April = April + 1;
+            setAprilRet(April);
+            break;
+          case 5:
+            var May = 0;
+            May = May + 1;
+            setMarchRet(May);
+            console.log(May);
+            break;
+          case 6:
+            var June = 0;
+            June = June + 1;
+            setJulyRet(June);
+            console.log(June);
+            break;
+          case 7:
+            var July = 0;
+            July = July + 1;
+            setJulyRet(July);
+            break;
+          case 8:
+            var Aug = 0;
+            Aug = Aug + 1;
+            setAugRet(Aug);
+            break;
+          case 9:
+            var Sept = 0;
+            Sept = Sept + 1;
+            setSeptRet(Sept);
+            break;
+          case 10:
+            var Oct = 0;
+            Oct = Oct + 1;
+            setOctRet(Oct);
+            break;
+          case 11:
+            var Nov = 0;
+            Nov = Nov + 1;
+            setNovRet(Nov);
+            break;
+          case 12:
+            var Dec = 0;
+            Dec = Dec + 1;
+            setDecRet(Dec);
             break;
         }
       }
-    });
+    }
     chart();
-  }, []);
+  }, [graphData]);
 
   const chart = () => {
     setChartData({
@@ -112,7 +208,7 @@ const BarChart = () => {
       ],
       datasets: [
         {
-          label: "Cost Price",
+          label: "Items Sold",
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -131,23 +227,22 @@ const BarChart = () => {
           ],
           borderWidth: 1,
           data: [
-            jan,
-            feb,
-            march,
-            april,
-            may,
-            june,
-            july,
-            aug,
-            sept,
-            oct,
-            nov,
-            dec,
+            janDispatched,
+            febDispatched,
+            marchDispatched,
+            aprilDispatched,
+            mayDispatched,
+            juneDispatched,
+            julyDispatched,
+            augDispatched,
+            septDispatched,
+            octDispatched,
+            novDispatched,
+            decDispatched,
           ],
         },
-
         {
-          label: "Sold",
+          label: "Returned",
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -166,18 +261,18 @@ const BarChart = () => {
           ],
           borderWidth: 1,
           data: [
-            jan,
-            feb,
-            march,
-            april,
-            may,
-            june,
-            july,
-            aug,
-            sept,
-            oct,
-            nov,
-            dec,
+            janRet,
+            febRet,
+            marchRet,
+            aprilRet,
+            mayRet,
+            juneRet,
+            julyRet,
+            augRet,
+            septRet,
+            octRet,
+            novRet,
+            decRet,
           ],
         },
       ],

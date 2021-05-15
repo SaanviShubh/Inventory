@@ -1,7 +1,6 @@
 .calender_filter {
   display: flex;
   /* border: 2px solid green; */
-  display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 10px;
@@ -10,18 +9,21 @@
 .calender {
   /* border: 2px solid red; */
   display: flex;
-  flex-direction: column;
-  padding: 5px;
+  /* flex-direction: column; */
+  padding: 3px;
 }
 
-#from_date {
-  margin: 3px;
-  padding: 3px;
-  outline: none;
+.calender button {
+  margin-right: 3px;
 }
 
-#to_date {
-  margin: 3px;
-  padding: 3px;
+.calender button:hover {
+  background-color: transparent;
+}
+
+#date_input {
+  margin: 0 5px;
+  padding: 4px;
   outline: none;
+  border: 0.5px solid grey;
 }
