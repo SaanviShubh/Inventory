@@ -31,166 +31,154 @@ const BarChart = ({ graphData }) => {
   const [novRet, setNovRet] = useState(null);
   const [decRet, setDecRet] = useState(null);
 
-  // var Jan = 0,
-  // (Feb = 0),
-  //   (March = 0),
-  //   (April = 0),
-  //   (May = 0),
-  //   (June = 0),
-  //   (July = 0),
-  //   (Aug = 0),
-  //   (Sept = 0),
-  //   (Oct = 0),
-  //   (Nov = 0),
-  //   (Dec = 0);
-
   useEffect(() => {
-    console.log(graphData);
+    // console.log(graphData);
+
+    //For Items Sold Bar
+    var Jan = 0,
+      Feb = 0,
+      March = 0,
+      April = 0,
+      May = 0,
+      June = 0,
+      July = 0,
+      Aug = 0,
+      Sept = 0,
+      Oct = 0,
+      Nov = 0,
+      Dec = 0;
+
+    //For Items Returned Bar
+    var jan = 0,
+      feb = 0,
+      march = 0,
+      april = 0,
+      may = 0,
+      june = 0,
+      july = 0,
+      aug = 0,
+      sept = 0,
+      oct = 0,
+      nov = 0,
+      dec = 0;
 
     for (let i = 0; i < graphData.length; i++) {
+      // console.log(graphData.length);
       var edate = new Date(graphData[i].Date.toString().replace("IST", ""));
-      console.log(edate);
+      // console.log(edate);
       var month = edate.getDate();
-      console.log(month);
+      // console.log(month);
 
       if (graphData[i].action === "Product Dispatched") {
         switch (month) {
           case 1:
-            var Jan = 0;
-            Jan = Jan + 1;
-            setJanDispatched(Jan);
-            console.log(Jan);
+            var Jan = Jan + 1;
             break;
           case 2:
-            var Feb = 0;
-            Feb = Feb + 1;
-            setFebDispatched(Feb);
+            var Feb = Feb + 1;
             break;
           case 3:
-            var March = 0;
-            March = March + 1;
-            setMarchDispatched(March);
+            var March = March + 1;
             break;
           case 4:
-            var April = 0;
-            April = April + 1;
-            setAprilDispatched(April);
+            var April = April + 1;
             break;
           case 5:
-            var May = 0;
             May = May + 1;
-            setMayDispatched(May);
             console.log(May);
             break;
           case 6:
-            var June = 0;
-            June = June + 1;
-            setJuneDispatched(June);
-            console.log(June);
+            var June = June + 1;
             break;
           case 7:
-            var July = 0;
-            July = July + 1;
-            setJulyDispatched(July);
             break;
           case 8:
-            var Aug = 0;
-            Aug = Aug + 1;
-            setAugDispatched(Aug);
+            var Aug = Aug + 1;
             break;
           case 9:
-            var Sept = 0;
-            Sept = Sept + 1;
-            setSeptDispatched(Sept);
+            var Sept = Sept + 1;
             break;
           case 10:
-            var Oct = 0;
-            Oct = Oct + 1;
-            setOctDispatched(Oct);
+            var Oct = Oct + 1;
             break;
           case 11:
-            var Nov = 0;
-            Nov = Nov + 1;
-            setNovDispatched(Nov);
+            var Nov = Nov + 1;
             break;
           case 12:
-            var Dec = 0;
-            Dec = Dec + 1;
-            setDecDispatched(Dec);
+            var Dec = Dec + 1;
             break;
         }
       } else if (graphData[i].action === "Product returned") {
         switch (month) {
           case 1:
-            var Jan = 0;
-            Jan = Jan + 1;
-            setJanRet(Jan);
-            console.log(Jan);
+            jan = jan + 1;
             break;
           case 2:
-            var Feb = 0;
-            Feb = Feb + 1;
-            setFebRet(Feb);
+            feb = feb + 1;
             break;
           case 3:
-            var March = 0;
-            March = March + 1;
-            setMarchRet(March);
+            march = march + 1;
             break;
           case 4:
-            var April = 0;
-            April = April + 1;
-            setAprilRet(April);
+            april = april + 1;
             break;
           case 5:
-            var May = 0;
-            May = May + 1;
-            setMarchRet(May);
-            console.log(May);
+            may = may + 1;
+            console.log(may);
             break;
           case 6:
-            var June = 0;
-            June = June + 1;
-            setJulyRet(June);
-            console.log(June);
+            june = june + 1;
             break;
           case 7:
-            var July = 0;
-            July = July + 1;
-            setJulyRet(July);
+            july = july + 1;
             break;
           case 8:
-            var Aug = 0;
-            Aug = Aug + 1;
-            setAugRet(Aug);
+            aug = aug + 1;
             break;
           case 9:
-            var Sept = 0;
-            Sept = Sept + 1;
-            setSeptRet(Sept);
+            sept = sept + 1;
             break;
           case 10:
-            var Oct = 0;
-            Oct = Oct + 1;
-            setOctRet(Oct);
+            oct = oct + 1;
             break;
           case 11:
-            var Nov = 0;
-            Nov = Nov + 1;
-            setNovRet(Nov);
+            nov = nov + 1;
             break;
           case 12:
-            var Dec = 0;
-            Dec = Dec + 1;
-            setDecRet(Dec);
+            dec = dec + 1;
             break;
         }
       }
+      setJanDispatched(Jan);
+      setFebDispatched(Feb);
+      setMarchDispatched(March);
+      setAprilDispatched(April);
+      setMayDispatched(May);
+      setJuneDispatched(June);
+      setJulyDispatched(July);
+      setAugDispatched(Aug);
+      setSeptDispatched(Sept);
+      setOctDispatched(Oct);
+      setNovDispatched(Nov);
+      setDecDispatched(Dec);
+
+      setJanRet(jan);
+      setFebRet(feb);
+      setMarchRet(march);
+      setAprilRet(april);
+      setMayRet(may);
+      setJuneRet(june);
+      setJulyRet(july);
+      setAugRet(aug);
+      setSeptRet(sept);
+      setOctRet(oct);
+      setNovRet(nov);
+      setDecRet(dec);
     }
-    chart();
+    chartO();
   }, [graphData]);
 
-  const chart = () => {
+  const chartO = () => {
     setChartData({
       labels: [
         "Jan",
@@ -290,35 +278,35 @@ const BarChart = ({ graphData }) => {
         options={{
           responsive: true,
           plugins: {
-            legend: false,
-            title: {
-              display: true,
-              text: "Stock Analytics Chart",
-            },
+            legend: true,
+            // title: {
+            //   display: true,
+            //   text: "Stock Analytics Chart",
+            // },
           },
-          scales: {
-            xAxes: [
-              {
-                gridLines: {
-                  // color: "rgba(0, 0, 0, 0)",
-                  display: false,
-                },
-              },
-            ],
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                  steps: 10,
-                  stepValue: 5,
-                  max: 50,
-                },
-                gridLines: {
-                  color: "rgba(0, 0, 0, 0)",
-                },
-              },
-            ],
-          },
+          // scales: {
+          //   xAxes: [
+          //     {
+          //       gridLines: {
+          //         // color: "rgba(0, 0, 0, 0)",
+          //         display: false,
+          //       },
+          //     },
+          //   ],
+          //   yAxes: [
+          //     {
+          //       ticks: {
+          //         beginAtZero: true,
+          //         steps: 10,
+          //         stepValue: 5,
+          //         max: 50,
+          //       },
+          //       gridLines: {
+          //         color: "rgba(0, 0, 0, 0)",
+          //       },
+          //     },
+          //   ],
+          // },
         }}
       />
     </div>

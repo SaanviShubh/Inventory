@@ -23,10 +23,16 @@ const Dashboard = () => {
   const [profitWorth, setProfitWorth] = useState(0);
   //Quantity Alert
   const [alertList, setAlertList] = useState("");
+  //Monthly Updates
+  const [totalStock, setTotalStock] = useState(
+    JSON.parse(localStorage.getItem("currentstock"))
+  );
+  const [monthlyAdded, setMonthlyAdded] = useState(0);
+  const [monthlyDispatched, setMonthlyDispatched] = useState(0);
+  const [monthlyReturned, setMonthlyReturned] = useState(0);
 
   //Callback Function for Calender to recieve Filtered Data
   const myCallback = useCallback((ss) => {
-    // setGraphData(ss.data);
     console.log(ss);
     setAdded(ss.addno);
     setDispatched(ss.dispatchno);
@@ -50,14 +56,56 @@ const Dashboard = () => {
     axios.get(process.env.REACT_APP_URL + "/viewtransactions/").then((res) => {
       console.log(res.data);
       setItemsArray(res.data);
+
+      var add_count = 0;
+      var dis_count = 0;
+      var ret_count = 0;
+
+      for (let i = 0; i < res.data.length; i++) {
+        console.log(res.data[i].Date);
+        var edate = new Date(res.data[i].Date);
+        var emonth = edate.getDate();
+        console.log(emonth);
+
+        var currDate = new Date();
+        let currMonth = currDate.getMonth() + 1;
+        console.log(currDate);
+        console.log(currMonth);
+
+        if (
+          emonth === currMonth &&
+          res.data[i].action === "Product added to stock"
+        ) {
+          add_count = ++add_count;
+        } else if (
+          emonth === currMonth &&
+          res.data[i].action === "Product Dispatched"
+        ) {
+          dis_count = dis_count + 1;
+        } else if (
+          emonth === currMonth &&
+          res.data[i].action === "Product returned"
+        ) {
+          ret_count = ret_count + 1;
+        }
+      }
+      setMonthlyAdded(add_count);
+      setMonthlyDispatched(dis_count);
+      setMonthlyReturned(ret_count);
     });
   }, []);
 
-  //Setting Alert List
+  //Setting Alert List and Total Stock Available
   useEffect(() => {
     axios.get(process.env.REACT_APP_URL + "/viewallprods/").then((res) => {
       // console.log(res.data);
       setAlertList(res.data);
+      var count = 0;
+      for (let i = 0; i < res.data.length; i++) {
+        count = ++count;
+      }
+      localStorage.setItem("currentstock", JSON.stringify(count));
+      // setTotalStock(JSON.parse(localStorage.getItem("currentstock")));
     });
   }, []);
 
@@ -78,8 +126,8 @@ const Dashboard = () => {
             <i id="articles" className="fab fa-shopify fa-2x"></i>
           </div>
           <div className="item_detail">
-            <p className="number_of_item">2000</p>
-            <p className="detail_heading"></p>
+            <p className="number_of_item">{totalStock}</p>
+            <p className="detail_heading">Current Stock</p>
           </div>
         </div>
 
@@ -88,7 +136,7 @@ const Dashboard = () => {
             <i id="added" className="far fa-plus-square fa-2x"></i>
           </div>
           <div className="item_detail">
-            <p className="number_of_item">412</p>
+            <p className="number_of_item">{monthlyAdded}</p>
             <p className="detail_heading">Items Added</p>
           </div>
         </div>
@@ -98,7 +146,7 @@ const Dashboard = () => {
             <i id="dispatched" className="far fa-minus-square fa-2x"></i>
           </div>
           <div className="item_detail">
-            <p className="number_of_item">230</p>
+            <p className="number_of_item">{monthlyDispatched}</p>
             <p className="detail_heading">Items Dispatched</p>
           </div>
         </div>
@@ -108,7 +156,7 @@ const Dashboard = () => {
             <i id="returned" className="fas fa-exchange-alt fa-2x"></i>
           </div>
           <div className="item_detail">
-            <p className="number_of_item">200</p>
+            <p className="number_of_item">{monthlyReturned}</p>
             <p className="detail_heading">Items Returned</p>
           </div>
         </div>
