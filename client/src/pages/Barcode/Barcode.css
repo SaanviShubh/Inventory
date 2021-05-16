@@ -1,5 +1,6 @@
 .barcode_page {
   padding: 30px;
+  height: calc(100% - 60px);
   background-color: rgb(93%, 95%, 100%);
 }
 

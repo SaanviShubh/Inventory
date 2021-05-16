@@ -179,8 +179,12 @@ const Dashboard = () => {
       <div className="filter_pagebtn">
         <Calender filterData={itemsArray} filterCallback={myCallback} />
         <div className="page_btns">
-          <p>CURRENT STOCK</p>
-          <p>TRANSACTIONS</p>
+          {/* <Link to="/currentstock">
+            <p>CURRENT STOCK</p>
+          </Link> */}
+          {/* <Link to="/recent_transaction">
+            <p>TRANSACTIONS</p>
+          </Link> */}
         </div>
       </div>
 

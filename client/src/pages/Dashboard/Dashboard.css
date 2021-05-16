@@ -166,7 +166,7 @@
   border-left: 4px solid rgb(131, 131, 131);
 }
 
-/* Filter Bar   */
+/* Filter and Buttons Bar */
 
 .filter_pagebtn {
   /* border: 2px solid red; */
@@ -181,13 +181,16 @@
   display: flex;
   /* border: 1px solid blue; */
   font-size: 0.8rem;
-  color: grey;
   align-items: center;
+}
+
+.page_btns a {
+  text-decoration: none;
+  color: grey;
 }
 
 .page_btns p {
   padding: 3px 5px;
-  /* text-decoration: underline; */
   cursor: pointer;
   border: 2px solid rgba(165, 164, 164, 0.521);
   border-radius: 2px;
@@ -197,7 +200,7 @@
 .page_btns p:hover {
   color: black;
   font: 600;
-  border: 2px solid rgb(12%, 40%, 100%);
+  border: 2px solid rgb(66, 66, 66);
 }
 
 /* Stock Analytics  */

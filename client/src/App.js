@@ -17,6 +17,7 @@ import ItemList from "./pages/AddPage/ItemList";
 import Transaction from "./pages/Transaction/Transaction";
 import Login from "./pages/LoginPage/Login";
 import Barcode from "./pages/Barcode/Barcode";
+import CurrentStock from "./pages/CurrentStock/CurrentStock";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/dispatch" exact={true} component={Dispatch} />
             <Route path="/return" exact={true} component={Return} />
             <Route path="/barcode-generator" exact={true} component={Barcode} />
+            <Route path="/currentstock" exact={true} component={CurrentStock} />
             <Route path="/" exact={true} component={Dashboard}></Route>
             {/* <Redirect to="/" /> */}
             <Footer />

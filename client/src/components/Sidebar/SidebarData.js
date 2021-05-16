@@ -3,8 +3,8 @@ export const SideBarPathIndex = {
   "/add": 1,
   "/dispatch": 2,
   "/return": 3,
-  //   "/admin/change-password": 4,
-  //   "/admin/report-bug": 5,
+  "/barcode-generator": 4,
+  "/currentstock": 5,
   //   "/admin/about": 6,
 };
 
@@ -46,12 +46,12 @@ export const SidebarData = [
     icon: "fas fa-hashtag fa-lg",
     cName: "sidebarOption",
   },
-  //   {
-  //     option_name: "Report a Bug",
-  //     path: adminLink + "/report-bug",
-  //     icon: "fas fa-bug",
-  //     cName: "sidebar_option",
-  //   },
+  {
+    option_name: "Current Stock",
+    path: "/currentstock",
+    icon: "fas fa-box-open",
+    cName: "sidebarOption",
+  },
   //   {
   //     option_name: "About App",
   //     path: adminLink + "/about",

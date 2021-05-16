@@ -8,14 +8,9 @@ require("dotenv").config();
 const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
   const [tableItems, setTableItems] = useState("");
   const [isLoading, setloading] = useState(true);
-  const [action, setAction] = useState("return");
   const [reload, setReload] = useState(false);
 
-  // toast.configure();
-  // const Toast = () => {
-  //   toast("Test Notification", { position: toast.POSITION.TOP_RIGHT });
-  // };
-
+  //To Reload Table on new Entry (Add, Dispatch, Return) Returned from Input
   const tableReload = useCallback((ss) => {
     if (ss) {
       setReload(true);
@@ -33,16 +28,17 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
 
   const tableUrl = window.location.href;
 
-  if (tableUrl === "http://localhost:3000/add")
+  //For Current Stock Table
+  if (tableUrl === "http://localhost:3000/currentstock")
     return (
       <div className="table">
         <p className="table__name">{tableHead}</p>
-
+        {/* 
         <Input
           text={inputText}
           inputHit={inputHit}
           tableCallback={tableReload}
-        />
+        /> */}
 
         {isLoading ? (
           <div className="loading">
@@ -98,7 +94,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
                 <td>200</td>
                 <td>800</td>
                 <td>
-                  {ss.qty < 3 ? (
+                  {ss.qty < 6 ? (
                     <span className="status_alert">ALERT</span>
                   ) : (
                     <p>In Stock</p>
@@ -110,16 +106,12 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
         )}
       </div>
     );
-  else if (tableUrl === "http://localhost:3000/recent_transaction")
+  //Transactions Table  ----> Try ReactBootstrap for this
+  else if (tableUrl === "http://localhost:3000/")
     return (
       <div>
         <div className="table">
           <p className="table__name">{tableHead}</p>
-          <Input
-            text={inputText}
-            inputHit={inputHit}
-            tableCallback={tableReload}
-          />
 
           {isLoading ? (
             <div className="loading">
@@ -138,22 +130,22 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
 
               {[...tableItems].reverse().map((ss) => (
                 <tr>
-                  <td>{ss.barcode}</td>
+                  <td>{ss.Barcode}</td>
                   <td>{ss.modelname}</td>
-                  <td>{ss.date}</td>
+                  <td>{ss.Date}</td>
                   <td>
                     <span
                       className={
                         ss.action === "Product added to stock"
                           ? "action_sold"
-                          : action === "Product Dispatched"
+                          : ss.action === "Product Dispatched"
                           ? "action_dispatch"
                           : "action_return"
                       }
                     >
                       {ss.action === "Product added to stock"
                         ? "Added"
-                        : action === "Product Dispatched"
+                        : ss.action === "Product Dispatched"
                         ? "Dispatched"
                         : "Returned"}
                     </span>
@@ -165,6 +157,47 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
         </div>
       </div>
     );
+  //Add Page
+  else if (tableUrl === "http://localhost:3000/add") {
+    return (
+      <div>
+        <div className="table">
+          <p className="table__name">{tableHead}</p>
+
+          <Input
+            text={inputText}
+            inputHit={inputHit}
+            tableCallback={tableReload}
+          />
+
+          {isLoading ? (
+            <div className="loading">
+              <FadeLoader height={10} width={5} margin={3} color="#1877F2" />
+            </div>
+          ) : (
+            <table id="customers">
+              <tr>
+                <th>Barcode</th>
+                <th>SKU Number</th>
+                <th>Date</th>
+              </tr>
+
+              {[...tableItems].reverse().map((ss) =>
+                ss.action === "Product added to stock" ? (
+                  <tr>
+                    <td>{ss.Barcode}</td>
+                    <td>{ss.modelname}</td>
+                    <td>{ss.Date}</td>
+                  </tr>
+                ) : null
+              )}
+            </table>
+          )}
+        </div>
+      </div>
+    );
+  }
+  // Dispatch Return Pages
   else
     return (
       <div>

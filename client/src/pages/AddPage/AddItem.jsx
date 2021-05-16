@@ -21,7 +21,7 @@ const AddItem = () => {
       <Searchbox searchHit="searchprod_in_stock/" />
       <Table
         tableHead="Add Items to the Stock"
-        hit="viewallprods/"
+        hit="viewtransactions/"
         inputText="Enter Barcode Number to Add"
         inputHit="addprod/"
         callbackVal={myCallBack}
