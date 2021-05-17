@@ -41,7 +41,7 @@ const Dashboard = () => {
     setReturned(ss.returnno);
 
     var ts = ((ss.dispatchno - ss.returnno) / ss.addno) * 100;
-    setTotalSalesPerc(ts);
+    setTotalSalesPerc(ts.toFixed(2));
 
     setSoldWorth(ss.dispatched_sellprice);
     setReturnedWorth(ss.returned_sellprice);

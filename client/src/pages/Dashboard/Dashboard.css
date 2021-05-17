@@ -155,10 +155,6 @@
   padding: 5px;
 }
 
-/* .alert_list {
-  height: 180px;
-} */
-
 .alert_body {
   border: 2px solid black;
 }
@@ -184,7 +180,6 @@
 .filter_pagebtn {
   /* border: 2px solid red; */
   display: flex;
-  justify-content: space-between;
   margin-top: 30px;
   background-color: white;
   padding: 15px 10px;

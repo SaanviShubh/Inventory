@@ -1,0 +1,26 @@
+.filter_box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px;
+}
+
+.filter_cal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  /* border: 1px solid black; */
+}
+
+.filter_cal .fa-times {
+  color: rgba(0, 0, 0, 0.747);
+}
+
+.filter_box_body {
+  width: 100%;
+  /* border: 2px solid red; */
+}

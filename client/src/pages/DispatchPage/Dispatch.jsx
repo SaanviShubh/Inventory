@@ -3,6 +3,7 @@ import "../Dashboard/Dashboard.css";
 import "./Dispatch.css";
 import Searchbox from "../../components/Searchbox/Searchbox";
 import Table from "../../components/Table/Table";
+import FilterBox from "../../components/FilterBox/FilterBox";
 
 const Dispatch = () => {
   const [val, setVal] = useState([]);
@@ -18,6 +19,9 @@ const Dispatch = () => {
         <p id="dashboard__subheader">DISPATCH/SEARCH</p>
       </div>
       <Searchbox searchData={val} />
+
+      <FilterBox />
+
       <Table
         tableHead="Dispatch Item from Stock"
         inputHit="dispatchprod/"
@@ -25,9 +29,6 @@ const Dispatch = () => {
         hit="viewdispatchprods/"
         callbackVal={myCallBack}
       />
-      {/* {[...val].map((q) => (
-        <div>{q.Barcode}</div>
-      ))} */}
     </div>
   );
 };
