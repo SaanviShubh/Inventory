@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { HashLoader } from "react-spinners";
 import Searchbox from "../../components/Searchbox/Searchbox";
 import "./Barcode.css";
 
@@ -12,8 +13,10 @@ const Barcode = () => {
   const [barCp, setCp] = useState("");
   const [barSp, setSp] = useState("");
   const [recentBarcodes, setRecentBarcodes] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   const GenerateBarcode = () => {
+    setLoader(true);
     if (
       barModelNo === "" ||
       barSize === "" ||
@@ -23,6 +26,7 @@ const Barcode = () => {
       barSp === ""
     ) {
       toast.error("Details Incomplete");
+      setLoader(false);
     } else {
       var articleno = barModelNo;
       var color = barColor;
@@ -41,12 +45,13 @@ const Barcode = () => {
           qty,
         })
         .then((res) => {
-          console.log(res.data);
-          setRecentBarcodes(res.data);
-          {
-            res.data.Error
-              ? toast.error(res.data.Error)
-              : toast.success("Process Completed");
+          if (res.data.Error === "") {
+            setLoader(false);
+            toast.error(res.data.Error);
+          } else {
+            toast.success("Barocode Generated");
+            setLoader(false);
+            setRecentBarcodes(res.data);
             setColor("");
             setModelNo("");
             setSize("");
@@ -54,6 +59,11 @@ const Barcode = () => {
             setSp("");
             seyQty("");
           }
+        })
+        .catch((error) => {
+          setLoader(false);
+          console.log(error);
+          toast.error("Something Went Wrong");
         });
     }
   };
@@ -181,12 +191,18 @@ const Barcode = () => {
               <div className="barcode_num">Barcode Number</div>
               <div className="barcode_date">(Date)</div>
             </div>
-            {[...recentBarcodes].map((ss) => (
+            {loader ? (
               <div className="recent_barcodes_row">
-                <div className="barcode_num">{ss.Barcode}</div>
-                <div className="barcode_date">{ss.Date}</div>
+                <HashLoader size={40} color="#1877F2" />
               </div>
-            ))}
+            ) : (
+              [...recentBarcodes].map((ss) => (
+                <div className="recent_barcodes_row">
+                  <div className="barcode_num">{ss.Barcode}</div>
+                  <div className="barcode_date">{ss.Date}</div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Searchbox from "../../components/Searchbox/Searchbox";
 import "./Dashboard.css";
 import axios from "axios";
+import { HashLoader } from "react-spinners";
 import Calender from "../../components/Calender/Calender";
 import DoughnutChart from "../../components/Charts/DoughnutChart";
 import { Bar } from "react-chartjs-2";
@@ -30,6 +31,7 @@ const Dashboard = () => {
   const [monthlyAdded, setMonthlyAdded] = useState(0);
   const [monthlyDispatched, setMonthlyDispatched] = useState(0);
   const [monthlyReturned, setMonthlyReturned] = useState(0);
+  const [loader, setLoader] = useState(true);
 
   //Callback Function for Calender to recieve Filtered Data
   const myCallback = useCallback((ss) => {
@@ -98,7 +100,7 @@ const Dashboard = () => {
   //Setting Alert List and Total Stock Available
   useEffect(() => {
     axios.get(process.env.REACT_APP_URL + "/viewallprods/").then((res) => {
-      // console.log(res.data);
+      setLoader(false);
       setAlertList(res.data);
       var count = 0;
       for (let i = 0; i < res.data.length; i++) {
@@ -163,11 +165,12 @@ const Dashboard = () => {
         <div className="quant_alert_list">
           <div className="quant_alert_list_head">
             <p>Alert Notification</p>
+            {loader ? <HashLoader size={20} color="c45551" /> : null}
           </div>
           <div className="alert_list">
             {[...alertList].map((qq) => (
               <div>
-                {qq.qty < 3 ? (
+                {qq.qty <= 5 ? (
                   <p id="alert_list">{qq.modelname + " = " + qq.qty} </p>
                 ) : null}
               </div>

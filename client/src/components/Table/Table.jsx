@@ -3,6 +3,7 @@ import "./Table.css";
 import axios from "axios";
 import { FadeLoader } from "react-spinners";
 import Input from "../../components/Input/Input";
+import { toast } from "react-toastify";
 require("dotenv").config();
 
 const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
@@ -18,12 +19,19 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
   }, []);
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_URL + `/${hit}`).then((res) => {
-      console.log(res.data);
-      setTableItems(res.data);
-      setloading(false);
-      callbackVal(res.data);
-    });
+    axios
+      .get(process.env.REACT_APP_URL + `/${hit}`)
+      .then((res) => {
+        console.log(res.data);
+        setTableItems(res.data);
+        setloading(false);
+        callbackVal(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Something Went Wrong");
+      });
+    // .catch((toast.error("Something Went Wrong"));
   }, [reload]);
 
   const tableUrl = window.location.href;
