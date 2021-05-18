@@ -32,6 +32,7 @@ const Dashboard = () => {
   const [monthlyDispatched, setMonthlyDispatched] = useState(0);
   const [monthlyReturned, setMonthlyReturned] = useState(0);
   const [loader, setLoader] = useState(true);
+  const [clearBtn, setClearBtn] = useState(false);
 
   //Callback Function for Calender to recieve Filtered Data
   const myCallback = useCallback((ss) => {
@@ -47,7 +48,20 @@ const Dashboard = () => {
     setReturnedWorth(ss.returned_sellprice);
 
     setProfitWorth(ss.dispatched_sellprice - ss.returned_sellprice);
+
+    setClearBtn(true);
   });
+
+  const clearFilteredGraphs = () => {
+    setAdded(null);
+    setDispatched(null);
+    setReturned(null);
+    setSoldWorth(0);
+    setReturnedWorth(0);
+    setProfitWorth(0);
+
+    setClearBtn(false);
+  };
 
   const myCallbackTwo = useCallback((ss) => {
     // setGraphData(ss.data);
@@ -64,21 +78,24 @@ const Dashboard = () => {
       var ret_count = 0;
 
       for (let i = 0; i < res.data.length; i++) {
-        console.log(res.data[i].Date);
+        // console.log("DATA" + res);
+        console.log("Date from DATA = " + res.data[i].Date);
         var edate = new Date(res.data[i].Date);
         var emonth = edate.getDate();
-        console.log(emonth);
+        console.log("Month from DATA = " + emonth);
 
         var currDate = new Date();
         let currMonth = currDate.getMonth() + 1;
-        console.log(currDate);
-        console.log(currMonth);
+        // console.log(currDate);
+        console.log("Current Month = " + currMonth);
 
         if (
           emonth === currMonth &&
           res.data[i].action === "Product added to stock"
         ) {
+          console.log(res.data[i]);
           add_count = ++add_count;
+          console.log(add_count);
         } else if (
           emonth === currMonth &&
           res.data[i].action === "Product Dispatched"
@@ -181,14 +198,9 @@ const Dashboard = () => {
 
       <div className="filter_pagebtn">
         <Calender filterData={itemsArray} filterCallback={myCallback} />
-        <div className="page_btns">
-          {/* <Link to="/currentstock">
-            <p>CURRENT STOCK</p>
-          </Link> */}
-          {/* <Link to="/recent_transaction">
-            <p>TRANSACTIONS</p>
-          </Link> */}
-        </div>
+        {clearBtn ? (
+          <i class="fas fa-times fa-lg" onClick={clearFilteredGraphs}></i>
+        ) : null}
       </div>
 
       <div className="stock_analytics">

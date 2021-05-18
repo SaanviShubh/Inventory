@@ -180,6 +180,8 @@
 .filter_pagebtn {
   /* border: 2px solid red; */
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 30px;
   background-color: white;
   padding: 15px 10px;

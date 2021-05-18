@@ -72,3 +72,10 @@
 .barcode_date {
   font-size: 0.8rem;
 }
+
+.barcode_notice {
+  color: rgba(0, 0, 0, 0.418);
+  font-size: 0.8rem;
+  margin-top: 20px;
+  padding: 0 10px;
+}
