@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import login_image from "../../assets/login_image.svg";
+import PropTypes from "prop-types";
+import axios from "axios";
 
-const Login = () => {
+export default function Login({ setToken }) {
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    axios.post(process.env.REACT_APP_URL + "/loginpage/", {}).then((res) => {
+      console.log(res);
+    });
+  };
+
   return (
     <div className="login">
       <div className="login_image_wrapper">
@@ -16,20 +28,28 @@ const Login = () => {
               // className="login_email"
               type="email"
               placeholder="Enter Email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <input
               // className="login_email"
               type="password"
               placeholder="Enter Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
           <button>Login</button>
         </div>
-        <button className="know_more_btn">Know More</button>
+        <button className="know_more_btn" onClick={submitHandler}>
+          Know More
+        </button>
       </div>
     </div>
   );
-};
+}
 
-export default Login;
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};

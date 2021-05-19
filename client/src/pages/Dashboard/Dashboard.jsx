@@ -79,15 +79,18 @@ const Dashboard = () => {
 
       for (let i = 0; i < res.data.length; i++) {
         // console.log("DATA" + res);
-        console.log("Date from DATA = " + res.data[i].Date);
-        var edate = new Date(res.data[i].Date);
-        var emonth = edate.getDate();
-        console.log("Month from DATA = " + emonth);
+        // console.log("Date from DATA = " + res.data[i].Date);
+        //var edate = new Date(res.data[i].Date);
+        var emonth = res.data[i].Date.split("/")[1];
+        // console.log("Month from DATA = " + emonth);
 
         var currDate = new Date();
-        let currMonth = currDate.getMonth() + 1;
+        let currMonth =
+          currDate.getMonth() + 1 < 10
+            ? "0" + (currDate.getMonth() + 1)
+            : currDate.getMonth() + 1;
         // console.log(currDate);
-        console.log("Current Month = " + currMonth);
+        // console.log("Current Month = " + currMonth);
 
         if (
           emonth === currMonth &&
@@ -95,7 +98,6 @@ const Dashboard = () => {
         ) {
           console.log(res.data[i]);
           add_count = ++add_count;
-          console.log(add_count);
         } else if (
           emonth === currMonth &&
           res.data[i].action === "Product Dispatched"

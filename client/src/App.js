@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -20,10 +20,15 @@ import Barcode from "./pages/Barcode/Barcode";
 import CurrentStock from "./pages/CurrentStock/CurrentStock";
 
 function App() {
+  // const [token, setToken] = useState();
+  // if (!token) {
+  //   return <Login setToken={setToken} />;
+  // }
+
   return (
     <Router>
       <Switch>
-        <Route path="/login" exact={true} component={Login} />
+        {/* <Route path="/login" exact={true} component={Login} /> */}
         <Route
           path="/recent_transaction"
           exact={true}

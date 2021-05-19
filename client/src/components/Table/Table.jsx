@@ -20,7 +20,11 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
 
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_URL + `/${hit}`)
+      .get(process.env.REACT_APP_URL + `/${hit}`, {
+        // headers: {
+        //   'rishi':localStorage.getItem('at')
+        // }
+      })
       .then((res) => {
         console.log(res.data);
         setTableItems(res.data);
