@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
 import login_image from "../../assets/login_image.svg";
-import PropTypes from "prop-types";
 import axios from "axios";
 
 export default function Login({ setToken }) {
@@ -10,9 +9,13 @@ export default function Login({ setToken }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    axios.post(process.env.REACT_APP_URL + "/loginpage/", {}).then((res) => {
-      console.log(res);
-    });
+    axios
+      .post(process.env.REACT_APP_URL + "/loginpage/", { username, password })
+      .then((res) => {
+        console.log(res.data.token);
+        setToken(res.data.token);
+        localStorage.setItem("token", res.data.token);
+      });
   };
 
   return (
@@ -40,16 +43,10 @@ export default function Login({ setToken }) {
             />
           </div>
 
-          <button>Login</button>
+          <button onClick={submitHandler}>Login</button>
         </div>
-        <button className="know_more_btn" onClick={submitHandler}>
-          Know More
-        </button>
+        <button className="know_more_btn">Know More</button>
       </div>
     </div>
   );
 }
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};

@@ -18,12 +18,20 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
     }
   }, []);
 
+  const authtoken = localStorage.getItem("token");
+
+
   useEffect(() => {
+    
+    const headers = {
+      "authtoken":  authtoken
+    };
+
     axios
       .get(process.env.REACT_APP_URL + `/${hit}`, {
-        // headers: {
-        //   'rishi':localStorage.getItem('at')
-        // }
+        headers: {
+          headers
+        },
       })
       .then((res) => {
         console.log(res.data);

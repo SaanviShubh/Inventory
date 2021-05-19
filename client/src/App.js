@@ -20,39 +20,47 @@ import Barcode from "./pages/Barcode/Barcode";
 import CurrentStock from "./pages/CurrentStock/CurrentStock";
 
 function App() {
-  // const [token, setToken] = useState();
-  // if (!token) {
-  //   return <Login setToken={setToken} />;
-  // }
+  const [token, setToken] = useState();
+  if (!token) {
+    return <Login setToken={setToken}>{console.log(token)}</Login>;
+  } else {
+    return (
+      <Router>
+        <Switch>
+          {/* <Route path="/login" exact={true} component={Login} /> */}
+          <Route
+            path="/recent_transaction"
+            exact={true}
+            component={Transaction}
+          />
 
-  return (
-    <Router>
-      <Switch>
-        {/* <Route path="/login" exact={true} component={Login} /> */}
-        <Route
-          path="/recent_transaction"
-          exact={true}
-          component={Transaction}
-        />
-
-        <div className="App">
-          <Sidebar />
-          <div className="app__body">
-            <Navbar />
-            <Route path="/add" exact={true} component={AddItem} />
-            <Route path="/itemList" exact={true} component={ItemList} />
-            <Route path="/dispatch" exact={true} component={Dispatch} />
-            <Route path="/return" exact={true} component={Return} />
-            <Route path="/barcode-generator" exact={true} component={Barcode} />
-            <Route path="/currentstock" exact={true} component={CurrentStock} />
-            <Route path="/" exact={true} component={Dashboard}></Route>
-            {/* <Redirect to="/" /> */}
-            <Footer />
+          <div className="App">
+            <Sidebar />
+            <div className="app__body">
+              <Navbar />
+              <Route path="/add" exact={true} component={AddItem} />
+              <Route path="/itemList" exact={true} component={ItemList} />
+              <Route path="/dispatch" exact={true} component={Dispatch} />
+              <Route path="/return" exact={true} component={Return} />
+              <Route
+                path="/barcode-generator"
+                exact={true}
+                component={Barcode}
+              />
+              <Route
+                path="/currentstock"
+                exact={true}
+                component={CurrentStock}
+              />
+              <Route path="/" exact={true} component={Dashboard}></Route>
+              {/* <Redirect to="/" /> */}
+              <Footer />
+            </div>
           </div>
-        </div>
-      </Switch>
-    </Router>
-  );
+        </Switch>
+      </Router>
+    );
+  }
 }
 
 export default App;
