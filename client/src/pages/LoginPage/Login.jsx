@@ -13,9 +13,9 @@ export default function Login({ setToken }) {
   const history = useHistory();
   const authtoken = localStorage.getItem("token");
 
-  useEffect(() => {
-    history.index = 0;
-  }, []);
+  // useEffect(() => {
+  //   history.go(0);
+  // }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();
