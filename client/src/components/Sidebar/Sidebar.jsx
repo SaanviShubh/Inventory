@@ -15,7 +15,7 @@ const Sidebar = () => {
         <div className="profile_icon">
           <i class="fas fa-user-circle fa-2x"></i>
         </div>
-        <p>Sandeep Singharia </p>
+        <p>SaanviShubh</p>
       </div>
 
       {SidebarData.map((item, index) => {

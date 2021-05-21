@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import "./FilterBox.css";
 import Calender from "../../components/Calender/Calender";
 
-const FilterBox = () => {
+const FilterBox = ({ filterType }) => {
   const [filteredArray, setFilteredArray] = useState([]);
   const [clearBtn, setClearBtn] = useState(false);
 
@@ -33,7 +33,7 @@ const FilterBox = () => {
       {[...filteredArray].map((filter) => (
         <div>
           <div className="search_result_table">
-            {filter.action === "Product added to stock" ? (
+            {filter.action === filterType ? (
               <div>
                 <div class="search_result_table_cell">{filter.Barcode}</div>
                 <div class="search_result_table_cell">{filter.Date}</div>

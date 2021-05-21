@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
 import login_image from "../../assets/login_image.svg";
@@ -12,6 +12,10 @@ export default function Login({ setToken }) {
 
   const history = useHistory();
   const authtoken = localStorage.getItem("token");
+
+  useEffect(() => {
+    history.index = 0;
+  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();

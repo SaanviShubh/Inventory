@@ -20,7 +20,7 @@ const Dispatch = () => {
       </div>
       <Searchbox searchData={val} />
 
-      <FilterBox />
+      <FilterBox filterType="Product Dispatched" />
 
       <Table
         tableHead="Dispatch Item from Stock"

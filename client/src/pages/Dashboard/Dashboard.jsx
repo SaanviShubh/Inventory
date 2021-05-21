@@ -134,13 +134,17 @@ const Dashboard = () => {
       })
       .then((res) => {
         // console.log(res);
-        setLoader(false);
-        setAlertList(res.data);
-        var count = 0;
-        for (let i = 0; i < res.data.length; i++) {
-          count = ++count;
+        if (res.data.Error === "Cannot open directly") {
+          toast.info("You are Logged Out!");
+        } else {
+          setLoader(false);
+          setAlertList(res.data);
+          var count = 0;
+          for (let i = 0; i < res.data.length; i++) {
+            count = ++count;
+          }
+          localStorage.setItem("currentstock", JSON.stringify(count));
         }
-        localStorage.setItem("currentstock", JSON.stringify(count));
       });
   }, []);
 

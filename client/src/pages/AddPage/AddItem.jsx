@@ -4,6 +4,7 @@ import "../Dashboard/Dashboard.css";
 import Table from "../../components/Table/Table";
 import Searchbox from "../../components/Searchbox/Searchbox";
 import Toast from "../../components/Toast/Toast";
+import FilterBox from "../../components/FilterBox/FilterBox";
 
 const AddItem = () => {
   const [val, setVal] = useState([]);
@@ -19,6 +20,9 @@ const AddItem = () => {
         <p id="dashboard__subheader">ADD/LIST</p>
       </div>
       <Searchbox searchData={val} />
+
+      <FilterBox filterType="Product added to stock" />
+
       <Table
         tableHead="Add Items to the Stock"
         hit="viewtransactions/"

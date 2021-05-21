@@ -196,6 +196,8 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
                 <th>Barcode</th>
                 <th>SKU Number</th>
                 <th>Date</th>
+                <th>Party Name</th>
+                <th>Bill Number</th>
               </tr>
 
               {[...tableItems].reverse().map((ss) =>
