@@ -1,4 +1,7 @@
 .current_stock_page {
+  /* height: calc(100vh - 60px); */
+  min-height: 100vh;
+  /* border: 2px solid red; */
   padding: 30px;
   background-color: rgb(93%, 95%, 100%);
 }

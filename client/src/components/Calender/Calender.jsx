@@ -14,6 +14,8 @@ const Calender = ({ filterCallback }) => {
   const [filteredState, setFilteredState] = useState(false);
   const [loader, setLoader] = useState(false);
 
+  const authtoken = localStorage.getItem("token");
+
   const clearHandler = () => {
     setFromDate(null);
     setToDate(null);
@@ -41,10 +43,18 @@ const Calender = ({ filterCallback }) => {
       // console.log(day + "/" + month + "/" + year);
 
       axios
-        .post(process.env.REACT_APP_URL + "/filtering_using_dates/", {
-          start_date,
-          end_date,
-        })
+        .post(
+          process.env.REACT_APP_URL + "/filtering_using_dates/",
+          {
+            start_date,
+            end_date,
+          },
+          {
+            headers: {
+              authtoken: authtoken,
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data);
           var string1 = "Product added to stock";

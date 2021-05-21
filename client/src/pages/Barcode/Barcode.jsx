@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { HashLoader } from "react-spinners";
-import Searchbox from "../../components/Searchbox/Searchbox";
 import "./Barcode.css";
 
 const Barcode = () => {
@@ -14,6 +13,8 @@ const Barcode = () => {
   const [barSp, setSp] = useState("");
   const [recentBarcodes, setRecentBarcodes] = useState([]);
   const [loader, setLoader] = useState(false);
+
+  const authtoken = localStorage.getItem("token");
 
   const GenerateBarcode = () => {
     setLoader(true);
@@ -36,14 +37,22 @@ const Barcode = () => {
       var qty = barQty;
 
       axios
-        .post(process.env.REACT_APP_URL + "/generatebarcode/", {
-          articleno,
-          color,
-          size,
-          cost_price,
-          sell_price,
-          qty,
-        })
+        .post(
+          process.env.REACT_APP_URL + "/generatebarcode/",
+          {
+            articleno,
+            color,
+            size,
+            cost_price,
+            sell_price,
+            qty,
+          },
+          {
+            headers: {
+              authtoken: authtoken,
+            },
+          }
+        )
         .then((res) => {
           if (res.data.Error === "") {
             setLoader(false);

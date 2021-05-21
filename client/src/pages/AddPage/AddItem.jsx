@@ -18,7 +18,7 @@ const AddItem = () => {
         <p id="dashboard__header">Add Your Items</p>
         <p id="dashboard__subheader">ADD/LIST</p>
       </div>
-      <Searchbox searchHit="searchprod_in_stock/" />
+      <Searchbox searchData={val} />
       <Table
         tableHead="Add Items to the Stock"
         hit="viewtransactions/"

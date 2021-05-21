@@ -357,13 +357,23 @@
   margin-top: 20px;
   padding: 30px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   /* border: 2px solid red; */
 }
 
-.barchart {
-  width: 70%;
+.barchart_wrapper p {
+  width: 100%;
+  text-align: start;
+  font-weight: 600;
   padding: 10px;
+  /* border: 1px solid black; */
+}
+
+.barchart {
+  width: 80%;
+  /* padding: 10px; */
   /* border: 2px solid red; */
 }
 

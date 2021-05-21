@@ -11,6 +11,8 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
   const [isLoading, setloading] = useState(true);
   const [reload, setReload] = useState(false);
 
+  const authtoken = localStorage.getItem("token");
+
   //To Reload Table on new Entry (Add, Dispatch, Return) Returned from Input
   const tableReload = useCallback((ss) => {
     if (ss) {
@@ -18,19 +20,11 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
     }
   }, []);
 
-  const authtoken = localStorage.getItem("token");
-
-
   useEffect(() => {
-    
-    const headers = {
-      "authtoken":  authtoken
-    };
-
     axios
       .get(process.env.REACT_APP_URL + `/${hit}`, {
         headers: {
-          headers
+          authtoken: authtoken,
         },
       })
       .then((res) => {
@@ -43,7 +37,6 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
         console.log(error);
         toast.error("Something Went Wrong");
       });
-    // .catch((toast.error("Something Went Wrong"));
   }, [reload]);
 
   const tableUrl = window.location.href;
@@ -78,8 +71,8 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
             </tr>
 
             {/* Dummy Data */}
-            {/* 
-                        {/*<tr>
+
+            {/*<tr>
               <td>1207-BLU-40</td>
               <td>1207</td>
               <td>BLU</td>
@@ -148,30 +141,33 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
                 <th>Action</th>
               </tr>
 
-              {[...tableItems].reverse().map((ss) => (
-                <tr>
-                  <td>{ss.Barcode}</td>
-                  <td>{ss.modelname}</td>
-                  <td>{ss.Date}</td>
-                  <td>
-                    <span
-                      className={
-                        ss.action === "Product added to stock"
-                          ? "action_sold"
+              {[...tableItems]
+                .reverse()
+                .slice(0, 500)
+                .map((ss) => (
+                  <tr>
+                    <td>{ss.Barcode}</td>
+                    <td>{ss.modelname}</td>
+                    <td>{ss.Date}</td>
+                    <td>
+                      <span
+                        className={
+                          ss.action === "Product added to stock"
+                            ? "action_sold"
+                            : ss.action === "Product Dispatched"
+                            ? "action_dispatch"
+                            : "action_return"
+                        }
+                      >
+                        {ss.action === "Product added to stock"
+                          ? "Added"
                           : ss.action === "Product Dispatched"
-                          ? "action_dispatch"
-                          : "action_return"
-                      }
-                    >
-                      {ss.action === "Product added to stock"
-                        ? "Added"
-                        : ss.action === "Product Dispatched"
-                        ? "Dispatched"
-                        : "Returned"}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+                          ? "Dispatched"
+                          : "Returned"}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
             </table>
           )}
         </div>

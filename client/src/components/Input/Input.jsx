@@ -15,7 +15,6 @@ const Input = ({ text, inputHit, tableCallback }) => {
   const [billno, setBillNumber] = useState("");
 
   const authtoken = localStorage.getItem("token");
-  // console.log(auth);
 
   const SubmitHandler = () => {
     setLoader(true);
@@ -26,8 +25,12 @@ const Input = ({ text, inputHit, tableCallback }) => {
       axios
         .post(
           process.env.REACT_APP_URL + `/${inputHit}`,
-          { input }
-          // { headers: { authToken } }
+          { input },
+          {
+            headers: {
+              authtoken: authtoken,
+            },
+          }
         )
         .then((res) => {
           if (res.data.Error === "") {
@@ -48,10 +51,6 @@ const Input = ({ text, inputHit, tableCallback }) => {
     }
   };
 
-  const headers = {
-    "authtoken": authtoken,
-  };
-
   const AddSubmitHandler = () => {
     setLoader(true);
     if (input === "") {
@@ -62,7 +61,11 @@ const Input = ({ text, inputHit, tableCallback }) => {
         .post(
           process.env.REACT_APP_URL + `/${inputHit}`,
           { input, billno, party_name },
-          { headers: headers }
+          {
+            headers: {
+              authtoken: authtoken,
+            },
+          }
         )
         .then((res) => {
           if (res.data.Error === "") {

@@ -3,12 +3,11 @@ import axios from "axios";
 import { Bar } from "react-chartjs-2";
 
 const BarChart = ({ graphData }) => {
-  const [chartData, setChartData] = useState({});
   const [soldData, setSoldData] = useState([]);
   const [retData, setReturnData] = useState([]);
 
   useEffect(() => {
-    console.log(graphData);
+    // console.log(graphData);
 
     //For Items Sold Bar
     var Jan = 0,
@@ -40,11 +39,7 @@ const BarChart = ({ graphData }) => {
 
     for (let i = 0; i < graphData.length; i++) {
       // console.log(graphData);
-      // var edate = new Date(graphData[i].Date.toString().replace("IST", ""));
       var month = graphData[i].Date.split("/")[1];
-      // console.log(edate);
-      // var month = edate.getDate();
-      // console.log(month);
 
       if (graphData[i].action === "Product Dispatched") {
         switch (month) {
@@ -62,7 +57,7 @@ const BarChart = ({ graphData }) => {
             break;
           case "05":
             May = May + 1;
-            console.log(May);
+            // console.log(May);
             break;
           case "06":
             var June = June + 1;
@@ -101,7 +96,7 @@ const BarChart = ({ graphData }) => {
             break;
           case "05":
             may = may + 1;
-            console.log(may);
+            // console.log(may);
             break;
           case 6:
             june = june + 1;

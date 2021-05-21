@@ -1,20 +1,35 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./Login.css";
 import login_image from "../../assets/login_image.svg";
+import { HashLoader } from "react-spinners";
 import axios from "axios";
 
 export default function Login({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [loader, setLoader] = useState(false);
+
+  const history = useHistory();
+  const authtoken = localStorage.getItem("token");
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoader(true);
     axios
-      .post(process.env.REACT_APP_URL + "/loginpage/", { username, password })
+      .post(
+        process.env.REACT_APP_URL + "/loginpage/",
+        { username, password },
+        {
+          headers: {
+            authtoken: authtoken,
+          },
+        }
+      )
       .then((res) => {
-        console.log(res.data.token);
-        setToken(res.data.token);
+        // console.log(res.data);
         localStorage.setItem("token", res.data.token);
+        history.push("/");
       });
   };
 

@@ -9,6 +9,7 @@ import { Bar } from "react-chartjs-2";
 import BarChart from "../../components/Charts/BarChart";
 import { Link } from "react-router-dom";
 import Table from "../../components/Table/Table";
+import { toast } from "react-toastify";
 require("dotenv").config();
 
 const Dashboard = () => {
@@ -33,6 +34,8 @@ const Dashboard = () => {
   const [monthlyReturned, setMonthlyReturned] = useState(0);
   const [loader, setLoader] = useState(true);
   const [clearBtn, setClearBtn] = useState(false);
+
+  const authtoken = localStorage.getItem("token");
 
   //Callback Function for Calender to recieve Filtered Data
   const myCallback = useCallback((ss) => {
@@ -69,65 +72,76 @@ const Dashboard = () => {
 
   //For SearchBox, Table, Calender
   useEffect(() => {
-    axios.get(process.env.REACT_APP_URL + "/viewtransactions/").then((res) => {
-      console.log(res.data);
-      setItemsArray(res.data);
+    axios
+      .get(process.env.REACT_APP_URL + "/viewtransactions/", {
+        headers: {
+          authtoken: authtoken,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setItemsArray(res.data);
 
-      var add_count = 0;
-      var dis_count = 0;
-      var ret_count = 0;
+        var add_count = 0;
+        var dis_count = 0;
+        var ret_count = 0;
 
-      for (let i = 0; i < res.data.length; i++) {
-        // console.log("DATA" + res);
-        // console.log("Date from DATA = " + res.data[i].Date);
-        //var edate = new Date(res.data[i].Date);
-        var emonth = res.data[i].Date.split("/")[1];
-        // console.log("Month from DATA = " + emonth);
+        for (let i = 0; i < res.data.length; i++) {
+          // console.log("DATA" + res);
+          // console.log("Date from DATA = " + res.data[i].Date);
+          var emonth = res.data[i].Date.split("/")[1];
+          // console.log("Month from DATA = " + emonth);
 
-        var currDate = new Date();
-        let currMonth =
-          currDate.getMonth() + 1 < 10
-            ? "0" + (currDate.getMonth() + 1)
-            : currDate.getMonth() + 1;
-        // console.log(currDate);
-        // console.log("Current Month = " + currMonth);
+          var currDate = new Date();
+          let currMonth =
+            currDate.getMonth() + 1 < 10
+              ? "0" + (currDate.getMonth() + 1)
+              : currDate.getMonth() + 1;
+          // console.log(currDate);
+          // console.log("Current Month = " + currMonth);
 
-        if (
-          emonth === currMonth &&
-          res.data[i].action === "Product added to stock"
-        ) {
-          console.log(res.data[i]);
-          add_count = ++add_count;
-        } else if (
-          emonth === currMonth &&
-          res.data[i].action === "Product Dispatched"
-        ) {
-          dis_count = dis_count + 1;
-        } else if (
-          emonth === currMonth &&
-          res.data[i].action === "Product returned"
-        ) {
-          ret_count = ret_count + 1;
+          if (
+            emonth === currMonth &&
+            res.data[i].action === "Product added to stock"
+          ) {
+            add_count = ++add_count;
+            // console.log(res.data[i]);
+          } else if (
+            emonth === currMonth &&
+            res.data[i].action === "Product Dispatched"
+          ) {
+            dis_count = dis_count + 1;
+          } else if (
+            emonth === currMonth &&
+            res.data[i].action === "Product returned"
+          ) {
+            ret_count = ret_count + 1;
+          }
         }
-      }
-      setMonthlyAdded(add_count);
-      setMonthlyDispatched(dis_count);
-      setMonthlyReturned(ret_count);
-    });
+        setMonthlyAdded(add_count);
+        setMonthlyDispatched(dis_count);
+        setMonthlyReturned(ret_count);
+      });
   }, []);
 
   //Setting Alert List and Total Stock Available
   useEffect(() => {
-    axios.get(process.env.REACT_APP_URL + "/viewallprods/").then((res) => {
-      setLoader(false);
-      setAlertList(res.data);
-      var count = 0;
-      for (let i = 0; i < res.data.length; i++) {
-        count = ++count;
-      }
-      localStorage.setItem("currentstock", JSON.stringify(count));
-      // setTotalStock(JSON.parse(localStorage.getItem("currentstock")));
-    });
+    axios
+      .get(process.env.REACT_APP_URL + "/viewallprods/", {
+        headers: {
+          authtoken: authtoken,
+        },
+      })
+      .then((res) => {
+        // console.log(res);
+        setLoader(false);
+        setAlertList(res.data);
+        var count = 0;
+        for (let i = 0; i < res.data.length; i++) {
+          count = ++count;
+        }
+        localStorage.setItem("currentstock", JSON.stringify(count));
+      });
   }, []);
 
   return (
@@ -251,6 +265,7 @@ const Dashboard = () => {
       </div>
 
       <div className="barchart_wrapper">
+        <p>Monthly Sales Chart</p>
         <div className="barchart">
           <BarChart graphData={itemsArray} />
         </div>
