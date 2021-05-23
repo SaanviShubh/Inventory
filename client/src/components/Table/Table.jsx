@@ -239,7 +239,6 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
                 <th>SKU Number</th>
                 <th>Date</th>
               </tr>
-
               {[...tableItems].reverse().map((ss) => (
                 <tr>
                   <td>{ss.Barcode}</td>
@@ -247,6 +246,15 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
                   <td>{ss.Date}</td>
                 </tr>
               ))}
+              {/* {[...tableItems].reverse().map((ss) =>
+                ss.action === "Product Dispatched" ? (
+                  <tr>
+                    <td>{ss.Barcode}</td>
+                    <td>{ss.modelname}</td>
+                    <td>{ss.Date}</td>
+                  </tr>
+                ) : null
+              )} */}
             </table>
           )}
         </div>

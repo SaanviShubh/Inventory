@@ -43,20 +43,35 @@ const Searchbox = ({ searchData }) => {
       </div>
       <div className="search_result">
         {[...searchResult]
+
           .filter((ss) => ss.Barcode === searchInput)
           .map((filtered) => (
-            <div>
+            <div className="search_body">
               <div className="search_result_table">
                 <div class="search_result_table_head">Barcode</div>
-                <div class="search_result_table_head">ModelName</div>
                 <div class="search_result_table_head">Date</div>
                 <div class="search_result_table_head">Action</div>
               </div>
               <div className="search_result_table">
                 <div class="search_result_table_cell">{filtered.Barcode}</div>
-                <div class="search_result_table_cell">{filtered.modelname}</div>
                 <div class="search_result_table_cell">{filtered.Date}</div>
-                <div class="search_result_table_cell">{filtered.action}</div>
+                <div class="search_result_table_cell">
+                  <span
+                    className={
+                      filtered.action === "Product added to stock"
+                        ? "action_sold"
+                        : filtered.action === "Product Dispatched"
+                        ? "action_dispatch"
+                        : "action_return"
+                    }
+                  >
+                    {filtered.action === "Product added to stock"
+                      ? "Added"
+                      : filtered.action === "Product Dispatched"
+                      ? "Dispatched"
+                      : "Returned"}
+                  </span>
+                </div>
               </div>
             </div>
           ))}

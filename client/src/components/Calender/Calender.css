@@ -1,24 +1,15 @@
 .calender_filter {
   display: flex;
-  /* border: 2px solid green; */
   justify-content: center;
   align-items: center;
   margin-right: 10px;
+  /* border: 2px solid green; */
 }
 
 .calender {
-  /* border: 2px solid red; */
   display: flex;
-  /* flex-direction: column; */
   padding: 3px;
-}
-
-.calender button {
-  margin-right: 3px;
-}
-
-.calender button:hover {
-  background-color: transparent;
+  /* border: 2px solid red; */
 }
 
 #date_input {
@@ -26,4 +17,13 @@
   padding: 4px;
   outline: none;
   border: 0.5px solid grey;
+}
+
+/* Cross buttons in input fields */
+.calender button {
+  margin-right: 3px;
+}
+
+.calender button:hover {
+  background-color: transparent;
 }

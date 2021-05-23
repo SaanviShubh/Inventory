@@ -120,7 +120,11 @@ const Input = ({ text, inputHit, tableCallback }) => {
             setBillNumber(e.target.value);
           }}
         />
-        <i class="fas fa-plus-square fa-2x" onClick={AddSubmitHandler}></i>
+        {loader ? (
+          <MoonLoader size={20} color="#1877F2" />
+        ) : (
+          <i class="fas fa-plus-square fa-2x" onClick={AddSubmitHandler}></i>
+        )}
       </div>
     );
   } else {

@@ -1,16 +1,22 @@
 import React, { useCallback, useState } from "react";
 import "./FilterBox.css";
 import Calender from "../../components/Calender/Calender";
+import { toast } from "react-toastify";
 
 const FilterBox = ({ filterType }) => {
   const [filteredArray, setFilteredArray] = useState([]);
   const [clearBtn, setClearBtn] = useState(false);
 
   const myCallback = useCallback((ss, qq) => {
-    setFilteredArray(qq);
+    if (qq === null) {
+      toast.info("Not Found");
+    } else {
+      setFilteredArray(qq);
+    }
     setClearBtn(true);
   });
 
+  //Hanldes Clearing of filtered Array(Cross Button)
   const clearFilteredArray = () => {
     setFilteredArray([]);
     setClearBtn(false);
@@ -24,6 +30,7 @@ const FilterBox = ({ filterType }) => {
           <i class="fas fa-times fa-lg" onClick={clearFilteredArray}></i>
         ) : null}
       </div>
+      {/* Css recieving from SearchBox css */}
       <div className="search_result_table">
         <div class="search_result_table_head">Barcode</div>
         <div class="search_result_table_head">Date</div>

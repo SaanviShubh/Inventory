@@ -216,8 +216,7 @@ const Barcode = () => {
         </div>
       </div>
       <p className="barcode_notice">
-        Notice : Barcodes will be save in your device's Drive(Filder Name:
-        generated_barcodes)
+        Notice : Barcodes will be saved in your Google Drive.
       </p>
     </div>
   );

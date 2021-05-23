@@ -11,6 +11,7 @@ const Calender = ({ filterCallback }) => {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
 
+  //This is for handling Clear Button
   const [filteredState, setFilteredState] = useState(false);
   const [loader, setLoader] = useState(false);
 
@@ -56,63 +57,69 @@ const Calender = ({ filterCallback }) => {
           }
         )
         .then((res) => {
-          console.log(res.data);
-          var string1 = "Product added to stock";
-          var string2 = "Product Dispatched";
-          var string3 = "Product returned";
+          if (res.data.Error === "") {
+            console.log(res.data);
+            var string1 = "Product added to stock";
+            var string2 = "Product Dispatched";
+            var string3 = "Product returned";
 
-          var acount = 0;
-          var dcount = 0;
-          var rcount = 0;
+            var acount = 0;
+            var dcount = 0;
+            var rcount = 0;
 
-          var acp = 0;
-          var asp = 0;
+            var acp = 0;
+            var asp = 0;
 
-          var dcp = 0;
-          var dsp = 0;
+            var dcp = 0;
+            var dsp = 0;
 
-          var rcp = 0;
-          var rsp = 0;
+            var rcp = 0;
+            var rsp = 0;
 
-          for (let i = 0; i < res.data.length; i++) {
-            // console.log("hi");
+            for (let i = 0; i < res.data.length; i++) {
+              // console.log("hi");
 
-            if (res.data[i].action === string1) {
-              ++acount;
-              acp += res.data[i].cost_price;
-              asp += res.data[i].sell_price;
-              // console.log("added + 1");
-            } else if (res.data[i].action === string2) {
-              ++dcount;
-              dcp += res.data[i].cost_price;
-              dsp += res.data[i].sell_price;
-              // console.log("dispatch + 1");
-            } else if (res.data[i].action === string3) {
-              ++rcount;
-              rcp += res.data[i].cost_price;
-              rsp += res.data[i].sell_price;
-              // console.log("ret + 1");
+              if (res.data[i].action === string1) {
+                ++acount;
+                acp += res.data[i].cost_price;
+                asp += res.data[i].sell_price;
+                // console.log("added + 1");
+              } else if (res.data[i].action === string2) {
+                ++dcount;
+                dcp += res.data[i].cost_price;
+                dsp += res.data[i].sell_price;
+                // console.log("dispatch + 1");
+              } else if (res.data[i].action === string3) {
+                ++rcount;
+                rcp += res.data[i].cost_price;
+                rsp += res.data[i].sell_price;
+                // console.log("ret + 1");
+              }
             }
+            // console.log(added);
+            // console.log(dispatched);
+            // console.log(returned);
+
+            var toDash = {
+              addno: acount,
+              dispatchno: dcount,
+              returnno: rcount,
+              added_costprice: acp,
+              added_sellprice: asp,
+              dispatched_costprice: dcp,
+              dispatched_sellprice: dsp,
+              returned_costprice: rcp,
+              returned_sellprice: rsp,
+            };
+
+            //Sending two callbacks --> toDash to Dashboard for graphs, res.data to other pages for filterbox
+            filterCallback(toDash, res.data);
+            setLoader(false);
+            setFilteredState(true);
+          } else {
+            toast.error(res.data.Error);
+            setLoader(false);
           }
-          // console.log(added);
-          // console.log(dispatched);
-          // console.log(returned);
-
-          var toDash = {
-            addno: acount,
-            dispatchno: dcount,
-            returnno: rcount,
-            added_costprice: acp,
-            added_sellprice: asp,
-            dispatched_costprice: dcp,
-            dispatched_sellprice: dsp,
-            returned_costprice: rcp,
-            returned_sellprice: rsp,
-          };
-
-          filterCallback(toDash, res.data);
-          setLoader(false);
-          setFilteredState(true);
         })
         .catch((error) => {
           toast.error("Something Went Wrong!");

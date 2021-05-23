@@ -68,9 +68,9 @@
 .search_result_table_cell,
 .search_result_table_head {
   display: table-cell;
-  width: 16%;
+  min-width: 25%;
   border: 1px solid #ddd;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 8px;
   text-align: center;
 }
@@ -79,3 +79,25 @@
   background-color: rgb(93%, 95%, 100%);
   color: rgb(165, 165, 165);
 }
+
+.action_sold {
+  color: #fff;
+  padding: 3px 7px;
+  background-color: rgb(10%, 68%, 47%);
+}
+
+.action_dispatch {
+  color: #fff;
+  padding: 3px 7px;
+  background-color: rgb(57%, 35%, 81%);
+}
+
+.action_return {
+  color: #fff;
+  padding: 3px 7px;
+  background-color: rgb(85%, 24%, 19%);
+}
+
+/* .search_body{
+  display: ;
+} */

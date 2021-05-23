@@ -135,10 +135,13 @@ const Dashboard = () => {
       .then((res) => {
         // console.log(res);
         if (res.data.Error === "Cannot open directly") {
+          // setAlertList("");
           toast.info("You are Logged Out!");
         } else {
           setLoader(false);
-          setAlertList(res.data);
+          localStorage.setItem("allProducts", JSON.stringify(res.data));
+          const alertListData = localStorage.getItem("allProducts");
+          setAlertList(JSON.parse(alertListData));
           var count = 0;
           for (let i = 0; i < res.data.length; i++) {
             count = ++count;
@@ -205,13 +208,16 @@ const Dashboard = () => {
             {loader ? <HashLoader size={20} color="c45551" /> : null}
           </div>
           <div className="alert_list">
-            {[...alertList].map((qq) => (
-              <div>
-                {qq.qty <= 5 ? (
-                  <p id="alert_list">{qq.modelname + " = " + qq.qty} </p>
-                ) : null}
-              </div>
-            ))}
+            {
+              // console.log(alertList)
+              [...alertList].map((qq) => (
+                <div>
+                  {qq.qty <= 5 ? (
+                    <p id="alert_list">{qq.modelname + " = " + qq.qty} </p>
+                  ) : null}
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
