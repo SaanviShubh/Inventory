@@ -9,6 +9,7 @@ import { Bar } from "react-chartjs-2";
 import BarChart from "../../components/Charts/BarChart";
 import { Link } from "react-router-dom";
 import Table from "../../components/Table/Table";
+import Error from "../ErrorPage/Error";
 import { toast } from "react-toastify";
 require("dotenv").config();
 
@@ -26,9 +27,7 @@ const Dashboard = () => {
   //Quantity Alert
   const [alertList, setAlertList] = useState("");
   //Monthly Updates
-  const [totalStock, setTotalStock] = useState(
-    JSON.parse(localStorage.getItem("currentstock"))
-  );
+  const [totalStock, setTotalStock] = useState(0);
   const [monthlyAdded, setMonthlyAdded] = useState(0);
   const [monthlyDispatched, setMonthlyDispatched] = useState(0);
   const [monthlyReturned, setMonthlyReturned] = useState(0);
@@ -38,8 +37,9 @@ const Dashboard = () => {
   const authtoken = localStorage.getItem("token");
 
   //Callback Function for Calender to recieve Filtered Data
-  const myCallback = useCallback((ss) => {
+  const myCallback = useCallback((ss, qq) => {
     console.log(ss);
+    console.log("hi");
     setAdded(ss.addno);
     setDispatched(ss.dispatchno);
     setReturned(ss.returnno);
@@ -51,7 +51,7 @@ const Dashboard = () => {
     setReturnedWorth(ss.returned_sellprice);
 
     setProfitWorth(ss.dispatched_sellprice - ss.returned_sellprice);
-
+    console.log(added);
     setClearBtn(true);
   });
 
@@ -59,10 +59,10 @@ const Dashboard = () => {
     setAdded(null);
     setDispatched(null);
     setReturned(null);
+    setTotalSalesPerc(null);
     setSoldWorth(0);
     setReturnedWorth(0);
     setProfitWorth(0);
-
     setClearBtn(false);
   };
 
@@ -90,29 +90,35 @@ const Dashboard = () => {
           // console.log("DATA" + res);
           // console.log("Date from DATA = " + res.data[i].Date);
           var emonth = res.data[i].Date.split("/")[1];
-          // console.log("Month from DATA = " + emonth);
+          var eyear = res.data[i].Date.split("/")[2];
+          console.log("Month from DATA = " + eyear);
 
           var currDate = new Date();
-          let currMonth =
+          var currYear = currDate.getFullYear();
+          // console.log(currYear);
+
+          var currMonth =
             currDate.getMonth() + 1 < 10
               ? "0" + (currDate.getMonth() + 1)
               : currDate.getMonth() + 1;
-          // console.log(currDate);
           // console.log("Current Month = " + currMonth);
 
           if (
             emonth === currMonth &&
+            eyear == currYear &&
             res.data[i].action === "Product added to stock"
           ) {
             add_count = ++add_count;
             // console.log(res.data[i]);
           } else if (
             emonth === currMonth &&
+            eyear == currYear &&
             res.data[i].action === "Product Dispatched"
           ) {
             dis_count = dis_count + 1;
           } else if (
             emonth === currMonth &&
+            eyear == currYear &&
             res.data[i].action === "Product returned"
           ) {
             ret_count = ret_count + 1;
@@ -121,6 +127,9 @@ const Dashboard = () => {
         setMonthlyAdded(add_count);
         setMonthlyDispatched(dis_count);
         setMonthlyReturned(ret_count);
+      })
+      .catch((error) => {
+        toast.error("Something Went Wrong!");
       });
   }, []);
 
@@ -147,144 +156,156 @@ const Dashboard = () => {
             count = ++count;
           }
           localStorage.setItem("currentstock", JSON.stringify(count));
+          setTotalStock(localStorage.getItem("currentstock"));
+          // console.log(totalStock);
         }
+      })
+      .catch((error) => {
+        toast.error("Something went Wrong!");
+        console.log(error);
       });
   }, []);
 
   return (
     <div className="dashboard">
-      <div className="dashboard__head">
-        <p id="dashboard__header">Welcome to Dashboard</p>
-        <p id="dashboard__subheader">DASHBOARD/SEARCH</p>
-      </div>
+      {"token" in localStorage ? (
+        <div>
+          <div className="dashboard__head">
+            <p id="dashboard__header">Welcome to Dashboard</p>
+            <p id="dashboard__subheader">DASHBOARD/SEARCH</p>
+          </div>
 
-      <Searchbox searchData={itemsArray} />
+          <Searchbox searchData={itemsArray} />
 
-      {/* CHECK ALTERNATIVE (CSS)*/}
+          {/* CHECK ALTERNATIVE (CSS)*/}
 
-      <div className="items_detail">
-        <div className="detail">
-          <div className="articles_icon">
-            <i id="articles" className="fab fa-shopify fa-2x"></i>
-          </div>
-          <div className="item_detail">
-            <p className="number_of_item">{totalStock}</p>
-            <p className="detail_heading">Current Stock</p>
-          </div>
-        </div>
+          <div className="items_detail">
+            <div className="detail">
+              <div className="articles_icon">
+                <i id="articles" className="fab fa-shopify fa-2x"></i>
+              </div>
+              <div className="item_detail">
+                <p className="number_of_item">{totalStock}</p>
+                <p className="detail_heading">Current Stock</p>
+              </div>
+            </div>
 
-        <div className="detail">
-          <div className="added_icon">
-            <i id="added" className="far fa-plus-square fa-2x"></i>
-          </div>
-          <div className="item_detail">
-            <p className="number_of_item">{monthlyAdded}</p>
-            <p className="detail_heading">Items Added</p>
-          </div>
-        </div>
+            <div className="detail">
+              <div className="added_icon">
+                <i id="added" className="far fa-plus-square fa-2x"></i>
+              </div>
+              <div className="item_detail">
+                <p className="number_of_item">{monthlyAdded}</p>
+                <p className="detail_heading">Items Added</p>
+              </div>
+            </div>
 
-        <div className="detail">
-          <div className="dispatched_icon">
-            <i id="dispatched" className="far fa-minus-square fa-2x"></i>
-          </div>
-          <div className="item_detail">
-            <p className="number_of_item">{monthlyDispatched}</p>
-            <p className="detail_heading">Items Dispatched</p>
-          </div>
-        </div>
+            <div className="detail">
+              <div className="dispatched_icon">
+                <i id="dispatched" className="far fa-minus-square fa-2x"></i>
+              </div>
+              <div className="item_detail">
+                <p className="number_of_item">{monthlyDispatched}</p>
+                <p className="detail_heading">Items Dispatched</p>
+              </div>
+            </div>
 
-        <div className="detail">
-          <div className="returned_icon">
-            <i id="returned" className="fas fa-exchange-alt fa-2x"></i>
+            <div className="detail">
+              <div className="returned_icon">
+                <i id="returned" className="fas fa-exchange-alt fa-2x"></i>
+              </div>
+              <div className="item_detail">
+                <p className="number_of_item">{monthlyReturned}</p>
+                <p className="detail_heading">Items Returned</p>
+              </div>
+            </div>
+            <div className="quant_alert_list">
+              <div className="quant_alert_list_head">
+                <p>Alert Notification</p>
+                {loader ? <HashLoader size={20} color="c45551" /> : null}
+              </div>
+              <div className="alert_list">
+                {
+                  // console.log(alertList)
+                  [...alertList].map((qq) => (
+                    <div>
+                      {qq.qty <= 5 ? (
+                        <p id="alert_list">{qq.modelname + " = " + qq.qty} </p>
+                      ) : null}
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
           </div>
-          <div className="item_detail">
-            <p className="number_of_item">{monthlyReturned}</p>
-            <p className="detail_heading">Items Returned</p>
+
+          <div className="filter_pagebtn">
+            <Calender filterData={itemsArray} filterCallback={myCallback} />
+            {clearBtn ? (
+              <i class="fas fa-times fa-lg" onClick={clearFilteredGraphs}></i>
+            ) : null}
           </div>
-        </div>
-        <div className="quant_alert_list">
-          <div className="quant_alert_list_head">
-            <p>Alert Notification</p>
-            {loader ? <HashLoader size={20} color="c45551" /> : null}
-          </div>
-          <div className="alert_list">
-            {
-              // console.log(alertList)
-              [...alertList].map((qq) => (
-                <div>
-                  {qq.qty <= 5 ? (
-                    <p id="alert_list">{qq.modelname + " = " + qq.qty} </p>
-                  ) : null}
+
+          <div className="stock_analytics">
+            <div className="stock_chart">
+              <DoughnutChart
+                added={added}
+                dispatched={dispatched}
+                returned={returned}
+              />
+            </div>
+
+            <div className="stock_numbers">
+              <div className="sn_head_filter">
+                <p>Stock Analytics</p>
+              </div>
+              <div className="stock_numbers_details">
+                <div className="analytics">
+                  <div className="added_stock">
+                    <p>Added Items :- {added} </p>
+                  </div>
+                  <div className="dispatched_stock">
+                    <p>Dispatched Items :- {dispatched} </p>
+                  </div>
+                  <div className="returned_stock">
+                    <p>Returned Items :- {returned}</p>
+                  </div>
+                  <div className="profit_stock">
+                    <p>Total Sales :- {totalSalesperc}%</p>
+                  </div>
                 </div>
-              ))
-            }
+                <div className="revenue_side">
+                  <div className="revenue_details">
+                    <div className="sale_money">
+                      <p>Sold Worth :- ₹ {soldWorth} </p>
+                    </div>
+                    <div className="return_money">
+                      <p>Returned Worth :- ₹ {returnedWorth} </p>
+                    </div>
+                    <div className="profit_money">
+                      <p>Profit Gained :- ₹ {profitWorth}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div className="filter_pagebtn">
-        <Calender filterData={itemsArray} filterCallback={myCallback} />
-        {clearBtn ? (
-          <i class="fas fa-times fa-lg" onClick={clearFilteredGraphs}></i>
-        ) : null}
-      </div>
-
-      <div className="stock_analytics">
-        <div className="stock_chart">
-          <DoughnutChart
-            added={added}
-            dispatched={dispatched}
-            returned={returned}
+          <div className="barchart_wrapper">
+            <p>Monthly Sales Chart</p>
+            <div className="barchart">
+              <BarChart graphData={itemsArray} />
+            </div>
+          </div>
+          <Table
+            hit="viewtransactions/"
+            tableHead="Recent Transactions List"
+            callbackVal={myCallbackTwo}
           />
         </div>
-
-        <div className="stock_numbers">
-          <div className="sn_head_filter">
-            <p>Stock Analytics</p>
-          </div>
-          <div className="stock_numbers_details">
-            <div className="analytics">
-              <div className="added_stock">
-                <p>Added Items :- {added} </p>
-              </div>
-              <div className="dispatched_stock">
-                <p>Dispatched Items :- {dispatched} </p>
-              </div>
-              <div className="returned_stock">
-                <p>Returned Items :- {returned}</p>
-              </div>
-              <div className="profit_stock">
-                <p>Total Sales :- {totalSalesperc}%</p>
-              </div>
-            </div>
-            <div className="revenue_side">
-              <div className="revenue_details">
-                <div className="sale_money">
-                  <p>Sold Worth :- ₹ {soldWorth} </p>
-                </div>
-                <div className="return_money">
-                  <p>Returned Worth :- ₹ {returnedWorth} </p>
-                </div>
-                <div className="profit_money">
-                  <p>Profit Gained :- ₹ {profitWorth}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="barchart_wrapper">
-        <p>Monthly Sales Chart</p>
-        <div className="barchart">
-          <BarChart graphData={itemsArray} />
-        </div>
-      </div>
-      <Table
-        hit="viewtransactions/"
-        tableHead="Recent Transactions List"
-        callbackVal={myCallbackTwo}
-      />
+      ) : (
+        <Error />
+      )}
     </div>
   );
 };

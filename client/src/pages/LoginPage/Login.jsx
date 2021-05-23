@@ -4,10 +4,11 @@ import "./Login.css";
 import login_image from "../../assets/login_image.svg";
 import { HashLoader } from "react-spinners";
 import axios from "axios";
+import { toast } from "react-toastify";
 
-export default function Login({ setToken }) {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
 
   const history = useHistory();
@@ -20,21 +21,31 @@ export default function Login({ setToken }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoader(true);
-    axios
-      .post(
-        process.env.REACT_APP_URL + "/loginpage/",
-        { username, password },
-        {
-          headers: {
-            authtoken: authtoken,
-          },
-        }
-      )
-      .then((res) => {
-        // console.log(res.data);
-        localStorage.setItem("token", res.data.token);
-        history.push("/");
-      });
+    if (username === "" || password === "") {
+      toast.error("Enter Details");
+    } else {
+      axios
+        .post(
+          process.env.REACT_APP_URL + "/loginpage/",
+          { username, password },
+          {
+            headers: {
+              authtoken: authtoken,
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data.Error === "") {
+            localStorage.setItem("token", res.data.token);
+            history.push("/");
+          } else {
+            toast.error(res.data.Error);
+          }
+        })
+        .catch((error) => {
+          toast.error("Something Went Wrong");
+        });
+    }
   };
 
   return (

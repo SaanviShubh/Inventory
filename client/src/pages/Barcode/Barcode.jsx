@@ -55,10 +55,7 @@ const Barcode = () => {
         )
         .then((res) => {
           if (res.data.Error === "") {
-            setLoader(false);
-            toast.error(res.data.Error);
-          } else {
-            toast.success("Barocode Generated");
+            toast.success("Barcode Generated");
             setLoader(false);
             setRecentBarcodes(res.data);
             setColor("");
@@ -67,6 +64,9 @@ const Barcode = () => {
             setCp("");
             setSp("");
             seyQty("");
+          } else {
+            setLoader(false);
+            toast.error(res.data.Error);
           }
         })
         .catch((error) => {
