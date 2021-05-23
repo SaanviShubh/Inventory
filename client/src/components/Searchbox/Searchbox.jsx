@@ -24,6 +24,8 @@ const Searchbox = ({ searchData }) => {
     setSearchResult([]);
   };
 
+  const tableUrl = window.location.href;
+
   return (
     <div className="searchbox">
       <p id="searchbox">Searchbox</p>
@@ -53,25 +55,38 @@ const Searchbox = ({ searchData }) => {
                 <div class="search_result_table_head">Action</div>
               </div>
               <div className="search_result_table">
-                <div class="search_result_table_cell">{filtered.Barcode}</div>
-                <div class="search_result_table_cell">{filtered.Date}</div>
-                <div class="search_result_table_cell">
-                  <span
-                    className={
-                      filtered.action === "Product added to stock"
-                        ? "action_sold"
-                        : filtered.action === "Product Dispatched"
-                        ? "action_dispatch"
-                        : "action_return"
-                    }
-                  >
-                    {filtered.action === "Product added to stock"
-                      ? "Added"
-                      : filtered.action === "Product Dispatched"
-                      ? "Dispatched"
-                      : "Returned"}
-                  </span>
-                </div>
+                {tableUrl === "http://localhost:3000/" ? (
+                  <div>
+                    <div class="search_result_table_cell">
+                      {filtered.Barcode}
+                    </div>
+                    <div class="search_result_table_cell">{filtered.Date}</div>
+                    <div class="search_result_table_cell">
+                      <span
+                        className={
+                          filtered.action === "Product added to stock"
+                            ? "action_sold"
+                            : filtered.action === "Product Dispatched"
+                            ? "action_dispatch"
+                            : "action_return"
+                        }
+                      >
+                        {filtered.action === "Product added to stock"
+                          ? "Added"
+                          : filtered.action === "Product Dispatched"
+                          ? "Dispatched"
+                          : "Returned"}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <div class="search_result_table_cell">
+                      {filtered.Barcode}
+                    </div>
+                    <div class="search_result_table_cell">{filtered.Date}</div>
+                  </div>
+                )}
               </div>
             </div>
           ))}
