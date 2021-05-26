@@ -56,7 +56,7 @@ export default function Login() {
       <div className="login_inputs_wrapper">
         <div className="login_inputs">
           <p>Welcome to SaanviShubh!</p>
-          <div>
+          <form>
             <input
               // className="login_email"
               type="email"
@@ -71,9 +71,11 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
 
-          <button onClick={submitHandler}>Login</button>
+            <button onClick={submitHandler} type="submit">
+              Login
+            </button>
+          </form>
         </div>
         <button className="know_more_btn">Know More</button>
       </div>

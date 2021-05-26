@@ -39,16 +39,14 @@ const FilterBox = ({ filterType }) => {
       </div>
       {[...filteredArray].map((filter) => (
         <div>
-          <div className="search_result_table">
-            {filter.action === filterType ? (
-              <div>
-                <div class="search_result_table_cell">{filter.Barcode}</div>
-                <div class="search_result_table_cell">{filter.Date}</div>
-                <div class="search_result_table_cell">{filter.cost_price}</div>
-                <div class="search_result_table_cell">{filter.sell_price}</div>
-              </div>
-            ) : null}
-          </div>
+          {filter.action === filterType ? (
+            <div className="search_result_table">
+              <div class="search_result_table_cell">{filter.Barcode}</div>
+              <div class="search_result_table_cell">{filter.Date}</div>
+              <div class="search_result_table_cell">{filter.cost_price}</div>
+              <div class="search_result_table_cell">{filter.sell_price}</div>
+            </div>
+          ) : null}
         </div>
       ))}
     </div>
