@@ -206,6 +206,8 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
                     <td>{ss.Barcode}</td>
                     <td>{ss.modelname}</td>
                     <td>{ss.Date}</td>
+                    <td>{ss.party_name}</td>
+                    <td>{ss.billno}</td>
                   </tr>
                 ) : null
               )}
