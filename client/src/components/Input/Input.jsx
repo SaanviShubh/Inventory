@@ -53,7 +53,7 @@ const Input = ({ text, inputHit, tableCallback }) => {
 
   const AddSubmitHandler = () => {
     setLoader(true);
-    if (input === "") {
+    if (input === "" || party_name === "" || billno === "") {
       toast.error("Please Enter Details");
       setLoader(false);
     } else {

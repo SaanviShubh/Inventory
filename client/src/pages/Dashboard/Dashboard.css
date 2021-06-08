@@ -272,7 +272,7 @@
   padding: 0.8rem;
   text-align: center;
   background-color: rgb(82%, 94%, 89%);
-  border-right: 4px solid rgb(38%, 60%, 49%);
+  border-left: 4px solid rgb(38%, 60%, 49%);
   color: rgb(70, 121, 95);
 }
 
@@ -281,7 +281,7 @@
   padding: 0.8rem;
   text-align: center;
   background-color: rgb(89%, 86%, 96%);
-  border-right: 4px solid rgb(56%, 41%, 67%);
+  border-left: 4px solid rgb(56%, 41%, 67%);
   color: rgb(119, 85, 143);
 }
 
@@ -290,7 +290,7 @@
   padding: 0.8rem;
   text-align: center;
   background-color: rgb(97%, 85%, 84%);
-  border-right: 4px solid rgb(82%, 51%, 49%);
+  border-left: 4px solid rgb(82%, 51%, 49%);
   color: rgb(184, 77, 72);
 }
 
@@ -299,7 +299,7 @@
   padding: 0.8rem;
   text-align: center;
   background-color: rgb(80%, 89%, 98%);
-  border-right: 4px solid rgb(18%, 37%, 67%);
+  border-left: 4px solid rgb(18%, 37%, 67%);
   color: rgb(18%, 37%, 67%);
 }
 

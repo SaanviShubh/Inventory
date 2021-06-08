@@ -186,7 +186,7 @@ const Dashboard = () => {
               </div>
               <div className="item_detail">
                 <p className="number_of_item">{totalStock}</p>
-                <p className="detail_heading">Current Stock</p>
+                <p className="detail_heading">Total Models</p>
               </div>
             </div>
 

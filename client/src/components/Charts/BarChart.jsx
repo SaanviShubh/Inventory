@@ -40,7 +40,9 @@ const BarChart = ({ graphData }) => {
     for (let i = 0; i < graphData.length; i++) {
       // console.log(graphData);
       var month = graphData[i].Date.split("/")[1];
-
+      // console.log(graphData);
+      // console.log(month);
+      // console.log(graphData[i].Date);
       if (graphData[i].action === "Product Dispatched") {
         switch (month) {
           case "01":
@@ -61,26 +63,29 @@ const BarChart = ({ graphData }) => {
             break;
           case "06":
             var June = June + 1;
+            console.log(June);
             break;
           case "07":
+            var July = July + 1;
             break;
-          case 8:
+          case "08":
             var Aug = Aug + 1;
             break;
-          case 9:
+          case "09":
             var Sept = Sept + 1;
             break;
-          case 10:
+          case "10":
             var Oct = Oct + 1;
             break;
-          case 11:
+          case "11":
             var Nov = Nov + 1;
             break;
-          case 12:
+          case "12":
             var Dec = Dec + 1;
             break;
         }
       } else if (graphData[i].action === "Product returned") {
+        console.log(month);
         switch (month) {
           case 1:
             jan = jan + 1;
@@ -98,8 +103,9 @@ const BarChart = ({ graphData }) => {
             may = may + 1;
             // console.log(may);
             break;
-          case 6:
+          case "06":
             june = june + 1;
+            console.log(june);
             break;
           case 7:
             july = july + 1;
@@ -211,7 +217,7 @@ const BarChart = ({ graphData }) => {
                 "rgba(153, 102, 255, 1)",
                 "rgba(255, 159, 64, 1)",
               ],
-              borderWidth: 1,
+              borderWidth: 2,
               data: retData,
             },
           ],
