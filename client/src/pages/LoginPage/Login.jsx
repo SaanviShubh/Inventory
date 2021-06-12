@@ -5,6 +5,7 @@ import login_image from "../../assets/login_image.svg";
 import { HashLoader } from "react-spinners";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { back_end_url } from "../../config/configuration.json";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -26,7 +27,7 @@ export default function Login() {
     } else {
       axios
         .post(
-          process.env.REACT_APP_URL + "/loginpage/",
+          back_end_url + "/loginpage/",
           { username, password },
           {
             headers: {

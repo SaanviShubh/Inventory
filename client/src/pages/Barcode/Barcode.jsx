@@ -4,6 +4,7 @@ import axios from "axios";
 import Error from "../ErrorPage/Error";
 import { HashLoader } from "react-spinners";
 import "./Barcode.css";
+import { back_end_url } from "../../config/configuration.json";
 
 const Barcode = () => {
   const [barModelNo, setModelNo] = useState("");
@@ -39,7 +40,7 @@ const Barcode = () => {
 
       axios
         .post(
-          process.env.REACT_APP_URL + "/generatebarcode/",
+          back_end_url + "/generatebarcode/",
           {
             articleno,
             color,
@@ -72,7 +73,7 @@ const Barcode = () => {
         })
         .catch((error) => {
           // setLoader(false);
-          console.log(error);
+          // console.log(error);
           toast.error("Something Went Wrong");
         });
     }

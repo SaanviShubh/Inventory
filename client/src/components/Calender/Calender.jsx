@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { MoonLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import "./Calender.css";
-require("dotenv").config();
+import { back_end_url } from "../../config/configuration.json";
 
 const Calender = ({ filterCallback }) => {
   const [fromDate, setFromDate] = useState("");
@@ -37,7 +37,7 @@ const Calender = ({ filterCallback }) => {
       //Converting TO Date
       var edate = new Date(toDate.toString().replace("IST", ""));
       day = edate.getDate();
-      console.log(start_date);
+      // console.log(start_date);
       month = edate.getMonth() + 1;
       year = edate.getFullYear();
       var end_date = day + "/" + month + "/" + year;
@@ -45,7 +45,7 @@ const Calender = ({ filterCallback }) => {
 
       axios
         .post(
-          process.env.REACT_APP_URL + "/filtering_using_dates/",
+          back_end_url + "/filtering_using_dates/",
           {
             start_date,
             end_date,
@@ -57,9 +57,9 @@ const Calender = ({ filterCallback }) => {
           }
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           // if (res.data.Error === "") {
-          console.log(res.data);
+          // console.log(res.data);
           var string1 = "Product added to stock";
           var string2 = "Product Dispatched";
           var string3 = "Product returned";

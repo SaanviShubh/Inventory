@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import Table from "../../components/Table/Table";
 import Error from "../ErrorPage/Error";
 import { toast } from "react-toastify";
-require("dotenv").config();
+import { back_end_url } from "../../config/configuration.json";
 
 const Dashboard = () => {
   // Stock Analytics
@@ -73,7 +73,7 @@ const Dashboard = () => {
   //For SearchBox, Table, Calender
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_URL + "/viewtransactions/", {
+      .get(back_end_url + "/viewtransactions/", {
         headers: {
           authtoken: authtoken,
         },
@@ -136,7 +136,7 @@ const Dashboard = () => {
   //Setting Alert List and Total Stock Available
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_URL + "/viewallprods/", {
+      .get(back_end_url + "/viewallprods/", {
         headers: {
           authtoken: authtoken,
         },

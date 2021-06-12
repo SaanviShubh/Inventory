@@ -4,7 +4,7 @@ import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-require("dotenv").config();
+import { back_end_url } from "../../config/configuration.json";
 
 const Input = ({ text, inputHit, tableCallback }) => {
   const [input, setInput] = useState("");
@@ -24,7 +24,7 @@ const Input = ({ text, inputHit, tableCallback }) => {
     } else {
       axios
         .post(
-          process.env.REACT_APP_URL + `/${inputHit}`,
+          back_end_url + `/${inputHit}`,
           { input },
           {
             headers: {
@@ -59,7 +59,7 @@ const Input = ({ text, inputHit, tableCallback }) => {
     } else {
       axios
         .post(
-          process.env.REACT_APP_URL + `/${inputHit}`,
+          back_end_url + `/${inputHit}`,
           { input, billno, party_name },
           {
             headers: {

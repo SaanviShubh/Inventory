@@ -4,7 +4,8 @@ import axios from "axios";
 import { FadeLoader } from "react-spinners";
 import Input from "../../components/Input/Input";
 import { toast } from "react-toastify";
-require("dotenv").config();
+import { front_end_url } from "../../config/configuration.json";
+import { back_end_url } from "../../config/configuration.json";
 
 const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
   const [tableItems, setTableItems] = useState("");
@@ -22,7 +23,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
 
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_URL + `/${hit}`, {
+      .get(back_end_url + `/${hit}`, {
         headers: {
           authtoken: authtoken,
         },
@@ -40,9 +41,10 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
   }, [reload]);
 
   const tableUrl = window.location.href;
+  console.log(tableUrl);
 
   //For Current Stock Table
-  if (tableUrl === process.env.REACT_CLIENT_PORT + "currentstock")
+  if (tableUrl === front_end_url + "currentstock")
     return (
       <div className="table">
         <p className="table__name">{tableHead}</p>
@@ -120,7 +122,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
       </div>
     );
   //Transactions Table  ----> Try ReactBootstrap for this
-  else if (tableUrl === process.env.REACT_CLIENT_PORT)
+  else if (tableUrl === front_end_url)
     return (
       <div>
         <div className="table">
@@ -174,7 +176,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
       </div>
     );
   //Add Page
-  else if (tableUrl === process.env.REACT_CLIENT_PORT + "add") {
+  else if (tableUrl === front_end_url + "add") {
     return (
       <div>
         <div className="table">
