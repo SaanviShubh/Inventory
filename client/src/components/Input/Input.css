@@ -6,7 +6,7 @@
 
 .input_bar .fa-plus-square,
 .add_input_bar .fa-plus-square {
-  color: rgb(12%, 40%, 100%);
+  color: var(--btncolor);
   cursor: pointer;
 }
 

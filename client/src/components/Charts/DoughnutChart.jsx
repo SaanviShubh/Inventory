@@ -9,8 +9,8 @@ const DoughnutChart = ({ added, dispatched, returned }) => {
     var dispatch = dispatched !== null ? dispatched : 1;
     var ret = returned !== null ? returned : 1;
 
-    console.log(added);
-    console.log(dispatched);
+    // console.log(added);
+    // console.log(dispatched);
 
     setChartData({
       labels: ["Added", "Dispatched", "Returned"],

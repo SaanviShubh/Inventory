@@ -6,8 +6,8 @@ const Error = () => {
 
   return (
     <div className="error_page">
-      <h1>Don't misbehave with App</h1>
-      <h1>Please Login Again</h1>
+      <h1>Exceptional Condition.</h1>
+      <h1>Please Login Again.</h1>
     </div>
   );
 };

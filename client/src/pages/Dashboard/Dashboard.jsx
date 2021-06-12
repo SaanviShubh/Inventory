@@ -38,8 +38,8 @@ const Dashboard = () => {
 
   //Callback Function for Calender to recieve Filtered Data
   const myCallback = useCallback((ss, qq) => {
-    console.log(ss);
-    console.log("hi");
+    // console.log(ss);
+    // console.log("hi");
     setAdded(ss.addno);
     setDispatched(ss.dispatchno);
     setReturned(ss.returnno);
@@ -51,7 +51,7 @@ const Dashboard = () => {
     setReturnedWorth(ss.returned_sellprice);
 
     setProfitWorth(ss.dispatched_sellprice - ss.returned_sellprice);
-    console.log(added);
+    // console.log(added);
     setClearBtn(true);
   });
 
@@ -79,7 +79,7 @@ const Dashboard = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setItemsArray(res.data);
 
         var add_count = 0;
@@ -91,7 +91,7 @@ const Dashboard = () => {
           // console.log("Date from DATA = " + res.data[i].Date);
           var emonth = res.data[i].Date.split("/")[1];
           var eyear = res.data[i].Date.split("/")[2];
-          console.log("Month from DATA = " + eyear);
+          // console.log("Month from DATA = " + eyear);
 
           var currDate = new Date();
           var currYear = currDate.getFullYear();
@@ -162,7 +162,7 @@ const Dashboard = () => {
       })
       .catch((error) => {
         toast.error("Something went Wrong!");
-        console.log(error);
+        // console.log(error);
       });
   }, []);
 

@@ -15,7 +15,7 @@ const Searchbox = ({ searchData }) => {
       toast.error("Empty Searchbox");
     } else {
       setSearchResult(searchData);
-      console.log(searchResult);
+      // console.log(searchResult);
     }
   };
 
@@ -58,7 +58,7 @@ const Searchbox = ({ searchData }) => {
                 <div class="search_result_table_cell">{filtered.Barcode}</div>
                 <div class="search_result_table_cell">{filtered.Date}</div>
                 <div class="search_result_table_cell">
-                  {tableUrl === "http://localhost:3000/" ? (
+                  {tableUrl === process.env.REACT_CLIENT_PORT ? (
                     <span
                       className={
                         filtered.action === "Product added to stock"

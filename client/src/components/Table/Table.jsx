@@ -28,13 +28,13 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setTableItems(res.data);
         setloading(false);
         callbackVal(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         toast.error("Something Went Wrong");
       });
   }, [reload]);
@@ -42,7 +42,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
   const tableUrl = window.location.href;
 
   //For Current Stock Table
-  if (tableUrl === "http://localhost:3000/currentstock")
+  if (tableUrl === process.env.REACT_CLIENT_PORT + "currentstock")
     return (
       <div className="table">
         <p className="table__name">{tableHead}</p>
@@ -120,7 +120,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
       </div>
     );
   //Transactions Table  ----> Try ReactBootstrap for this
-  else if (tableUrl === "http://localhost:3000/")
+  else if (tableUrl === process.env.REACT_CLIENT_PORT)
     return (
       <div>
         <div className="table">
@@ -174,7 +174,7 @@ const Table = ({ hit, inputText, inputHit, tableHead, callbackVal }) => {
       </div>
     );
   //Add Page
-  else if (tableUrl === "http://localhost:3000/add") {
+  else if (tableUrl === process.env.REACT_CLIENT_PORT + "add") {
     return (
       <div>
         <div className="table">

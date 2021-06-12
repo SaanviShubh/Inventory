@@ -1,5 +1,5 @@
 .returnpage {
   padding: 30px;
-  background-color: rgba(187, 206, 250, 0.267);
+  background-color: var(--bgcolor);
   height: calc(100% - 60px);
 }

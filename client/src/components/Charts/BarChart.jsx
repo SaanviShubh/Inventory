@@ -63,7 +63,7 @@ const BarChart = ({ graphData }) => {
             break;
           case "06":
             var June = June + 1;
-            console.log(June);
+            // console.log(June);
             break;
           case "07":
             var July = July + 1;
@@ -85,7 +85,7 @@ const BarChart = ({ graphData }) => {
             break;
         }
       } else if (graphData[i].action === "Product returned") {
-        console.log(month);
+        // console.log(month);
         switch (month) {
           case 1:
             jan = jan + 1;
@@ -105,7 +105,7 @@ const BarChart = ({ graphData }) => {
             break;
           case "06":
             june = june + 1;
-            console.log(june);
+            // console.log(june);
             break;
           case 7:
             july = july + 1;

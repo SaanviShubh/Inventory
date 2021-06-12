@@ -62,7 +62,7 @@
   margin-top: 10px;
   text-align: center;
   /* background-color: #86d3f160; */
-  background-color: rgba(187, 206, 250, 0.267);
+  background-color: var(--bgcolor);
   color: rgba(99, 97, 97, 0.712);
   font-weight: 500;
 }

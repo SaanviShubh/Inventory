@@ -14,7 +14,6 @@ import Return from "./pages/ReturnPage/Return";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import ItemList from "./pages/AddPage/ItemList";
 import Transaction from "./pages/Transaction/Transaction";
 import Login from "./pages/LoginPage/Login";
 import Barcode from "./pages/Barcode/Barcode";
@@ -39,7 +38,6 @@ const Main = () => {
         <div className="app__body">
           <Navbar />
           <Route path="/add" exact={true} component={AddItem} />
-          <Route path="/itemList" exact={true} component={ItemList} />
           <Route path="/dispatch" exact={true} component={Dispatch} />
           <Route path="/return" exact={true} component={Return} />
           <Route path="/barcode-generator" exact={true} component={Barcode} />

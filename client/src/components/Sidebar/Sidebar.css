@@ -50,7 +50,7 @@
 
 .fa-user-circle {
   /* border: 1px solid blue; */
-  color: rgb(12%, 40%, 100%);
+  color: var(--btncolor);
 }
 
 .sidebar_profile p {

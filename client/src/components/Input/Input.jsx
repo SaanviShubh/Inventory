@@ -45,7 +45,7 @@ const Input = ({ text, inputHit, tableCallback }) => {
         })
         .catch((error) => {
           setLoader(false);
-          console.log(error);
+          // console.log(error);
           toast.error("Something Went Wrong");
         });
     }
@@ -76,12 +76,12 @@ const Input = ({ text, inputHit, tableCallback }) => {
           } else {
             setLoader(false);
             toast.error(res.data.Error);
-            console.error(res.data.Error);
+            // console.error(res.data.Error);
           }
         })
         .catch((error) => {
           setLoader(false);
-          console.log(error);
+          // console.log(error);
           toast.error("Something Went Wrong");
         });
     }

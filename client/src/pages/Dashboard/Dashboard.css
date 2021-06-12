@@ -1,10 +1,7 @@
 .dashboard {
   padding: 30px;
-  /* background-color: rgba(200, 250, 187, 0.267); */
-  background-color: rgba(187, 206, 250, 0.267);
+  background-color: var(--bgcolor);
   height: calc(100% - 60px);
-  /* background-color: rgb(99%, 99%, 99%); */
-  /* border: 1px solid red; */
 }
 
 /* Page Header  */
@@ -33,6 +30,7 @@
 .detail {
   background-color: white;
   width: 15%;
+  min-width: 100px;
   height: 180px;
   /* border: 1px solid goldenrod; */
   padding: 20px;
@@ -49,7 +47,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: rgb(2%, 45%, 93%);
+  background-color: var(--appblue);
   border-radius: 8px;
   /* border: 1px solid palevioletred; */
 }
@@ -60,7 +58,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: rgb(54, 131, 2);
+  background-color: var(--green);
   border-radius: 8px;
 }
 
@@ -70,7 +68,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: rgb(145, 90, 207);
+  background-color: var(--purple);
   border-radius: 8px;
 }
 
@@ -80,7 +78,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: rgb(233, 41, 41);
+  background-color: var(--brightred);
   border-radius: 8px;
 }
 
@@ -113,6 +111,7 @@
   max-height: 180px;
   background-color: #fff;
   width: calc(40% - 80px);
+  min-width: 130px;
   padding: 4px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -145,7 +144,7 @@
   /* border: 2px solid red; */
   color: rgb(184, 77, 72);
   border-left: 4px solid rgb(184, 77, 72);
-  background-color: rgb(97%, 85%, 84%);
+  background-color: var(--returnedcolor);
   align-items: center;
   justify-content: space-between;
   padding: 0 3px;
@@ -272,16 +271,16 @@
   padding: 0.8rem;
   text-align: center;
   background-color: rgb(82%, 94%, 89%);
-  border-left: 4px solid rgb(38%, 60%, 49%);
-  color: rgb(70, 121, 95);
+  border-left: 4px solid var(--addedcolorborder);
+  color: var(--addedcolor);
 }
 
 .dispatched_stock {
   /* border: 2px solid red; */
   padding: 0.8rem;
   text-align: center;
-  background-color: rgb(89%, 86%, 96%);
-  border-left: 4px solid rgb(56%, 41%, 67%);
+  background-color: var(--dispatchedcolor);
+  border-left: 4px solid var(--dispatchedcolorborder);
   color: rgb(119, 85, 143);
 }
 
@@ -289,8 +288,8 @@
   /* border: 2px solid red; */
   padding: 0.8rem;
   text-align: center;
-  background-color: rgb(97%, 85%, 84%);
-  border-left: 4px solid rgb(82%, 51%, 49%);
+  background-color: var(--returnedcolor);
+  border-left: 4px solid var(--returnedcolorborder);
   color: rgb(184, 77, 72);
 }
 
@@ -330,8 +329,8 @@
 .sale_money {
   width: 90%;
   margin: 4px;
-  background-color: rgb(89%, 86%, 96%);
-  border-left: 4px solid rgb(56%, 41%, 67%);
+  background-color: var(--dispatchedcolor);
+  border-left: 4px solid var(--dispatchedcolorborder);
   color: rgb(119, 85, 143);
 }
 
@@ -339,8 +338,8 @@
   width: 90%;
   color: rgb(119, 85, 143);
   margin: 4px;
-  background-color: rgb(97%, 85%, 84%);
-  border-left: 4px solid rgb(82%, 51%, 49%);
+  background-color: var(--returnedcolor);
+  border-left: 4px solid var(--returnedcolorborder);
   color: rgb(184, 77, 72);
 }
 

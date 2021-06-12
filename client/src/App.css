@@ -37,6 +37,8 @@
   }
 } */
 
+@import url(./config/ColorScheme.css);
+
 * {
   padding: 0;
   margin: 0;
@@ -61,7 +63,7 @@ body {
 }
 
 button {
-  background-color: rgb(12%, 40%, 100%);
+  background-color: var(--btncolor);
   color: #fff;
   padding: 5px 6px;
   outline: none;

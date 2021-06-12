@@ -29,7 +29,7 @@
 }
 
 .fa-search:hover {
-  color: rgb(12%, 40%, 100%);
+  color: var(--btncolor);
 }
 
 .fa-times {
@@ -39,7 +39,7 @@
 }
 
 .fa-times:hover {
-  color: rgb(12%, 40%, 100%);
+  color: var(--btncolor);
 }
 
 #search__bar {

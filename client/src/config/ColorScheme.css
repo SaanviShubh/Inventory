@@ -1,4 +1,20 @@
 :root {
-  --appblue: rgb(12%, 40%, 100%);
+  --appblue: #1e65ff;
+  --bgcolor: rgba(187, 206, 250, 0.267);
+
+  /* Data Show Boxes */
+  --brightred: rgb(233, 41, 41);
+  --green: rgb(54, 131, 2);
+  --purple: rgb(145, 90, 207);
+
+  /* Analytics */
+  --addedcolor: rgb(70, 121, 95);
+  --addedcolorborder: rgb(38%, 60%, 49%);
+  --dispatchedcolor: rgb(89%, 86%, 96%);
+  --dispatchedcolorborder: rgb(56%, 41%, 67%);
+  --returnedcolor: rgb(97%, 85%, 84%);
+  --returnedcolorborder: rgb(82%, 51%, 49%);
+
+  --btncolor: rgb(12%, 40%, 100%);
   --btnhover: rgba(3, 53, 160, 0.932);
 }

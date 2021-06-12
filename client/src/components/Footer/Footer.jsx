@@ -12,7 +12,10 @@ const Footer = () => {
       </div>
 
       <div className="footer_right">
-        <p>Created and Maintained by Us!</p>
+        {/* <p>Created and Maintained by Us!</p> */}
+        <a href="https://trello.com/b/G9p13vOt/inventory" target="blank">
+          Created and Maintained by Us!
+        </a>
       </div>
     </div>
   );
