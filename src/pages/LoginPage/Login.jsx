@@ -61,7 +61,6 @@ export default function Login() {
           <p>Welcome to SaanviShubh!</p>
           <form>
             <input
-              // className="login_email"
               type="email"
               placeholder="Enter Email"
               value={username}
