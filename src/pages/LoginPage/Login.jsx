@@ -5,6 +5,7 @@ import login_image from "../../assets/login_image.svg";
 import { HashLoader } from "react-spinners";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Navbar from "../../components/Navbar/Navbar";
 import { back_end_url } from "../../config/configuration.json";
 
 export default function Login() {
@@ -51,6 +52,7 @@ export default function Login() {
 
   return (
     <div className="login">
+      <div className="login_nav"></div>
       <div className="login_image_wrapper">
         <img src={login_image} alt="image" />
       </div>
