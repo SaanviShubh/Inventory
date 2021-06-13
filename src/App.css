@@ -76,8 +76,9 @@ button:hover {
   background-color: rgba(21, 21, 255, 0.836);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 320px) {
   .app__body {
     width: 100%;
+    /* border: 2px solid red; */
   }
 }

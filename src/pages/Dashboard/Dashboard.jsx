@@ -297,11 +297,11 @@ const Dashboard = () => {
               <BarChart graphData={itemsArray} />
             </div>
           </div>
-          <Table
+          {/* <Table
             hit="viewtransactions/"
             tableHead="Recent Transactions List"
             callbackVal={myCallbackTwo}
-          />
+          /> */}
         </div>
       ) : (
         <Error />

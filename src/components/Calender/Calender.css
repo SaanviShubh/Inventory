@@ -27,3 +27,19 @@
 .calender button:hover {
   background-color: transparent;
 }
+
+@media only screen and (max-width: 420px) {
+  .calender_filter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* margin-right: 10px; */
+    /* border: 2px solid green; */
+  }
+  .calender {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    /* border: 2px solid red; */
+  }
+}

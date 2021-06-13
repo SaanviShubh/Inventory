@@ -376,55 +376,88 @@
   /* border: 2px solid red; */
 }
 
-@media only screen and (max-width: 400px) {
-  /* .app__body {
-    width: 100%;
-    max-width: 100%;
-  } */
+/* ---Mobile Compatible--- */
+
+@media only screen and (max-width: 420px) {
+  .dashboard {
+    padding: 15px;
+    background-color: var(--bgcolor);
+    height: calc(100% - 60px);
+  }
+
+  #dashboard__header {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  #dashboard__subheader {
+    color: rgba(77, 77, 77, 0.637);
+    font-weight: 400;
+    font-size: 0.7rem;
+    margin-left: 2px;
+  }
 
   .items_detail {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
   }
-
   .detail {
-    width: 30%;
-    min-width: 40px;
-    margin-bottom: 10px;
+    width: 80%;
+    min-width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    /* align-items: flex-start; */
+    background-color: white;
+    /* border: 1px solid goldenrod; */
+    padding: 20px;
+    border-radius: 8px;
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+  .articles_icon {
+    height: 100%;
+    width: 40%;
+    padding: 8px;
   }
 
-  .quant_alert_list {
+  .item_detail {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: space-evenly;
+    align-items: center;
+    padding: 10px 12px;
+    /* border: 1px solid goldenrod; */
+  }
+  .number_of_item {
     width: 50%;
   }
-
+  .detail_heading {
+    width: 50%;
+  }
+  .quant_alert_list {
+    height: 180px;
+    max-height: 180px;
+    background-color: #fff;
+    /* width: calc(40% - 80px); */
+    width: 100%;
+    min-width: 130px;
+    padding: 4px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* border: 2px solid rgba(248, 198, 195, 0.74); */
+    border-radius: 4px;
+    margin-top: 10px;
+  }
   .stock_analytics {
     display: flex;
-    flex-direction: column-reverse;
-    /* border: 2px solid red; */
-    justify-content: center;
-    align-items: center;
-  }
-
-  .stock_numbers {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .stock_chart {
-    width: 60%;
-  }
-
-  .profit_bar_chart {
-    display: flex;
     flex-direction: column;
-  }
-
-  .profit_details {
     width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .profit_chart {
-    width: 100%;
+    /* border: 2px solid red; */
+    margin-top: 10px;
   }
 }
