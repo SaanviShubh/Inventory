@@ -18,9 +18,19 @@
 
 .filter_cal .fa-times {
   color: rgba(0, 0, 0, 0.747);
+  margin-right: 5px;
 }
 
 .filter_box_body {
   width: 100%;
   /* border: 2px solid red; */
+}
+
+@media only screen and (max-width: 420px) {
+  .search_result_table {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    overflow-x: auto;
+  }
 }

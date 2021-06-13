@@ -453,11 +453,79 @@
     border-radius: 4px;
     margin-top: 10px;
   }
+  .filter_pagebtn {
+    display: flex;
+    justify-content: space-evenly;
+    /* border-radius: 2px solid red; */
+    /* background-color: red; */
+  }
+  .fa-times {
+    margin-right: 5px;
+  }
   .stock_analytics {
     display: flex;
     flex-direction: column;
     width: 100%;
+    align-items: center;
     /* border: 2px solid red; */
     margin-top: 10px;
+  }
+  .stock_chart {
+    min-height: 200px;
+    width: 100%;
+    min-width: 30%;
+    border-radius: 4px;
+    /* border: 2px solid red; */
+    background-color: white;
+    padding: 20px;
+  }
+  .stock_numbers {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
+    background-color: #fff;
+    padding: 20px;
+  }
+  .stock_numbers_details {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+  }
+  .added_stock,
+  .dispatched_stock,
+  .returned_stock,
+  .profit_stock {
+    margin-top: 5px;
+  }
+  .revenue_side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  /* .sale_money,
+  .return_money,
+  .returned_stock,
+  .profit_money {
+    width: 100%;
+  } */
+
+  .barchart_wrapper {
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    /* border: 2px solid red; */
+  }
+  .barchart {
+    width: 100%;
+    min-height: 100px;
+    padding: 5px;
+    /* padding: 10px; */
+    /* border: 2px solid red; */
   }
 }

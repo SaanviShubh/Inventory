@@ -33,3 +33,39 @@
   font-family: sans-serif;
   font-size: 0.9rem;
 }
+
+@media only screen and (max-width: 420px) {
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--appblue);
+    border-top: 1px solid rgba(167, 167, 167, 0.384);
+    bottom: 0;
+  }
+  .footer_left {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+  }
+
+  #project-name {
+    color: white;
+    font-size: 0.8rem;
+  }
+  #website_link {
+    width: 50%;
+    text-align: center;
+    color: white;
+  }
+  #bug_report {
+    color: yellow;
+    padding: 12px 8px;
+    /* border: 2px solid red; */
+  }
+}

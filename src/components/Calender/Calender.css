@@ -30,9 +30,11 @@
 
 @media only screen and (max-width: 420px) {
   .calender_filter {
-    width: 100%;
+    width: 80%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     /* margin-right: 10px; */
     /* border: 2px solid green; */
   }
@@ -41,5 +43,11 @@
     flex-direction: column;
     padding: 3px;
     /* border: 2px solid red; */
+  }
+  #date_input {
+    margin: 5px 0;
+    padding: 4px;
+    outline: none;
+    border: 0.5px solid grey;
   }
 }

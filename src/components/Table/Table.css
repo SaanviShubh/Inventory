@@ -100,3 +100,26 @@
   background-color: #fff;
   margin-top: 20px;
 }
+
+@media only screen and (max-width: 420px) {
+  .table {
+    /* border: 2px solid red; */
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+  }
+  #customers td,
+  #customers th {
+    border: 1px solid #ddd;
+    font-size: 0.7rem;
+    padding: 8px;
+    text-align: center;
+  }
+}
