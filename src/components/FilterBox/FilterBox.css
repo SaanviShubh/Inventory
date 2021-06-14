@@ -42,23 +42,29 @@
     padding: 20px;
     overflow-x: auto;
   }
-
+  /* 
   .filter_box ::-webkit-scrollbar {
     width: 10px;
   }
 
   /* Track */
-  ::-webkit-scrollbar-track {
+  /* .filter_box ::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
+  } */
 
   /* Handle */
-  ::-webkit-scrollbar-thumb {
+  /* .filter_box ::-webkit-scrollbar-thumb {
     background: rgb(188, 205, 250);
-  }
+  } */
 
   /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+  /* .filter_box ::-webkit-scrollbar-thumb:hover {
     background: rgb(177, 198, 255);
+  } */
+  */ .filter_cal {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 20px;
   }
 }
