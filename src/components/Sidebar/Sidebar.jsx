@@ -18,8 +18,15 @@ const Sidebar = () => {
     }
   };
 
+  const sidebarCancel = () => {
+    document.getElementById("sidebar").classList.remove("active");
+  };
+
   return (
-    <div className="sidebar">
+    <div id="sidebar" className="sidebar">
+      <div className="sidebar_remove">
+        <i class="fas fa-times fa-lg" onClick={sidebarCancel}></i>
+      </div>
       <div className="sidebar_profile" onClick={onNameClick}>
         <div className="profile_icon">
           <i class="fas fa-user-circle fa-2x"></i>

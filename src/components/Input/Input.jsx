@@ -4,6 +4,7 @@ import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { front_end_url } from "../../config/configuration.json";
 import { back_end_url } from "../../config/configuration.json";
 
 const Input = ({ text, inputHit, tableCallback }) => {
@@ -89,7 +90,7 @@ const Input = ({ text, inputHit, tableCallback }) => {
 
   const inputUrl = window.location.href;
 
-  if (inputUrl === "http://localhost:3000/add") {
+  if (inputUrl === front_end_url + "add") {
     return (
       <div className="add_input_bar">
         <input

@@ -1,6 +1,4 @@
 {
-    "front_end_url" : "http://localhost:3000/",
-    "front": "https://saanvishubh-inventory.web.app/",
-    "back_end_url" : "http://127.0.0.1:8000/stockmanagement",
-    "url" : "https://saanvishubh-stockmanagement.herokuapp.com/stockmanagement"
+    "front_end_url": "https://saanvishubh-inventory.web.app/",
+    "back_end_url" : "https://saanvishubh-stockmanagement.herokuapp.com/stockmanagement"
 }

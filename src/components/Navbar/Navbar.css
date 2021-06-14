@@ -7,18 +7,26 @@
   position: sticky;
   text-align: end;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  /* border: 2px solid red; */
 }
 
-.navbar_data {
+.burger-menu {
+  /* display: none; */
+  visibility: hidden;
+  pointer-events: none;
+  cursor: none;
+}
+
+.logout_data {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 15px;
 }
 
-.navbar_data p {
+.logout_data p {
   padding: 10px 8px;
   /* border: 1px solid red; */
   color: #fff;
@@ -34,5 +42,18 @@
   .loginpg_nav {
     width: 100%;
     background-color: aqua;
+  }
+  .burger-menu {
+    visibility: visible;
+    padding: 8px 5px;
+    color: #fff;
+    margin-left: 10px;
+    /* border: 2px solid red; */
+  }
+  .logout_data p {
+    padding: 10px 8px;
+    /* border: 1px solid red; */
+    font-size: 0.9rem;
+    color: #fff;
   }
 }

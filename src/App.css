@@ -60,6 +60,7 @@ body {
   max-width: 87%; */
   /* width: 86%; */
   width: 100%;
+  flex: 1;
 }
 
 button {

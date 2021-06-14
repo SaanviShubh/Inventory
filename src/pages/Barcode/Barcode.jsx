@@ -56,24 +56,25 @@ const Barcode = () => {
           }
         )
         .then((res) => {
-          if (res.data.Error === "") {
-            toast.success("Barcode Generated");
-            setLoader(false);
-            setRecentBarcodes(res.data);
-            setColor("");
-            setModelNo("");
-            setSize("");
-            setCp("");
-            setSp("");
-            seyQty("");
-          } else {
-            setLoader(false);
-            toast.error(res.data.Error);
-          }
+          toast.success("Barcode Generated");
+          setLoader(false);
+          setRecentBarcodes(res.data);
+          setColor("");
+          setModelNo("");
+          setSize("");
+          setCp("");
+          setSp("");
+          seyQty("");
+          console.log(res);
+          // } else {
+          //   setLoader(false);
+          //   console.log(res);
+          //   toast.error(res.data.Error);
+          // }
         })
         .catch((error) => {
           // setLoader(false);
-          // console.log(error);
+          console.log(error);
           toast.error("Something Went Wrong");
         });
     }

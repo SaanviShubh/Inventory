@@ -19,6 +19,8 @@ import Login from "./pages/LoginPage/Login";
 import Barcode from "./pages/Barcode/Barcode";
 import CurrentStock from "./pages/CurrentStock/CurrentStock";
 import { HashLoader } from "react-spinners";
+import SidebarModal from "./components/SidebarModal";
+import "./components/SidebarModal.css";
 
 const Main = () => {
   const history = useHistory();
@@ -29,25 +31,32 @@ const Main = () => {
     else history.push("/");
   }, []);
   return (
-    <Switch>
-      <Route path="/login" exact={true} component={Login} />
-      <Route path="/recent_transaction" exact={true} component={Transaction} />
+    <>
+      <Switch>
+        <Route path="/login" exact={true} component={Login} />
+        <Route
+          path="/recent_transaction"
+          exact={true}
+          component={Transaction}
+        />
 
-      <div className="App">
-        <Sidebar />
-        <div className="app__body">
-          <Navbar />
-          <Route path="/add" exact={true} component={AddItem} />
-          <Route path="/dispatch" exact={true} component={Dispatch} />
-          <Route path="/return" exact={true} component={Return} />
-          <Route path="/barcode-generator" exact={true} component={Barcode} />
-          <Route path="/currentstock" exact={true} component={CurrentStock} />
-          <Route path="/" exact={true} component={Dashboard}></Route>
-          {/* <Redirect to="/" /> */}
-          <Footer />
+        <div className="App">
+          <Sidebar />
+          <div className="app__body">
+            <Navbar />
+            <Route path="/add" exact={true} component={AddItem} />
+            <Route path="/dispatch" exact={true} component={Dispatch} />
+            <Route path="/return" exact={true} component={Return} />
+            <Route path="/barcode-generator" exact={true} component={Barcode} />
+            <Route path="/currentstock" exact={true} component={CurrentStock} />
+            <Route path="/" exact={true} component={Dashboard}></Route>
+            {/* <Redirect to="/" /> */}
+            <Footer />
+          </div>
         </div>
-      </div>
-    </Switch>
+        <div id="SidebarModal"></div>
+      </Switch>
+    </>
   );
 };
 

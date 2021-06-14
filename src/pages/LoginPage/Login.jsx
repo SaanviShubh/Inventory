@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./Login.css";
 import login_image from "../../assets/login_image.svg";
 import { HashLoader } from "react-spinners";
+import { MoonLoader } from "react-spinners";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
@@ -21,10 +22,12 @@ export default function Login() {
   // }, []);
 
   const submitHandler = async (e) => {
+    setLoader(true);
     e.preventDefault();
     setLoader(true);
     if (username === "" || password === "") {
       toast.error("Enter Details");
+      setLoader(false);
     } else {
       axios
         .post(
@@ -39,13 +42,16 @@ export default function Login() {
         .then((res) => {
           if (res.data.Error === "") {
             localStorage.setItem("token", res.data.token);
+            setLoader(false);
             history.push("/");
           } else {
             toast.error(res.data.Error);
+            setLoader(false);
           }
         })
         .catch((error) => {
           toast.error("Something Went Wrong");
+          setLoader(false);
         });
     }
   };
@@ -75,7 +81,13 @@ export default function Login() {
             />
 
             <button onClick={submitHandler} type="submit">
-              Login
+              {loader ? (
+                <div className="login_loader">
+                  <HashLoader size={18} color="fff" />
+                </div>
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
         </div>
