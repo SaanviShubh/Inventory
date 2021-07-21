@@ -4,7 +4,7 @@ import axios from "axios";
 import "../Table/Table.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-require("dotenv").config();
+import { front_end_url } from "../../config/configuration.json";
 
 const Searchbox = ({ searchData }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -58,7 +58,7 @@ const Searchbox = ({ searchData }) => {
                 <div class="search_result_table_cell">{filtered.Barcode}</div>
                 <div class="search_result_table_cell">{filtered.Date}</div>
                 <div class="search_result_table_cell">
-                  {tableUrl === process.env.REACT_CLIENT_PORT ? (
+                  {tableUrl === front_end_url ? (
                     <span
                       className={
                         filtered.action === "Product added to stock"

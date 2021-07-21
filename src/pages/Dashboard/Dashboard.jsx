@@ -11,7 +11,11 @@ import { Link } from "react-router-dom";
 import Table from "../../components/Table/Table";
 import Error from "../ErrorPage/Error";
 import { toast } from "react-toastify";
+import ReactExport from "react-data-export";
 import { back_end_url } from "../../config/configuration.json";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 
 const Dashboard = () => {
   // Stock Analytics
@@ -221,7 +225,17 @@ const Dashboard = () => {
             </div>
             <div className="quant_alert_list">
               <div className="quant_alert_list_head">
-                <p>Alert Notification</p>
+                {alertList.length !== 0 ? (
+                  <ExcelFile
+                    filename="Alert List"
+                    element={<p>Export Alert Items</p>}
+                  >
+                    <ExcelSheet
+                      dataSet={alertList}
+                      name="Low Quantity Items"
+                    ></ExcelSheet>
+                  </ExcelFile>
+                ) : null}
                 {loader ? <HashLoader size={20} color="c45551" /> : null}
               </div>
               <div className="alert_list">
