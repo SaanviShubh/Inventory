@@ -16,6 +16,7 @@ import { back_end_url } from "../../config/configuration.json";
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const Dashboard = () => {
   // Stock Analytics
@@ -30,6 +31,8 @@ const Dashboard = () => {
   const [profitWorth, setProfitWorth] = useState(0);
   //Quantity Alert
   const [alertList, setAlertList] = useState("");
+  const [exportItem, setExportItem] = useState("");
+  const [exportQty, setExportQty] = useState("");
   //Monthly Updates
   const [totalStock, setTotalStock] = useState(0);
   const [monthlyAdded, setMonthlyAdded] = useState(0);
@@ -225,17 +228,22 @@ const Dashboard = () => {
             </div>
             <div className="quant_alert_list">
               <div className="quant_alert_list_head">
-                {alertList.length !== 0 ? (
+                <div className="download_head">
+                  <p>Alert List</p>
                   <ExcelFile
                     filename="Alert List"
-                    element={<p>Export Alert Items</p>}
+                    element={
+                      <button type="button" className="export_list_btn">
+                        Download
+                      </button>
+                    }
                   >
-                    <ExcelSheet
-                      dataSet={alertList}
-                      name="Low Quantity Items"
-                    ></ExcelSheet>
+                    <ExcelSheet data={alertList} name="Alert Itemlist">
+                      <ExcelColumn label="Model" value="modelname" />
+                      <ExcelColumn label="Quantity" value="qty" />
+                    </ExcelSheet>
                   </ExcelFile>
-                ) : null}
+                </div>
                 {loader ? <HashLoader size={20} color="c45551" /> : null}
               </div>
               <div className="alert_list">

@@ -23,7 +23,8 @@
     "react-scripts": "4.0.3",
     "react-spinners": "^0.10.6",
     "react-toastify": "^7.0.4",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "xlsx": "^0.17.0"
   },
   "scripts": {
     "start": "react-scripts start",
