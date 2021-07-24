@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 import { MoonLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import "./Calender.css";
@@ -147,6 +148,7 @@ const Calender = ({ filterCallback }) => {
           selected={fromDate}
           onChange={(date) => setFromDate(date)}
           autoComplete="off"
+          maxDate={moment().toDate()}
         />
         <DatePicker
           id="date_input"
@@ -158,6 +160,7 @@ const Calender = ({ filterCallback }) => {
           selected={toDate}
           onChange={(date) => setToDate(date)}
           autoComplete="off"
+          maxDate={moment().toDate()}
         />
       </div>
       {loader ? (

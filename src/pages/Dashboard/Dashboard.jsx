@@ -157,6 +157,15 @@ const Dashboard = () => {
           setLoader(false);
           localStorage.setItem("allProducts", JSON.stringify(res.data));
           const alertListData = localStorage.getItem("allProducts");
+
+          // for (let i = 0; i < res.data.length; i++) {
+          //   if (res.data[i].qty < 8) {
+          //     console.log("------");
+          //     console.log(res.data[i]);
+          //     setExportData(res.data[i]);
+          //   }
+          // }
+
           setAlertList(JSON.parse(alertListData));
           var count = 0;
           for (let i = 0; i < res.data.length; i++) {
@@ -242,6 +251,11 @@ const Dashboard = () => {
                       <ExcelColumn label="Model" value="modelname" />
                       <ExcelColumn label="Quantity" value="qty" />
                     </ExcelSheet>
+
+                    {/* <ExcelSheet data={alertList} name="List 2">
+                      <ExcelColumn label="Name" value="id" />
+                      <ExcelColumn label="Qty" value="qty" />
+                    </ExcelSheet> */}
                   </ExcelFile>
                 </div>
                 {loader ? <HashLoader size={20} color="c45551" /> : null}
